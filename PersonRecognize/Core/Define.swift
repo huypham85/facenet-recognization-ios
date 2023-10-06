@@ -15,7 +15,7 @@ let AVG_VECTOR = "Vectors"
 let KMEAN_VECTOR = "K-mean Vectors"
 let USER_CHILD = "Users"
 
-let STORAGE_URL = "gs://personalregcozine.appspot.com"
+let STORAGE_URL = "gs://face-attendance-470c2.appspot.com"
 
 //Define unknown
 let UNKNOWN = "Unknown"

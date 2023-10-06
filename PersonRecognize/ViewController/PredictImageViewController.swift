@@ -114,18 +114,22 @@ class PredictImageViewController: UIViewController, UIImagePickerControllerDeleg
 //
 //            }
             
-            image.face.crop { [self] res in
+            image.face.crop { [weak self] res in
+                guard let self else { return }
                 switch res {
                 case .success(let faces):
-                    self.face1.image = faces[0]
-                    self.face1.layer.cornerRadius = self.corner
-                    self.face2.layer.cornerRadius = self.corner
-                    if faces.count == 2 {
+                    DispatchQueue.main.async {
                         self.face1.image = faces[0]
-                        self.face2.image = faces[1]
-                        self.nameFace1.text = "\(vectorHelper.getResult(image: faces[0]).name): \(vectorHelper.getResult(image: faces[0]).distance)%"
-                        self.nameFace2.text = "\(vectorHelper.getResult(image: faces[1]).name): \(vectorHelper.getResult(image: faces[1]).distance)%"
+                        self.face1.layer.cornerRadius = self.corner
+                        self.face2.layer.cornerRadius = self.corner
+                        if faces.count == 2 {
+                            self.face1.image = faces[0]
+                            self.face2.image = faces[1]
+                            self.nameFace1.text = "\(vectorHelper.getResult(image: faces[0]).name): \(vectorHelper.getResult(image: faces[0]).distance)%"
+                            self.nameFace2.text = "\(vectorHelper.getResult(image: faces[1]).name): \(vectorHelper.getResult(image: faces[1]).distance)%"
+                        }
                     }
+                    
                 case .notFound:
                     self.showDialog(message: "Not found any face!")
                 case .failure(let error):

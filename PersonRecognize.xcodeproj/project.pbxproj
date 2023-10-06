@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15685CAB288C4402C009334F /* Pods_PersonRecognize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD0CAF6CBEF3A9A64C4D41A /* Pods_PersonRecognize.framework */; };
-		2D319C482ACDC4DD00FDE5BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D319C472ACDC4DD00FDE5BB /* GoogleService-Info.plist */; };
+		6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */; };
 		951EB33822B6985E00A9533B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951EB33722B6985E00A9533B /* AppDelegate.swift */; };
 		951EB33F22B6986200A9533B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951EB33E22B6986200A9533B /* Assets.xcassets */; };
 		951EB34222B6986200A9533B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951EB34022B6986200A9533B /* LaunchScreen.storyboard */; };
@@ -48,13 +48,12 @@
 		FBA1B4E8251905A800A31DF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA1B4E6251905A800A31DF7 /* Main.storyboard */; };
 		FBB893732525CE3800F11E32 /* kNN-2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB893722525CE3800F11E32 /* kNN-2.swift */; };
 		FBC5AC0B251AEE6D0016995C /* UIViewController+ShowDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5AC0A251AEE6D0016995C /* UIViewController+ShowDialog.swift */; };
-		FBD3BEE72591CA100098010E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBD3BEE62591CA0F0098010E /* GoogleService-Info.plist */; };
 		FBDD06AC251DDFA0002AF9F9 /* KMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD06AB251DDFA0002AF9F9 /* KMean.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0847AAE8384EC46C9BEFEAC4 /* Pods-PersonRecognize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonRecognize.release.xcconfig"; path = "Target Support Files/Pods-PersonRecognize/Pods-PersonRecognize.release.xcconfig"; sourceTree = "<group>"; };
-		2D319C472ACDC4DD00FDE5BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CB2006F60A388F1601D5CFD /* Pods-PersonRecognize.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonRecognize.debug.xcconfig"; path = "Target Support Files/Pods-PersonRecognize/Pods-PersonRecognize.debug.xcconfig"; sourceTree = "<group>"; };
 		951EB33422B6985E00A9533B /* PersonRecognize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonRecognize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		951EB33722B6985E00A9533B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +100,6 @@
 		FBA1B4E7251905A800A31DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FBB893722525CE3800F11E32 /* kNN-2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "kNN-2.swift"; sourceTree = "<group>"; };
 		FBC5AC0A251AEE6D0016995C /* UIViewController+ShowDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowDialog.swift"; sourceTree = "<group>"; };
-		FBD3BEE62591CA0F0098010E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBD3BEEA2591CC630098010E /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
 		FBDD06AB251DDFA0002AF9F9 /* KMean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMean.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,9 +152,8 @@
 				951EB34922B698F100A9533B /* Tensorflow */,
 				951EB35822B6994100A9533B /* Bridging-Header.h */,
 				951EB33E22B6986200A9533B /* Assets.xcassets */,
+				6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */,
 				951EB33722B6985E00A9533B /* AppDelegate.swift */,
-				FBD3BEE62591CA0F0098010E /* GoogleService-Info.plist */,
-				2D319C472ACDC4DD00FDE5BB /* GoogleService-Info.plist */,
 				951EB34322B6986200A9533B /* Info.plist */,
 			);
 			path = PersonRecognize;
@@ -363,12 +360,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBD3BEE72591CA100098010E /* GoogleService-Info.plist in Resources */,
 				951EB34222B6986200A9533B /* LaunchScreen.storyboard in Resources */,
 				FBA1B4E8251905A800A31DF7 /* Main.storyboard in Resources */,
+				6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */,
 				951EB33F22B6986200A9533B /* Assets.xcassets in Resources */,
 				951EB35222B698F100A9533B /* modelFacenet.pb in Resources */,
-				2D319C482ACDC4DD00FDE5BB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
