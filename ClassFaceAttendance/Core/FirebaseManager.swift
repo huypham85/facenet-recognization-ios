@@ -1,15 +1,9 @@
-//
-//  FirebaseManager.swift
-//  PersonRecognize
-//
-//  Created by Hồ Sĩ Tuấn on 24/09/2020.
-//  Copyright © 2020 Sun*. All rights reserved.
-//
 
-import Foundation
-import Firebase
+import FirebaseAuth
+import FirebaseCore
 import FirebaseDatabase
 import FirebaseStorage
+import Foundation
 import SDWebImage
 
 class FirebaseManager {
@@ -18,38 +12,35 @@ class FirebaseManager {
     }
     
     func uploadAllVectors(vectors: [Vector], child: String, completionHandler: @escaping () -> Void) {
-        
         for i in 0..<vectors.count {
             let vector = vectors[i]
-            let dict: Dictionary<String, Any>  = [
+            let dict: [String: Any] = [
                 "name": vector.name,
                 "vector": arrayToString(array: vector.vector),
                 "distance": vector.distance
             ]
             let childString = "\(vector.name) - \(i)"
             Database.database().reference().child(child).child(vector.name).child(childString).updateChildValues(dict, withCompletionBlock: {
-                (error, ref) in
+                error, _ in
                 if error == nil {
                     print("uploaded vector")
                 }
                 completionHandler()
             })
-            
-            
         }
     }
+
     func uploadKMeanVectors(vectors: [Vector], child: String, completionHandler: @escaping () -> Void) {
-        
         for i in 0..<vectors.count {
             let vector = vectors[i]
-            let dict: Dictionary<String, Any>  = [
+            let dict: [String: Any] = [
                 "name": vector.name,
                 "vector": arrayToString(array: vector.vector),
                 "distance": vector.distance
             ]
             let childString = "\(vector.name) - \(i)"
             Database.database().reference().child(child).child(childString).updateChildValues(dict, withCompletionBlock: {
-                (error, ref) in
+                error, _ in
                 if error == nil {
                     print("uploaded vector")
                 }
@@ -60,7 +51,7 @@ class FirebaseManager {
     
     func loadLogTimes(completionHandler: @escaping ([Users]) -> Void) {
         var attendList: [Users] = []
-        Database.database().reference().child(LOG_TIME).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database().reference().child(LOG_TIME).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             if let data = snapshot.value as? [String: Any] {
                 let dataArray = Array(data)
                 let values = dataArray.map { $0.1 }
@@ -82,16 +73,15 @@ class FirebaseManager {
                 completionHandler(attendList)
             }
             
-        }) { (error) in
+        }) { error in
             print(error.localizedDescription)
             completionHandler(attendList)
         }
-        
     }
     
     func loadVector(completionHandler: @escaping ([Vector]) -> Void) {
         var vectors = [Vector]()
-        Database.database().reference().child(KMEAN_VECTOR).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database().reference().child(KMEAN_VECTOR).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             
             if let data = snapshot.value as? [String: Any] {
                 let dataArray = Array(data)
@@ -110,11 +100,10 @@ class FirebaseManager {
                     let object = Vector(name: name, vector: stringToArray(string: vector), distance: distance)
                     vectors.append(object)
                 }
-                
             }
             completionHandler(vectors)
             
-        }) { (error) in
+        }) { error in
             print(error.localizedDescription)
             completionHandler(vectors)
         }
@@ -122,7 +111,7 @@ class FirebaseManager {
     
     func loadAllVector(name: String, completionHandler: @escaping ([Vector]) -> Void) {
         var vectors = [Vector]()
-        Database.database().reference().child(ALL_VECTOR).child(name).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database().reference().child(ALL_VECTOR).child(name).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             
             if let data = snapshot.value as? [String: Any] {
                 let dataArray = Array(data)
@@ -141,19 +130,16 @@ class FirebaseManager {
                     let object = Vector(name: name, vector: stringToArray(string: vector), distance: distance)
                     vectors.append(object)
                 }
-                
             }
             completionHandler(vectors)
             
-        }) { (error) in
+        }) { error in
             print(error.localizedDescription)
             completionHandler(vectors)
         }
-
     }
     
     func uploadLogTimes(user: User, completionHandler: @escaping (Error?) -> Void) {
-        
         let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(user.name) - \(user.time.dropLast(10))")
         
         let metadata = StorageMetadata()
@@ -162,9 +148,9 @@ class FirebaseManager {
             metadata.contentType = "image/jpg"
             print(metadata)
             print(imageData)
-            //upload image to firebase storage
+            // upload image to firebase storage
             storageRef.putData(imageData, metadata: metadata, completion: {
-                (StorageMetadata, error) in
+                _, error in
                 if error != nil {
                     print(error?.localizedDescription as Any)
                     completionHandler(error)
@@ -172,57 +158,87 @@ class FirebaseManager {
                 }
                 else {
                     storageRef.downloadURL(completion: {
-                        (url, error) in
+                        url, error in
                         if let metaImageUrl = url?.absoluteString {
-                            let dict: Dictionary<String, Any>  = [
+                            let dict: [String: Any] = [
                                 "name": user.name,
                                 "imageURL": metaImageUrl,
                                 "time": user.time
                             ]
                             Database.database().reference().child(LOG_TIME).child("\(user.name) - \(user.time.dropLast(10))").updateChildValues(dict, withCompletionBlock: {
-                                (error, ref) in
+                                error, _ in
                                 if error == nil {
                                     print("Uploaded log time.")
                                     completionHandler(nil)
                                 }
                             })
-                            
                         }
                     })
                 }
             })
         }
-        
-        
-        
     }
     
     func loadUsers(completionHandler: @escaping ([String: Int]) -> Void) {
         var userList: [String: Int] = [:]
-        Database.database().reference().child(USER_CHILD).queryLimited(toLast: 300).observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database().reference().child(USER_CHILD).queryLimited(toLast: 300).observeSingleEvent(of: .value, with: { snapshot in
             if let data = snapshot.value as? [String: Any] {
                 userList = data as! [String: Int]
                 completionHandler(userList)
-                
             }
             else {
                 completionHandler(userList)
             }
             
-        })
-        { (error) in
+        }) { error in
             print(error.localizedDescription)
             completionHandler(userList)
         }
     }
+
     func uploadUser(name: String, user_id: Int, completionHandler: @escaping () -> Void) {
-        let dict = [name : user_id]
+        let dict = [name: user_id]
         Database.database().reference().child(USER_CHILD).updateChildValues(dict, withCompletionBlock: {
-            (error, ref) in
+            error, _ in
             if error == nil {
                 print("update user.")
             }
             completionHandler()
         })
+    }
+    
+    // MARK: Authen
+
+    func login(email: String, password: String, completion: @escaping (AuthDataResult?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            guard error == nil, let result else {
+                completion(nil)
+                return
+            }
+            print("User logged in")
+            completion(result)
+        }
+    }
+    
+    func hasLogInSession(completion: @escaping (Bool) -> Void) {
+        Auth.auth().addStateDidChangeListener { _, user in
+            if let user = user {
+                // User is signed in.
+                print("User is still in session")
+                completion(true)
+            }
+            else {
+                completion(false)
+            }
+        }
+    }
+    
+    func logOut() {
+        do {
+            try Auth.auth().signOut()
+        }
+        catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
     }
 }

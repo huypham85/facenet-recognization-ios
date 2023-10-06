@@ -77,9 +77,9 @@ class GetFrames {
                     getKMeanVectorSameName(vectors: result) { (vectors) in
             
                         print("K-mean vector for \(label): \(vectors.count)")
-                        fb.uploadKMeanVectors(vectors: vectors, child: KMEAN_VECTOR) {
+                        firebaseManager.uploadKMeanVectors(vectors: vectors, child: KMEAN_VECTOR) {
                             ProgressHUD.dismiss()
-                            fb.uploadAllVectors(vectors: result, child: ALL_VECTOR) {
+                            firebaseManager.uploadAllVectors(vectors: result, child: ALL_VECTOR) {
                             }
                         }
                     }

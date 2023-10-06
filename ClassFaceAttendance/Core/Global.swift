@@ -39,7 +39,7 @@ var savedUserList = defaults.stringArray(forKey: SAVED_USERS) ?? [String]()
 
 //Realm
 let realm = try! Realm()
-let fb  = FirebaseManager()
+let firebaseManager  = FirebaseManager()
 
 //KMeans to reduce number  of vectors
 let KMeans = KMeansSwift.sharedInstance

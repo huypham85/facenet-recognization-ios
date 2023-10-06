@@ -43,7 +43,7 @@ class AddNameViewController: UIViewController {
             ProgressHUD.show("Adding...")
             let getFrames = GetFrames()
             print("Your Name is: \(textField.text!)")
-            fb.uploadUser(name: textField.text!, user_id: user_id) {
+            firebaseManager.uploadUser(name: textField.text!, user_id: user_id) {
                 //ProgressHUD.dismiss()
             }
             

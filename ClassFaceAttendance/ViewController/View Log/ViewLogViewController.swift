@@ -17,7 +17,7 @@ class ViewLogViewController: UIViewController {
         fnet.clean()
         if NetworkChecker.isConnectedToInternet {
            ProgressHUD.show("Loading log times...")
-            fb.loadLogTimes { (result) in
+            firebaseManager.loadLogTimes { (result) in
                 attendList = result
                 self.tableView.delegate = self
                 self.tableView.dataSource = self

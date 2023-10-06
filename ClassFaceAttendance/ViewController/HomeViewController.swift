@@ -52,6 +52,14 @@ class HomeViewController: UIViewController {
     @IBAction func tapViewLog(_ sender: UIButton) {
         self.performSegue(withIdentifier: "viewLog", sender: nil)
     }
+    @IBAction func logOut(_ sender: Any) {
+        firebaseManager.logOut()
+        firebaseManager.hasLogInSession {
+            if !$0 {
+                Application.shared.changeRootViewMainWindow(viewController: LoginViewController.create(),animated: true)
+            }
+        }
+    }
     @IBAction func tapSyncData(_ sender: UIButton) {
         loadData()
         if !NetworkChecker.isConnectedToInternet {
@@ -63,7 +71,7 @@ class HomeViewController: UIViewController {
     func loadData() {
         if NetworkChecker.isConnectedToInternet {
             ProgressHUD.show("Loading users...")
-            fb.loadVector { [self] (result) in
+            firebaseManager.loadVector { [self] (result) in
                 kMeanVectors = result
                 print("Number of k-Means vectors: \(kMeanVectors.count)")
                 vectorsLabel.text = "You have \(kMeanVectors.count / NUMBER_OF_K) users."
@@ -86,7 +94,7 @@ class HomeViewController: UIViewController {
             //                    localUserList.append(u)
             //                }
             //            }
-            fb.loadUsers(completionHandler: { (result) in
+            firebaseManager.loadUsers(completionHandler: { (result) in
                 userDict = result
                 print("Number of users: \(userDict.count)")
                 ProgressHUD.dismiss()
@@ -106,5 +114,12 @@ class HomeViewController: UIViewController {
         }
     }
     
+}
+
+extension HomeViewController {
+    static func create() -> HomeViewController {
+        let viewController = HomeViewController.loadStoryboard(.main)
+        return viewController
+    }
 }
 

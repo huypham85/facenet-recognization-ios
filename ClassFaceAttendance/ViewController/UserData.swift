@@ -33,7 +33,7 @@ class UserData: UIViewController, UIImagePickerControllerDelegate & UINavigation
         super.viewDidLoad()
         if NetworkChecker.isConnectedToInternet {
             ProgressHUD.show("Loading users...")
-            fb.loadUsers(completionHandler: { (result) in
+            firebaseManager.loadUsers(completionHandler: { (result) in
                 userDict = result
                 for (key, value) in userDict {
                     let user = [key:value]
@@ -118,7 +118,7 @@ extension UserData: UITableViewDelegate {
         vectorHelper.addVector(name: valueSelected) { result in
             print("All vectors for \(valueSelected): \(result.count)")
             if result.count > 0 {
-                fb.loadAllVector(name: valueSelected) { oldVectors in
+                firebaseManager.loadAllVector(name: valueSelected) { oldVectors in
                     print("Old vector: \(oldVectors.count)")
                     let allVector = oldVectors + result
                     let a = allVector.uniq()
@@ -126,10 +126,10 @@ extension UserData: UITableViewDelegate {
                     if a.count > 10 {
                     getKMeanVectorSameName(vectors: a) { (vectors) in
                         print("K-mean vector for \(valueSelected): \(vectors.count)")
-                        fb.uploadKMeanVectors(vectors: vectors, child: KMEAN_VECTOR) {
+                        firebaseManager.uploadKMeanVectors(vectors: vectors, child: KMEAN_VECTOR) {
                             ProgressHUD.dismiss()
                             self.showDialog(message: "Upload data for \(valueSelected) by \(a.count) vectors.")
-                            fb.uploadAllVectors(vectors: a, child: ALL_VECTOR) {
+                            firebaseManager.uploadAllVectors(vectors: a, child: ALL_VECTOR) {
                             }
                         }
                     }

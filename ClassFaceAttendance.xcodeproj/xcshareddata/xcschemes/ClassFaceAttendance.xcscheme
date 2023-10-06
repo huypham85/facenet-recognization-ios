@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "951EB33322B6985E00A9533B"
-               BuildableName = "ClassFaceAttendance.app"
+               BuildableName = "P-Class Attendance.app"
                BlueprintName = "ClassFaceAttendance"
                ReferencedContainer = "container:ClassFaceAttendance.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "951EB33322B6985E00A9533B"
-            BuildableName = "ClassFaceAttendance.app"
+            BuildableName = "P-Class Attendance.app"
             BlueprintName = "ClassFaceAttendance"
             ReferencedContainer = "container:ClassFaceAttendance.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "951EB33322B6985E00A9533B"
-            BuildableName = "ClassFaceAttendance.app"
+            BuildableName = "P-Class Attendance.app"
             BlueprintName = "ClassFaceAttendance"
             ReferencedContainer = "container:ClassFaceAttendance.xcodeproj">
          </BuildableReference>
