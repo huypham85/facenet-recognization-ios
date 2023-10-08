@@ -28,8 +28,8 @@ var currentLabel = UNKNOWN
 var numberOfFramesDeteced = 0 //number frames detected
 let validFrames = 5 //after getting 5 frames, users have been verified
 
-var attendList: [Users] = [] //load from firebase
-var localUserList: [User] = [] //copy of attenList, use it to ignore appended users
+var attendList: [Attendances] = [] //load from firebase
+var localUserList: [Attendance] = [] //copy of attenList, use it to ignore appended users
 var userDict = [String: Int]()
 
 //Save User Local List

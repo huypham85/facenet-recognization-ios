@@ -151,7 +151,7 @@ class FrameViewController: UIViewController {
         let today = Date()
         formatter.dateFormat = DATE_FORMAT
         let timestamp = formatter.string(from: today)
-        let user = User(name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
+        let user = Attendance(name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
         showDiaglog3s(name: TAKE_PHOTO_NAME, true)
         
         //        api.uploadLogs(user: user) { error in
@@ -346,7 +346,7 @@ extension FrameViewController {
             } else {
                 numberOfFramesDeteced += 1
             }
-            let detectedUser = User(name: label, image: frame, time: timestamp)
+            let detectedUser = Attendance(name: label, image: frame, time: timestamp)
             if numberOfFramesDeteced > validFrames  {
                 print("Detected")
                 if localUserList.count == 0 {

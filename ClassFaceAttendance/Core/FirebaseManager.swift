@@ -49,8 +49,8 @@ class FirebaseManager {
         }
     }
     
-    func loadLogTimes(completionHandler: @escaping ([Users]) -> Void) {
-        var attendList: [Users] = []
+    func loadLogTimes(completionHandler: @escaping ([Attendances]) -> Void) {
+        var attendList: [Attendances] = []
         Database.database().reference().child(LOG_TIME).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             if let data = snapshot.value as? [String: Any] {
                 let dataArray = Array(data)
@@ -64,7 +64,7 @@ class FirebaseManager {
                         print("Error at get log times.")
                         continue
                     }
-                    let object = Users(name: name, imageURL: imgUrl, time: time)
+                    let object = Attendances(name: name, imageURL: imgUrl, time: time)
                     attendList.append(object)
                 }
                 completionHandler(attendList.sorted(by: { $0.time > $1.time }))
@@ -139,7 +139,7 @@ class FirebaseManager {
         }
     }
     
-    func uploadLogTimes(user: User, completionHandler: @escaping (Error?) -> Void) {
+    func uploadLogTimes(user: Attendance, completionHandler: @escaping (Error?) -> Void) {
         let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(user.name) - \(user.time.dropLast(10))")
         
         let metadata = StorageMetadata()
@@ -181,7 +181,7 @@ class FirebaseManager {
     
     func loadUsers(completionHandler: @escaping ([String: Int]) -> Void) {
         var userList: [String: Int] = [:]
-        Database.database().reference().child(USER_CHILD).queryLimited(toLast: 300).observeSingleEvent(of: .value, with: { snapshot in
+        Database.database().reference().child(STUDENT_CHILD).queryLimited(toLast: 300).observeSingleEvent(of: .value, with: { snapshot in
             if let data = snapshot.value as? [String: Any] {
                 userList = data as! [String: Int]
                 completionHandler(userList)
@@ -198,7 +198,7 @@ class FirebaseManager {
 
     func uploadUser(name: String, user_id: Int, completionHandler: @escaping () -> Void) {
         let dict = [name: user_id]
-        Database.database().reference().child(USER_CHILD).updateChildValues(dict, withCompletionBlock: {
+        Database.database().reference().child(STUDENT_CHILD).updateChildValues(dict, withCompletionBlock: {
             error, _ in
             if error == nil {
                 print("update user.")
@@ -222,7 +222,7 @@ class FirebaseManager {
     
     func hasLogInSession(completion: @escaping (Bool) -> Void) {
         Auth.auth().addStateDidChangeListener { _, user in
-            if let user = user {
+            if user != nil {
                 // User is signed in.
                 print("User is still in session")
                 completion(true)
