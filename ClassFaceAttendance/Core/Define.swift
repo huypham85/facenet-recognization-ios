@@ -14,6 +14,7 @@ let ALL_VECTOR = "All vectors"
 let AVG_VECTOR = "Vectors"
 let KMEAN_VECTOR = "K-mean Vectors"
 let STUDENT_CHILD = "Students"
+let USERS = "Users"
 
 
 let STORAGE_URL = "gs://face-attendance-470c2.appspot.com"

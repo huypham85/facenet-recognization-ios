@@ -233,6 +233,26 @@ class FirebaseManager {
         }
     }
     
+    func checkUserRole(completion: @escaping (UserRole) -> Void) {
+        if let userId = Auth.auth().currentUser?.uid {
+            let userRef = Database.database().reference().child(USERS).child(userId)
+            userRef.observeSingleEvent(of: .value) { snapshot,_   in
+                        if let userData = snapshot.value as? [String: Any] {
+                            if let userRoleString = userData["role"] as? String,
+                               let role = UserRole(rawValue: userRoleString) {
+                                switch role {
+                                case .student:
+                                    print("Student logged in")
+                                case .teacher:
+                                    print("Teacher logged in")
+                                }
+                                completion(role)
+                            }
+                        }
+                    }
+        }
+    }
+    
     func logOut() {
         do {
             try Auth.auth().signOut()

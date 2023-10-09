@@ -17,11 +17,11 @@
 		2D0644142AD31BA7004A3A65 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644132AD31BA7004A3A65 /* Teacher.swift */; };
 		2D0644162AD3240C004A3A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644152AD3240C004A3A65 /* User.swift */; };
 		6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */; };
+		6912DAA02AD3F49200E41CAF /* modelFacenet.pb in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */; };
 		951EB33822B6985E00A9533B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951EB33722B6985E00A9533B /* AppDelegate.swift */; };
 		951EB33F22B6986200A9533B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951EB33E22B6986200A9533B /* Assets.xcassets */; };
 		951EB34222B6986200A9533B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951EB34022B6986200A9533B /* LaunchScreen.storyboard */; };
 		951EB35122B698F100A9533B /* FaceNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951EB34A22B698F100A9533B /* FaceNet.swift */; };
-		951EB35222B698F100A9533B /* modelFacenet.pb in Resources */ = {isa = PBXBuildFile; fileRef = 951EB34C22B698F100A9533B /* modelFacenet.pb */; };
 		951EB35322B698F100A9533B /* tensorflow_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 951EB34E22B698F100A9533B /* tensorflow_utils.mm */; };
 		951EB35422B698F100A9533B /* tfWrap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 951EB35022B698F100A9533B /* tfWrap.mm */; };
 		FB16D9A82521F0B3003C8AB5 /* KNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB16D9A72521F0B3003C8AB5 /* KNN.swift */; };
@@ -70,13 +70,13 @@
 		2D0644152AD3240C004A3A65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3C092F3F0A9A7B61A5D2C574 /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
 		951EB33422B6985E00A9533B /* P-Class Attendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "P-Class Attendance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		951EB33722B6985E00A9533B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		951EB33E22B6986200A9533B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		951EB34122B6986200A9533B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		951EB34322B6986200A9533B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951EB34A22B698F100A9533B /* FaceNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceNet.swift; sourceTree = "<group>"; };
-		951EB34C22B698F100A9533B /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
 		951EB34D22B698F100A9533B /* tensorflow_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tensorflow_utils.h; sourceTree = "<group>"; };
 		951EB34E22B698F100A9533B /* tensorflow_utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = tensorflow_utils.mm; sourceTree = "<group>"; };
 		951EB34F22B698F100A9533B /* tfWrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tfWrap.h; sourceTree = "<group>"; };
@@ -116,7 +116,6 @@
 		FBA1B4E7251905A800A31DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FBB893722525CE3800F11E32 /* kNN-2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "kNN-2.swift"; sourceTree = "<group>"; };
 		FBC5AC0A251AEE6D0016995C /* UIViewController+ShowDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowDialog.swift"; sourceTree = "<group>"; };
-		FBD3BEEA2591CC630098010E /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
 		FBDD06AB251DDFA0002AF9F9 /* KMean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMean.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,8 +212,7 @@
 		951EB34B22B698F100A9533B /* Graph */ = {
 			isa = PBXGroup;
 			children = (
-				FBD3BEEA2591CC630098010E /* modelFacenet.pb */,
-				951EB34C22B698F100A9533B /* modelFacenet.pb */,
+				6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -404,8 +402,8 @@
 				951EB34222B6986200A9533B /* LaunchScreen.storyboard in Resources */,
 				FBA1B4E8251905A800A31DF7 /* Main.storyboard in Resources */,
 				6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */,
+				6912DAA02AD3F49200E41CAF /* modelFacenet.pb in Resources */,
 				951EB33F22B6986200A9533B /* Assets.xcassets in Resources */,
-				951EB35222B698F100A9533B /* modelFacenet.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

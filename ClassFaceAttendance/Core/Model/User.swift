@@ -7,8 +7,8 @@
 
 import Foundation
 enum UserRole: String {
-    case student = "Student"
-    case teacher = "Teacher"
+    case student = "student"
+    case teacher = "teacher"
 }
 struct User {
     

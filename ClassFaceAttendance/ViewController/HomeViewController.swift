@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
         if !NetworkChecker.isConnectedToInternet {
             showDialog(message: "You have not connected to internet. Using local data.")
         }
+        checkUserRole()
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
@@ -68,6 +69,17 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func checkUserRole() {
+        firebaseManager.checkUserRole { role in
+            switch role {
+            case .student:
+                break
+            case .teacher:
+                break
+            }
+        }
+    }
+    
     func loadData() {
         if NetworkChecker.isConnectedToInternet {
             ProgressHUD.show("Loading users...")
@@ -94,11 +106,11 @@ class HomeViewController: UIViewController {
             //                    localUserList.append(u)
             //                }
             //            }
-            firebaseManager.loadUsers(completionHandler: { (result) in
-                userDict = result
-                print("Number of users: \(userDict.count)")
-                ProgressHUD.dismiss()
-            })
+//            firebaseManager.loadUsers(completionHandler: { (result) in
+//                userDict = result
+//                print("Number of users: \(userDict.count)")
+//                ProgressHUD.dismiss()
+//            })
             
         }
         else {
