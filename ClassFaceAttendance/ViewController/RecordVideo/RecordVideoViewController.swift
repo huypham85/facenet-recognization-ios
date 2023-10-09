@@ -90,7 +90,7 @@ class RecordVideoViewController: UIViewController, AVCaptureFileOutputRecordingD
         videoView.layer.cornerRadius = 150
         videoView.layer.masksToBounds = true
         videoView.layer.borderWidth = 1
-        videoView.layer.borderColor = UIColor.green.cgColor
+        videoView.layer.borderColor = UIColor.red400.cgColor
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         
         videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill

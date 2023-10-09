@@ -18,6 +18,7 @@
 		2D0644162AD3240C004A3A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644152AD3240C004A3A65 /* User.swift */; };
 		6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */; };
 		6912DAA02AD3F49200E41CAF /* modelFacenet.pb in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */; };
+		69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */; };
 		951EB33822B6985E00A9533B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951EB33722B6985E00A9533B /* AppDelegate.swift */; };
 		951EB33F22B6986200A9533B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951EB33E22B6986200A9533B /* Assets.xcassets */; };
 		951EB34222B6986200A9533B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951EB34022B6986200A9533B /* LaunchScreen.storyboard */; };
@@ -71,6 +72,7 @@
 		3C092F3F0A9A7B61A5D2C574 /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
+		69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		951EB33422B6985E00A9533B /* P-Class Attendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "P-Class Attendance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		951EB33722B6985E00A9533B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		951EB33E22B6986200A9533B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				FBA1B4862519052D00A31DF7 /* DismisKeyboard.swift */,
 				FBA1B4882519052D00A31DF7 /* UIDeviceExtension.swift */,
 				2D0644092AD0769C004A3A65 /* UIStoryboard+Extension.swift */,
+				69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				FB16D9A82521F0B3003C8AB5 /* KNN.swift in Sources */,
 				FBC5AC0B251AEE6D0016995C /* UIViewController+ShowDialog.swift in Sources */,
 				FB3D0F9A251DA8AD0059CCB6 /* NetworkChecker.swift in Sources */,
+				69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */,
 				FBA1B4CA2519058B00A31DF7 /* AddNameViewController.swift in Sources */,
 				951EB35122B698F100A9533B /* FaceNet.swift in Sources */,
 				951EB35322B698F100A9533B /* tensorflow_utils.mm in Sources */,
