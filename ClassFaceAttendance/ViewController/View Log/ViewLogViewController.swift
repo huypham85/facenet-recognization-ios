@@ -51,3 +51,10 @@ extension ViewLogViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
 }
+
+extension ViewLogViewController {
+    static func create() -> ViewLogViewController {
+        let vc = ViewLogViewController.loadStoryboard(.main)
+        return vc
+    }
+}

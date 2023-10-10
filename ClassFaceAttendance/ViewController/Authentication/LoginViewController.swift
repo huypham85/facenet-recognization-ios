@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
     }
 
     private func navigateToHome() {
-        let vc = HomeViewController.create()
+        let vc = MainViewController()
         Application.shared.changeRootViewMainWindow(viewController: vc,animated: true)
     }
 }

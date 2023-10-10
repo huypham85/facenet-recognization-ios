@@ -230,7 +230,7 @@
         <!--Log Time-->
         <scene sceneID="emU-Wz-69p">
             <objects>
-                <viewController id="i64-A7-eKN" customClass="ViewLogViewController" customModule="P_Class_Attendance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewLogViewController" id="i64-A7-eKN" customClass="ViewLogViewController" customModule="P_Class_Attendance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xBS-96-vd5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="755"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
