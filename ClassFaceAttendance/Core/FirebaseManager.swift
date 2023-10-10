@@ -261,4 +261,36 @@ class FirebaseManager {
             print("Error signing out: %@", signOutError)
         }
     }
+    
+    // MARK: Courses and Sessions
+    func getSessionsAtDate(date: String, completion: @escaping ([Session]) -> Void) {
+        let ref = Database.database().reference()
+
+        let sessionsRef = ref.child(SESSIONS).child(date)
+        var sessions: [Session] = []
+        sessionsRef.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                if let sessionsData = snapshot.value as? [String: Any] {
+                    // Now you have a dictionary of sessions on the specified date
+                    // You can iterate through this dictionary to access individual sessions
+                    for (sessionId, sessionData) in sessionsData {
+                        if let session = sessionData as? [String: Any] {
+                            print("Session ID: \(sessionId)")
+                            print("Session Data: \(session)")
+                            if let newSession = Session(dictionary: session) {
+                                sessions.append(newSession)
+                            }
+                        }
+                    }
+                }
+            } else {
+                print("No sessions found for the specified date.")
+            }
+            completion(sessions)
+        }
+    }
+    
+    func getCourseFromSession(courseId: String) {
+        
+    }
 }

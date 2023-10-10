@@ -47,7 +47,7 @@ var kMeanVectors = [Vector]()
 
 //date time formatter
 let formatter = DateFormatter()
-
-
+let timeZone = TimeZone(identifier: "Asia/Bangkok")
+var calendar = Calendar(identifier: .gregorian)
 
 var current: CGImage?

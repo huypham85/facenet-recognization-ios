@@ -16,6 +16,9 @@
 		2D0644122AD3125B004A3A65 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644112AD3125B004A3A65 /* Session.swift */; };
 		2D0644142AD31BA7004A3A65 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644132AD31BA7004A3A65 /* Teacher.swift */; };
 		2D0644162AD3240C004A3A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644152AD3240C004A3A65 /* User.swift */; };
+		2D90BFA52AD5AB2400031511 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA42AD5AB2400031511 /* Date+Extension.swift */; };
+		2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */; };
+		2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */; };
 		6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */; };
 		6912DAA02AD3F49200E41CAF /* modelFacenet.pb in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */; };
 		69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */; };
@@ -83,6 +86,9 @@
 		2D0644112AD3125B004A3A65 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		2D0644132AD31BA7004A3A65 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		2D0644152AD3240C004A3A65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2D90BFA42AD5AB2400031511 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionTableViewCell.xib; sourceTree = "<group>"; };
 		3C092F3F0A9A7B61A5D2C574 /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 				69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */,
 				69891E172AD554BB00FD4161 /* UITableView+Extension.swift */,
 				69891E192AD554E700FD4161 /* UINib+Extension.swift */,
+				2D90BFA42AD5AB2400031511 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,6 +207,8 @@
 				69891E052AD4FCD200FD4161 /* CalendarHomeViewController.xib */,
 				69891E132AD5516700FD4161 /* CalendarCollectionViewCell.swift */,
 				69891E142AD5516700FD4161 /* CalendarCollectionViewCell.xib */,
+				2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */,
+				2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */,
 			);
 			path = CalendarHome;
 			sourceTree = "<group>";
@@ -456,6 +465,7 @@
 				69891E012AD4F26100FD4161 /* MainViewController.xib in Resources */,
 				69891E0B2AD4FD5B00FD4161 /* ProfileViewController.xib in Resources */,
 				69891E072AD4FCD200FD4161 /* CalendarHomeViewController.xib in Resources */,
+				2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */,
 				69891E0F2AD4FD8300FD4161 /* RegisterFaceViewController.xib in Resources */,
 				FBA1B4E8251905A800A31DF7 /* Main.storyboard in Resources */,
 				6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */,
@@ -550,6 +560,7 @@
 				FBA1B4CC2519058B00A31DF7 /* HomeViewController.swift in Sources */,
 				2D06440C2AD09B0D004A3A65 /* Application.swift in Sources */,
 				FB57AA76251CCA4E00B2CCF9 /* FirebaseManager.swift in Sources */,
+				2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */,
 				69891E0A2AD4FD5B00FD4161 /* ProfileViewController.swift in Sources */,
 				2D0644072AD0754C004A3A65 /* LoginViewController.swift in Sources */,
 				2D0644102AD310B0004A3A65 /* Course.swift in Sources */,
@@ -559,6 +570,7 @@
 				FBA1B48D2519052D00A31DF7 /* CustomTableViewCell.swift in Sources */,
 				FBA1B4E1251905A100A31DF7 /* ImageDataset.swift in Sources */,
 				FB16D9A82521F0B3003C8AB5 /* KNN.swift in Sources */,
+				2D90BFA52AD5AB2400031511 /* Date+Extension.swift in Sources */,
 				FBC5AC0B251AEE6D0016995C /* UIViewController+ShowDialog.swift in Sources */,
 				69891E182AD554BB00FD4161 /* UITableView+Extension.swift in Sources */,
 				FB3D0F9A251DA8AD0059CCB6 /* NetworkChecker.swift in Sources */,

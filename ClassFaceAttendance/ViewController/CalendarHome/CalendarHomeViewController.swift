@@ -14,6 +14,7 @@ class CalendarHomeViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tableView: UITableView!
     var totalSquares = [Date]()
+    var sessions: [Session] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,11 @@ class CalendarHomeViewController: UIViewController {
         collectionView.dataSource = self
     }
 
-    private func setupTableView() {}
+    private func setupTableView() {
+        tableView.registerCell(SessionTableViewCell.self)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
 
     @IBAction func previousWeek(_: Any) {
         selectedDate = CalendarHelper().addDays(date: selectedDate, days: -7)
@@ -101,18 +106,35 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDate = totalSquares[indexPath.item]
+        print("Select date: \(selectedDate.toDateString())")
+        firebaseManager.getSessionsAtDate(date: selectedDate.toDateString()) { [weak self] sessions in
+            self?.sessions = sessions
+            self?.tableView.reloadData()
+        }
         collectionView.reloadData()
         tableView.reloadData()
     }
 }
 
 extension CalendarHomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sessions.count
     }
 
-    func tableView(_: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SessionTableViewCell.cellId) as? SessionTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.setData(session: sessions[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tap item at \(indexPath.row)")
     }
 }
 
