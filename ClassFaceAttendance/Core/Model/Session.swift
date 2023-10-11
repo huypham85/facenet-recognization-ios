@@ -11,11 +11,14 @@ struct Session {
     var id: String
     var startTime: String
     var endTime: String
+    var startCheckInTime: String
+    var endCheckInTime: String
     var roomNo: String
     var courseId: String
     var courseName: String
     var teacherName: String
     var students: [String: Int]
+    var startTimeDate: Date?
 }
 
 extension Session {
@@ -24,6 +27,8 @@ extension Session {
               let courseName = dictionary["courseName"] as? String,
               let roomNo = dictionary["roomNo"] as? String,
               let startTime = dictionary["startTime"] as? String,
+              let startCheckInTime = dictionary["startCheckInTime"] as? String,
+              let endCheckInTime = dictionary["endCheckInTime"] as? String,
               let id = dictionary["id"] as? String,
               let endTime = dictionary["endTime"] as? String,
               let students = dictionary["students"] as? [String: Int],
@@ -35,9 +40,13 @@ extension Session {
         self.courseName = courseName
         self.roomNo = roomNo
         self.startTime = startTime
+        self.startCheckInTime = startCheckInTime
+        self.endCheckInTime = endCheckInTime
         self.id = id
         self.endTime = endTime
         self.students = students
         self.teacherName = teacherName
+        formatter.dateFormat = "HH:mm"
+        self.startTimeDate = formatter.date(from: startTime)
     }
 }

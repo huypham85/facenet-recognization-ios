@@ -108,7 +108,9 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
         selectedDate = totalSquares[indexPath.item]
         print("Select date: \(selectedDate.toDateString())")
         firebaseManager.getSessionsAtDate(date: selectedDate.toDateString()) { [weak self] sessions in
-            self?.sessions = sessions
+            var sortedSessions =  sessions
+            sortedSessions.sort(by: { $0.startTimeDate ?? Date() < $1.startTimeDate ?? Date() })
+            self?.sessions = sortedSessions
             self?.tableView.reloadData()
         }
         collectionView.reloadData()
