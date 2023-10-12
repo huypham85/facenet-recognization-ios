@@ -21,4 +21,11 @@ extension Date {
             return ""
         }
     }
+    
+    func toString(withFormat format: String? = "yyyy/MM/dd HH:mm") -> String {
+        let dateFormat = DateFormatter()
+        dateFormat.calendar = Calendar(identifier: .gregorian)
+        dateFormat.dateFormat = format
+        return dateFormat.string(from: self as Date)
+    }
 }

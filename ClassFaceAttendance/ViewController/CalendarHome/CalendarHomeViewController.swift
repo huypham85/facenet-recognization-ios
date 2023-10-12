@@ -9,7 +9,7 @@ import UIKit
 
 var selectedDate = Date()
 
-class CalendarHomeViewController: UIViewController {
+class CalendarHomeViewController: BaseViewController {
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var tableView: UITableView!
@@ -23,6 +23,10 @@ class CalendarHomeViewController: UIViewController {
         setupTableView()
         setCellsView()
         setWeekView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
     }
 
     private func setupCollectionView() {
@@ -136,7 +140,10 @@ extension CalendarHomeViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tap item at \(indexPath.row)")
+        let session = sessions[safe: indexPath.row]
+        let vc = SessionDetailViewController()
+        vc.session = session
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

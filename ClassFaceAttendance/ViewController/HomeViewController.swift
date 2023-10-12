@@ -6,7 +6,7 @@ import ProgressHUD
 //import KDTree
 
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var vectorsLabel: UILabel!

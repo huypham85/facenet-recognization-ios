@@ -16,6 +16,11 @@
 		2D0644122AD3125B004A3A65 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644112AD3125B004A3A65 /* Session.swift */; };
 		2D0644142AD31BA7004A3A65 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644132AD31BA7004A3A65 /* Teacher.swift */; };
 		2D0644162AD3240C004A3A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644152AD3240C004A3A65 /* User.swift */; };
+		2D87DA172AD849E0001C9A8D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA162AD849E0001C9A8D /* BaseViewController.swift */; };
+		2D87DA192AD84A26001C9A8D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA182AD84A26001C9A8D /* Logger.swift */; };
+		2D87DA1B2AD84ABC001C9A8D /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA1A2AD84ABC001C9A8D /* NSObject+.swift */; };
+		2D87DA1D2AD85475001C9A8D /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA1C2AD85475001C9A8D /* Collection+.swift */; };
+		2D87DA1F2AD85B61001C9A8D /* CustomNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA1E2AD85B61001C9A8D /* CustomNavigation.swift */; };
 		2D90BFA52AD5AB2400031511 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA42AD5AB2400031511 /* Date+Extension.swift */; };
 		2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */; };
 		2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */; };
@@ -89,6 +94,11 @@
 		2D0644112AD3125B004A3A65 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		2D0644132AD31BA7004A3A65 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		2D0644152AD3240C004A3A65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2D87DA162AD849E0001C9A8D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2D87DA182AD84A26001C9A8D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		2D87DA1A2AD84ABC001C9A8D /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		2D87DA1C2AD85475001C9A8D /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		2D87DA1E2AD85B61001C9A8D /* CustomNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigation.swift; sourceTree = "<group>"; };
 		2D90BFA42AD5AB2400031511 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionTableViewCell.xib; sourceTree = "<group>"; };
@@ -195,6 +205,8 @@
 				69891E192AD554E700FD4161 /* UINib+Extension.swift */,
 				2D90BFA42AD5AB2400031511 /* Date+Extension.swift */,
 				69FF2CF32AD6BDD4008735FD /* UIView+Designable.swift */,
+				2D87DA1A2AD84ABC001C9A8D /* NSObject+.swift */,
+				2D87DA1C2AD85475001C9A8D /* Collection+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -301,6 +313,7 @@
 				69891E102AD54EA300FD4161 /* CalendarHelper.swift */,
 				2D0644082AD07664004A3A65 /* Extensions */,
 				FBA1B4852519052D00A31DF7 /* CustomButton.swift */,
+				2D87DA182AD84A26001C9A8D /* Logger.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -326,6 +339,7 @@
 				69891E092AD4FD5B00FD4161 /* ProfileViewController.xib */,
 				69891E0C2AD4FD8300FD4161 /* RegisterFaceViewController.swift */,
 				69891E0D2AD4FD8300FD4161 /* RegisterFaceViewController.xib */,
+				2D87DA162AD849E0001C9A8D /* BaseViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -370,6 +384,7 @@
 				FBA1B4DB251905A100A31DF7 /* CreateUserData.swift */,
 				FB7502B725198B7100193FF9 /* VectorHelper.swift */,
 				FB3D0F96251DA5CA0059CCB6 /* Define.swift */,
+				2D87DA1E2AD85B61001C9A8D /* CustomNavigation.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -566,6 +581,7 @@
 				2D0644122AD3125B004A3A65 /* Session.swift in Sources */,
 				FBDD06AC251DDFA0002AF9F9 /* KMean.swift in Sources */,
 				FBA1B48C2519052D00A31DF7 /* DismisKeyboard.swift in Sources */,
+				2D87DA1B2AD84ABC001C9A8D /* NSObject+.swift in Sources */,
 				FBA1B4D02519058B00A31DF7 /* PredictImageViewController.swift in Sources */,
 				FBA1B4DD251905A100A31DF7 /* Global.swift in Sources */,
 				FBA1B4D22519058B00A31DF7 /* RecordVideoViewController.swift in Sources */,
@@ -576,6 +592,7 @@
 				69891E1A2AD554E700FD4161 /* UINib+Extension.swift in Sources */,
 				FBA1B4E3251905A100A31DF7 /* Helper.swift in Sources */,
 				69891E0E2AD4FD8300FD4161 /* RegisterFaceViewController.swift in Sources */,
+				2D87DA1F2AD85B61001C9A8D /* CustomNavigation.swift in Sources */,
 				2D06440E2AD2FBB7004A3A65 /* Student.swift in Sources */,
 				FBA1B4CC2519058B00A31DF7 /* HomeViewController.swift in Sources */,
 				2D06440C2AD09B0D004A3A65 /* Application.swift in Sources */,
@@ -584,7 +601,9 @@
 				69891E0A2AD4FD5B00FD4161 /* ProfileViewController.swift in Sources */,
 				2D0644072AD0754C004A3A65 /* LoginViewController.swift in Sources */,
 				2D0644102AD310B0004A3A65 /* Course.swift in Sources */,
+				2D87DA172AD849E0001C9A8D /* BaseViewController.swift in Sources */,
 				FB9945E82519EA500023E174 /* Vector.swift in Sources */,
+				2D87DA1D2AD85475001C9A8D /* Collection+.swift in Sources */,
 				2D0644162AD3240C004A3A65 /* User.swift in Sources */,
 				FBA1B48E2519052D00A31DF7 /* UIDeviceExtension.swift in Sources */,
 				FBA1B48D2519052D00A31DF7 /* CustomTableViewCell.swift in Sources */,
@@ -596,6 +615,7 @@
 				FB3D0F9A251DA8AD0059CCB6 /* NetworkChecker.swift in Sources */,
 				69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */,
 				FBA1B4CA2519058B00A31DF7 /* AddNameViewController.swift in Sources */,
+				2D87DA192AD84A26001C9A8D /* Logger.swift in Sources */,
 				951EB35122B698F100A9533B /* FaceNet.swift in Sources */,
 				951EB35322B698F100A9533B /* tensorflow_utils.mm in Sources */,
 				FB3D0F97251DA5CA0059CCB6 /* Define.swift in Sources */,
@@ -776,7 +796,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U9EGC55R6Z;
+				DEVELOPMENT_TEAM = LFKPMBHSSG;
 				INFOPLIST_FILE = ClassFaceAttendance/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Class Attendance";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -784,7 +804,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.c2c-platform.FaceRecognition.Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huypt.face-attendance";
 				PRODUCT_NAME = "P-Class Attendance";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ClassFaceAttendance/Bridging-Header.h";

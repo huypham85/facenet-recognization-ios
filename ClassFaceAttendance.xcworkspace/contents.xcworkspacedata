@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ClassFaceAttendance.xcodeproj">
+      location = "group:/Users/phamtrunghuy/iOS_Swift/facenet-recognization-ios/ClassFaceAttendance.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
