@@ -12,6 +12,7 @@ var selectedDate = Date()
 class CalendarHomeViewController: BaseViewController {
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     var totalSquares = [Date]()
     var sessions: [Session] = []
@@ -19,6 +20,7 @@ class CalendarHomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
+        setupView()
         setupCollectionView()
         setupTableView()
         setCellsView()
@@ -27,6 +29,12 @@ class CalendarHomeViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func setupView() {
+        if let id = globalUser?.id {
+            helloLabel.text = "Hello \(id)"
+        }
     }
 
     private func setupCollectionView() {

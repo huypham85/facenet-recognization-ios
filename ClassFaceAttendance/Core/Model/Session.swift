@@ -17,6 +17,7 @@ struct Session {
     var courseId: String
     var courseName: String
     var teacherName: String
+    var teacherId: String
     var students: [String: Int]
     var startTimeDate: Date?
 }
@@ -32,6 +33,7 @@ extension Session {
               let id = dictionary["id"] as? String,
               let endTime = dictionary["endTime"] as? String,
               let students = dictionary["students"] as? [String: Int],
+              let teacherId = dictionary["teacherId"] as? String,
               let teacherName = dictionary["teacherName"] as? String else {
             return nil
         }
@@ -46,6 +48,7 @@ extension Session {
         self.endTime = endTime
         self.students = students
         self.teacherName = teacherName
+        self.teacherId = teacherId
         formatter.dateFormat = "HH:mm"
         self.startTimeDate = formatter.date(from: startTime)
     }

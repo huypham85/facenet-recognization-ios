@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        checkUserRole()
         addChild(mainTabBarController)
         view.addSubview(mainTabBarController.view)
         mainTabBarController.didMove(toParent: self)
@@ -25,5 +25,17 @@ class MainViewController: UIViewController {
             mainTabBarController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainTabBarController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+        
+    }
+    
+    private func checkUserRole() {
+        firebaseManager.checkUserRole { role in
+            switch role {
+            case .student:
+                break
+            case .teacher:
+                break
+            }
+        }
     }
 }

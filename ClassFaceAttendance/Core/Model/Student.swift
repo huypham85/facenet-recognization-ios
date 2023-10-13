@@ -14,5 +14,5 @@ struct Student {
     var mainClass: String
     var email: String
     var dob: String
-    var courseIds: [String]
+    var courseIds: [String?]
 }

@@ -236,20 +236,20 @@ class FirebaseManager {
     func checkUserRole(completion: @escaping (UserRole) -> Void) {
         if let userId = Auth.auth().currentUser?.uid {
             let userRef = Database.database().reference().child(USERS).child(userId)
-            userRef.observeSingleEvent(of: .value) { snapshot,_   in
-                        if let userData = snapshot.value as? [String: Any] {
-                            if let userRoleString = userData["role"] as? String,
-                               let role = UserRole(rawValue: userRoleString) {
-                                switch role {
-                                case .student:
-                                    print("Student logged in")
-                                case .teacher:
-                                    print("Teacher logged in")
-                                }
-                                completion(role)
-                            }
-                        }
+            userRef.observeSingleEvent(of: .value) { snapshot, _ in
+                if let userData = snapshot.value as? [String: Any],
+                   let user = User(dict: userData)
+                {
+                    globalUser = user
+                    switch user.role {
+                    case .student:
+                        print("Student logged in")
+                    case .teacher:
+                        print("Teacher logged in")
                     }
+                    completion(user.role)
+                }
+            }
         }
     }
     
@@ -277,7 +277,8 @@ class FirebaseManager {
                         if let session = sessionData as? [String: Any] {
                             print("Session ID: \(sessionId)")
                             print("Session Data: \(session)")
-                            if let newSession = Session(dictionary: session) {
+                            if let newSession = Session(dictionary: session),
+                               newSession.students.keys.contains(globalUser?.id ?? "") {
                                 sessions.append(newSession)
                             }
                         }

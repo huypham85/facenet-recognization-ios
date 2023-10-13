@@ -16,7 +16,6 @@ class HomeViewController: BaseViewController {
         if !NetworkChecker.isConnectedToInternet {
             showDialog(message: "You have not connected to internet. Using local data.")
         }
-        checkUserRole()
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
@@ -66,17 +65,6 @@ class HomeViewController: BaseViewController {
         if !NetworkChecker.isConnectedToInternet {
             showDialog(message: "You have not connected to internet. Using local data.")
             ProgressHUD.dismiss()
-        }
-    }
-    
-    private func checkUserRole() {
-        firebaseManager.checkUserRole { role in
-            switch role {
-            case .student:
-                break
-            case .teacher:
-                break
-            }
         }
     }
     

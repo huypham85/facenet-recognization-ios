@@ -41,8 +41,19 @@ class LoginViewController: BaseViewController {
     }
 
     private func navigateToHome() {
-        let vc = MainViewController()
-        Application.shared.changeRootViewMainWindow(viewController: vc,animated: true)
+        firebaseManager.checkUserRole { [weak self] _ in
+            if globalUser.isNotNil {
+                let vc = MainViewController()
+                Application.shared.changeRootViewMainWindow(viewController: vc, animated: true)
+            } else {
+                self?.showAlertViewController(title: "Tài khoản đã bị vô hiệu hoá hoặc đã có lỗi xảy ra",
+                                        actions: [],
+                                        cancel: "OK",
+                                        cancelHandler: { [weak self] in
+                                            self?.dismiss(animated: true)
+                                        })
+            }
+        }
     }
 }
 

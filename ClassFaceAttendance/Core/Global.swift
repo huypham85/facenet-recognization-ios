@@ -51,3 +51,6 @@ let timeZone = TimeZone(identifier: "Asia/Bangkok")
 var calendar = Calendar(identifier: .gregorian)
 
 var current: CGImage?
+
+// User
+var globalUser: User?
