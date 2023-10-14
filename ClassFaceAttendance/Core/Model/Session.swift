@@ -9,6 +9,7 @@ import Foundation
 
 struct Session {
     var id: String
+    var date: String
     var startTime: String
     var endTime: String
     var startCheckInTime: String
@@ -26,6 +27,7 @@ extension Session {
     init?(dictionary: [String: Any]) {
         guard let courseId = dictionary["courseId"] as? String,
               let courseName = dictionary["courseName"] as? String,
+              let date = dictionary["date"] as? String,
               let roomNo = dictionary["roomNo"] as? String,
               let startTime = dictionary["startTime"] as? String,
               let startCheckInTime = dictionary["startCheckInTime"] as? String,
@@ -40,6 +42,7 @@ extension Session {
 
         self.courseId = courseId
         self.courseName = courseName
+        self.date = date
         self.roomNo = roomNo
         self.startTime = startTime
         self.startCheckInTime = startCheckInTime

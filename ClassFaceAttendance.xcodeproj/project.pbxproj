@@ -21,6 +21,8 @@
 		2D87DA1B2AD84ABC001C9A8D /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA1A2AD84ABC001C9A8D /* NSObject+.swift */; };
 		2D87DA1D2AD85475001C9A8D /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA1C2AD85475001C9A8D /* Collection+.swift */; };
 		2D87DA1F2AD85B61001C9A8D /* CustomNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA1E2AD85B61001C9A8D /* CustomNavigation.swift */; };
+		2D87DA212ADA9267001C9A8D /* MiniStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA202ADA9267001C9A8D /* MiniStudent.swift */; };
+		2D87DA232ADA99CB001C9A8D /* MiniSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA222ADA99CB001C9A8D /* MiniSession.swift */; };
 		2D90BFA52AD5AB2400031511 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA42AD5AB2400031511 /* Date+Extension.swift */; };
 		2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */; };
 		2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */; };
@@ -99,6 +101,8 @@
 		2D87DA1A2AD84ABC001C9A8D /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		2D87DA1C2AD85475001C9A8D /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
 		2D87DA1E2AD85B61001C9A8D /* CustomNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigation.swift; sourceTree = "<group>"; };
+		2D87DA202ADA9267001C9A8D /* MiniStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniStudent.swift; sourceTree = "<group>"; };
+		2D87DA222ADA99CB001C9A8D /* MiniSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSession.swift; sourceTree = "<group>"; };
 		2D90BFA42AD5AB2400031511 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionTableViewCell.xib; sourceTree = "<group>"; };
@@ -428,6 +432,8 @@
 				2D0644112AD3125B004A3A65 /* Session.swift */,
 				2D0644132AD31BA7004A3A65 /* Teacher.swift */,
 				2D0644152AD3240C004A3A65 /* User.swift */,
+				2D87DA202ADA9267001C9A8D /* MiniStudent.swift */,
+				2D87DA222ADA99CB001C9A8D /* MiniSession.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -589,6 +595,7 @@
 				2D06440A2AD0769C004A3A65 /* UIStoryboard+Extension.swift in Sources */,
 				FBA1B48B2519052D00A31DF7 /* CustomButton.swift in Sources */,
 				69891E152AD5516700FD4161 /* CalendarCollectionViewCell.swift in Sources */,
+				2D87DA212ADA9267001C9A8D /* MiniStudent.swift in Sources */,
 				69891E1A2AD554E700FD4161 /* UINib+Extension.swift in Sources */,
 				FBA1B4E3251905A100A31DF7 /* Helper.swift in Sources */,
 				69891E0E2AD4FD8300FD4161 /* RegisterFaceViewController.swift in Sources */,
@@ -612,6 +619,7 @@
 				2D90BFA52AD5AB2400031511 /* Date+Extension.swift in Sources */,
 				FBC5AC0B251AEE6D0016995C /* UIViewController+ShowDialog.swift in Sources */,
 				69891E182AD554BB00FD4161 /* UITableView+Extension.swift in Sources */,
+				2D87DA232ADA99CB001C9A8D /* MiniSession.swift in Sources */,
 				FB3D0F9A251DA8AD0059CCB6 /* NetworkChecker.swift in Sources */,
 				69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */,
 				FBA1B4CA2519058B00A31DF7 /* AddNameViewController.swift in Sources */,

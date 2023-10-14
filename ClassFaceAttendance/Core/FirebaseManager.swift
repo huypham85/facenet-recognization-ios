@@ -238,8 +238,7 @@ class FirebaseManager {
             let userRef = Database.database().reference().child(USERS).child(userId)
             userRef.observeSingleEvent(of: .value) { snapshot, _ in
                 if let userData = snapshot.value as? [String: Any],
-                   let user = User(dict: userData)
-                {
+                   let user = User(dict: userData) {
                     globalUser = user
                     switch user.role {
                     case .student:
@@ -263,12 +262,13 @@ class FirebaseManager {
     }
     
     // MARK: Courses and Sessions
+
     func getSessionsAtDate(date: String, completion: @escaping ([Session]) -> Void) {
         let ref = Database.database().reference()
 
         let sessionsRef = ref.child(SESSIONS).child(date)
         var sessions: [Session] = []
-        sessionsRef.observeSingleEvent(of: .value) { (snapshot) in
+        sessionsRef.observeSingleEvent(of: .value) { snapshot in
             if snapshot.exists() {
                 if let sessionsData = snapshot.value as? [String: Any] {
                     // Now you have a dictionary of sessions on the specified date
@@ -284,7 +284,8 @@ class FirebaseManager {
                         }
                     }
                 }
-            } else {
+            }
+            else {
                 print("No sessions found for the specified date.")
             }
             completion(sessions)
@@ -292,6 +293,16 @@ class FirebaseManager {
     }
     
     func getCourseFromSession(courseId: String) {
-        
+        let ref = Database.database().reference().child(COURSES)
+        let courseRef = ref.child(courseId)
+        courseRef.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.exists() {
+                if let courseData = snapshot.value as? [String: Any] {
+                    if let course = Course(dictionary: courseData) {
+                        print(course.id)
+                    }
+                }
+            }
+        }
     }
 }

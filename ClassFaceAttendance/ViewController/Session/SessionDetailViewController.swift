@@ -38,6 +38,7 @@ class SessionDetailViewController: BaseViewController {
     
     @IBAction func checkInAction(_ sender: Any) {
         guard let session else { return }
+        firebaseManager.getCourseFromSession(courseId: session.courseId)
         if isCurrentTimeInRange(startTime: session.startTime, endTime: session.endTime) {
             if let mainTabBarVc = AppDelegate.shared?.window?.rootViewController as? MainTabBarController {
                 mainTabBarVc.selectedIndex = 0
