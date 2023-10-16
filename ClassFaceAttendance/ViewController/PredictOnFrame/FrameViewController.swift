@@ -329,7 +329,7 @@ extension FrameViewController {
         lb = "\(res.name): \(res.distance)%"
         let result = res.name
         if result != UNKNOWN {
-            let  label = result
+            let label = result
             let today = Date()
             formatter.dateFormat = DATE_FORMAT
             let timestamp = formatter.string(from: today)

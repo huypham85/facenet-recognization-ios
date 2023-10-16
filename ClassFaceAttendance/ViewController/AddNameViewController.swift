@@ -36,15 +36,15 @@ class AddNameViewController: UIViewController {
             ProgressHUD.show("Adding...")
             let getFrames = GetFrames()
             print("Your Name is: \(textField.text!)")
-            firebaseManager.uploadUser(name: textField.text!, user_id: user_id) {
-                //ProgressHUD.dismiss()
-            }
+//            firebaseManager.uploadUser(name: textField.text!, user_id: user_id) {
+//                //ProgressHUD.dismiss()
+//            }
             
             //saved to local data
             savedUserList.append(textField.text!)
             defaults.set(savedUserList, forKey: SAVED_USERS)
             
-            getFrames.getAllFrames(videoURL!, for: textField.text!)
+            getFrames.getAllFrames(videoURL!, for: globalUser!.id)
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
         else {

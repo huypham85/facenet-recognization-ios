@@ -119,10 +119,10 @@ extension UserData: UITableViewDelegate {
                     if a.count > 10 {
                     getKMeanVectorSameName(vectors: a) { (vectors) in
                         print("K-mean vector for \(valueSelected): \(vectors.count)")
-                        firebaseManager.uploadKMeanVectors(vectors: vectors, child: KMEAN_VECTOR) {
+                        firebaseManager.uploadKMeanVectors(vectors: vectors) {
                             ProgressHUD.dismiss()
                             self.showDialog(message: "Upload data for \(valueSelected) by \(a.count) vectors.")
-                            firebaseManager.uploadAllVectors(vectors: a, child: ALL_VECTOR) {
+                            firebaseManager.uploadAllVectors(vectors: a) {
                             }
                         }
                     }

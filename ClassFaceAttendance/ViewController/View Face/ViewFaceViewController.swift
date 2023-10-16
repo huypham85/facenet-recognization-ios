@@ -32,10 +32,10 @@ class ViewFaceViewController: UIViewController {
             if result.count > 0 {
                 getKMeanVectorSameName(vectors: result) { (vectors) in
                     print("K-mean vector for \(valueSelected): \(vectors.count)")
-                    firebaseManager.uploadKMeanVectors(vectors: vectors, child: KMEAN_VECTOR) {
+                    firebaseManager.uploadKMeanVectors(vectors: vectors) {
                         ProgressHUD.dismiss()
                         self.showDialog(message: "Upload data for \(valueSelected) by \(result.count) vectors.")
-                        firebaseManager.uploadAllVectors(vectors: result, child: ALL_VECTOR) {
+                        firebaseManager.uploadAllVectors(vectors: result) {
                         }
                     }
                 }

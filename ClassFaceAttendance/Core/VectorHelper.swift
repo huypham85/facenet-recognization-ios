@@ -26,7 +26,7 @@ class VectorHelper  {
             else  { return nil }
         }
         else {
-            //print("Not found face!")
+            print("Not found face!")
         }
         
         return nil
@@ -36,11 +36,13 @@ class VectorHelper  {
         let imageList = trainingDataset.getImage(label: name)
         //print(imageList.count)
         var vectors: [Vector] = []
-        print(imageList.count)
+        print("images of user: \(imageList.count)")
         if imageList.count > 0  {
             for item in imageList {
                 if let vector = createVector(name: name, image: item!) {
                     vectors.append(vector)
+                } else {
+                    print("can not create vector from image of \(name)")
                 }
                 
             }

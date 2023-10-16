@@ -10,9 +10,8 @@ import Foundation
 
 //define in Firebase DB
 let LOG_TIME = "LogTimes"
-let ALL_VECTOR = "All vectors"
-let AVG_VECTOR = "Vectors"
-let KMEAN_VECTOR = "K-mean Vectors"
+let ALL_VECTOR = "allVectors"
+let KMEAN_VECTOR = "kMeanVectors"
 let STUDENT_CHILD = "Students"
 let USERS = "Users"
 let SESSIONS = "Sessions"

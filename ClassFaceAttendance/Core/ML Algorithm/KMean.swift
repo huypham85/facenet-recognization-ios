@@ -1,10 +1,3 @@
-//
-//  KMeans.swift
-//  KMeansSwift
-//
-//  Created by sdq on 15/12/22.
-//  Copyright © 2015年 sdq. All rights reserved.
-//
 
 import Foundation
 import Accelerate

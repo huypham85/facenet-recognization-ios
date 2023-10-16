@@ -11,7 +11,7 @@ class FirebaseManager {
         FirebaseApp.configure()
     }
     
-    func uploadAllVectors(vectors: [Vector], child: String, completionHandler: @escaping () -> Void) {
+    func uploadAllVectors(vectors: [Vector], completionHandler: @escaping () -> Void) {
         for i in 0..<vectors.count {
             let vector = vectors[i]
             let dict: [String: Any] = [
@@ -20,7 +20,7 @@ class FirebaseManager {
                 "distance": vector.distance
             ]
             let childString = "\(vector.name) - \(i)"
-            Database.database().reference().child(child).child(vector.name).child(childString).updateChildValues(dict, withCompletionBlock: {
+            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "").child(ALL_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
                     print("uploaded vector")
@@ -30,7 +30,7 @@ class FirebaseManager {
         }
     }
 
-    func uploadKMeanVectors(vectors: [Vector], child: String, completionHandler: @escaping () -> Void) {
+    func uploadKMeanVectors(vectors: [Vector], completionHandler: @escaping () -> Void) {
         for i in 0..<vectors.count {
             let vector = vectors[i]
             let dict: [String: Any] = [
@@ -39,7 +39,7 @@ class FirebaseManager {
                 "distance": vector.distance
             ]
             let childString = "\(vector.name) - \(i)"
-            Database.database().reference().child(child).child(childString).updateChildValues(dict, withCompletionBlock: {
+            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "").child(KMEAN_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
                     print("uploaded vector")
