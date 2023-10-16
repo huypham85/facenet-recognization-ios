@@ -16,6 +16,7 @@ class CalendarHomeViewController: BaseViewController {
     var selectedDate = Date() {
         didSet {
             datePicker.setDate(selectedDate, animated: true)
+            getSessionAtDate(date: selectedDate)
         }
     }
     @IBOutlet var datePicker: UIDatePicker!
@@ -132,8 +133,12 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDate = totalSquares[indexPath.item]
-        print("Select date: \(selectedDate.toDateString())")
-        firebaseManager.getSessionsAtDate(date: selectedDate.toDateString()) { [weak self] sessions in
+        getSessionAtDate(date: selectedDate)
+    }
+    
+    private func getSessionAtDate(date: Date) {
+        print("Select date: \(date.toDateString())")
+        firebaseManager.getSessionsAtDate(date: date.toDateString()) { [weak self] sessions in
             var sortedSessions =  sessions
             sortedSessions.sort(by: { $0.startTimeDate ?? Date() < $1.startTimeDate ?? Date() })
             self?.sessions = sortedSessions
