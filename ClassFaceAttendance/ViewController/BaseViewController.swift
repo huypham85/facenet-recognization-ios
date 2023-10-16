@@ -25,6 +25,9 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         Log.info(NSStringFromClass(classForCoder) + "." + #function)
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +35,10 @@ class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         setNavigationBackBarButtonEmptyTitle()
         setNavigationItemsColor(color: .white)
+    }
+
+    @objc func closeKeyboard() {
+        view.endEditing(true)
     }
 
     func showAlertViewController(title: String?,
@@ -87,23 +94,22 @@ class BaseViewController: UIViewController {
             })
         }
     }
-    
+
     func createCloseBarButtonItem(target: Any?, action: Selector) -> UIBarButtonItem {
         let backButtonContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        
+
         let backImage = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
         backImage.image = UIImage(named: "ic_back_camera")
         backImage.tintColor = UIColor.black
         backImage.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         backButtonContainerView.addSubview(backImage)
-        
+
         let tapGesture = UITapGestureRecognizer(target: target, action: action)
         backButtonContainerView.addGestureRecognizer(tapGesture)
-        
+
         let closeBarButtonItem = UIBarButtonItem(customView: backButtonContainerView)
         return closeBarButtonItem
     }
 }
 
 extension BaseViewController: CustomNavigation {}
-

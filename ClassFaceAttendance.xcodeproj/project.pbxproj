@@ -23,6 +23,14 @@
 		2D87DA1F2AD85B61001C9A8D /* CustomNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA1E2AD85B61001C9A8D /* CustomNavigation.swift */; };
 		2D87DA212ADA9267001C9A8D /* MiniStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA202ADA9267001C9A8D /* MiniStudent.swift */; };
 		2D87DA232ADA99CB001C9A8D /* MiniSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA222ADA99CB001C9A8D /* MiniSession.swift */; };
+		2D87DA272ADAF4B7001C9A8D /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA252ADAF4B7001C9A8D /* StudentListViewController.swift */; };
+		2D87DA282ADAF4B7001C9A8D /* StudentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87DA262ADAF4B7001C9A8D /* StudentListViewController.xib */; };
+		2D87DA2A2ADAFADA001C9A8D /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA292ADAFADA001C9A8D /* BaseNavigationController.swift */; };
+		2D87DA2C2ADB05D8001C9A8D /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA2B2ADB05D8001C9A8D /* KeyboardManager.swift */; };
+		2D87DA2F2ADB083D001C9A8D /* StudentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA2D2ADB083D001C9A8D /* StudentListTableViewCell.swift */; };
+		2D87DA302ADB083D001C9A8D /* StudentListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87DA2E2ADB083D001C9A8D /* StudentListTableViewCell.xib */; };
+		2D87DA342ADBB820001C9A8D /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA322ADBB820001C9A8D /* StudentDetailViewController.swift */; };
+		2D87DA352ADBB820001C9A8D /* StudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87DA332ADBB820001C9A8D /* StudentDetailViewController.xib */; };
 		2D90BFA52AD5AB2400031511 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA42AD5AB2400031511 /* Date+Extension.swift */; };
 		2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */; };
 		2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */; };
@@ -103,6 +111,14 @@
 		2D87DA1E2AD85B61001C9A8D /* CustomNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigation.swift; sourceTree = "<group>"; };
 		2D87DA202ADA9267001C9A8D /* MiniStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniStudent.swift; sourceTree = "<group>"; };
 		2D87DA222ADA99CB001C9A8D /* MiniSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSession.swift; sourceTree = "<group>"; };
+		2D87DA252ADAF4B7001C9A8D /* StudentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewController.swift; sourceTree = "<group>"; };
+		2D87DA262ADAF4B7001C9A8D /* StudentListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentListViewController.xib; sourceTree = "<group>"; };
+		2D87DA292ADAFADA001C9A8D /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		2D87DA2B2ADB05D8001C9A8D /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		2D87DA2D2ADB083D001C9A8D /* StudentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListTableViewCell.swift; sourceTree = "<group>"; };
+		2D87DA2E2ADB083D001C9A8D /* StudentListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentListTableViewCell.xib; sourceTree = "<group>"; };
+		2D87DA322ADBB820001C9A8D /* StudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
+		2D87DA332ADBB820001C9A8D /* StudentDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentDetailViewController.xib; sourceTree = "<group>"; };
 		2D90BFA42AD5AB2400031511 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionTableViewCell.xib; sourceTree = "<group>"; };
@@ -215,6 +231,26 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2D87DA242ADAF497001C9A8D /* StudentList */ = {
+			isa = PBXGroup;
+			children = (
+				2D87DA252ADAF4B7001C9A8D /* StudentListViewController.swift */,
+				2D87DA262ADAF4B7001C9A8D /* StudentListViewController.xib */,
+				2D87DA2D2ADB083D001C9A8D /* StudentListTableViewCell.swift */,
+				2D87DA2E2ADB083D001C9A8D /* StudentListTableViewCell.xib */,
+			);
+			path = StudentList;
+			sourceTree = "<group>";
+		};
+		2D87DA312ADBB471001C9A8D /* StudentDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2D87DA322ADBB820001C9A8D /* StudentDetailViewController.swift */,
+				2D87DA332ADBB820001C9A8D /* StudentDetailViewController.xib */,
+			);
+			path = StudentDetail;
+			sourceTree = "<group>";
+		};
 		6262BEC28674587099DBE000 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +361,8 @@
 		FBA1B4B42519058B00A31DF7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2D87DA312ADBB471001C9A8D /* StudentDetail */,
+				2D87DA242ADAF497001C9A8D /* StudentList */,
 				69FF2CEE2AD6B3F6008735FD /* Session */,
 				69891E122AD5513800FD4161 /* CalendarHome */,
 				2D0644052AD07535004A3A65 /* Authentication */,
@@ -344,6 +382,7 @@
 				69891E0C2AD4FD8300FD4161 /* RegisterFaceViewController.swift */,
 				69891E0D2AD4FD8300FD4161 /* RegisterFaceViewController.xib */,
 				2D87DA162AD849E0001C9A8D /* BaseViewController.swift */,
+				2D87DA292ADAFADA001C9A8D /* BaseNavigationController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -389,6 +428,7 @@
 				FB7502B725198B7100193FF9 /* VectorHelper.swift */,
 				FB3D0F96251DA5CA0059CCB6 /* Define.swift */,
 				2D87DA1E2AD85B61001C9A8D /* CustomNavigation.swift */,
+				2D87DA2B2ADB05D8001C9A8D /* KeyboardManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -502,13 +542,16 @@
 				951EB34222B6986200A9533B /* LaunchScreen.storyboard in Resources */,
 				69891E012AD4F26100FD4161 /* MainViewController.xib in Resources */,
 				69FF2CF22AD6B416008735FD /* SessionDetailViewController.xib in Resources */,
+				2D87DA302ADB083D001C9A8D /* StudentListTableViewCell.xib in Resources */,
 				69891E0B2AD4FD5B00FD4161 /* ProfileViewController.xib in Resources */,
 				69891E072AD4FCD200FD4161 /* CalendarHomeViewController.xib in Resources */,
 				2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */,
 				69891E0F2AD4FD8300FD4161 /* RegisterFaceViewController.xib in Resources */,
+				2D87DA282ADAF4B7001C9A8D /* StudentListViewController.xib in Resources */,
 				FBA1B4E8251905A800A31DF7 /* Main.storyboard in Resources */,
 				6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */,
 				6912DAA02AD3F49200E41CAF /* modelFacenet.pb in Resources */,
+				2D87DA352ADBB820001C9A8D /* StudentDetailViewController.xib in Resources */,
 				69891E162AD5516700FD4161 /* CalendarCollectionViewCell.xib in Resources */,
 				951EB33F22B6986200A9533B /* Assets.xcassets in Resources */,
 			);
@@ -563,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D87DA2F2ADB083D001C9A8D /* StudentListTableViewCell.swift in Sources */,
 				69FF2CF42AD6BDD4008735FD /* UIView+Designable.swift in Sources */,
 				FBA1B4E2251905A100A31DF7 /* CreateUserData.swift in Sources */,
 				69891E002AD4F26100FD4161 /* MainViewController.swift in Sources */,
@@ -579,9 +623,11 @@
 				69891E062AD4FCD200FD4161 /* CalendarHomeViewController.swift in Sources */,
 				FBB893732525CE3800F11E32 /* kNN-2.swift in Sources */,
 				FBA1B4C82519058B00A31DF7 /* LogTableViewCell.swift in Sources */,
+				2D87DA272ADAF4B7001C9A8D /* StudentListViewController.swift in Sources */,
 				FBA1B4D12519058B00A31DF7 /* VideoView.swift in Sources */,
 				FB3B2E1C2529AE7B00117249 /* K-dTree.swift in Sources */,
 				951EB35422B698F100A9533B /* tfWrap.mm in Sources */,
+				2D87DA2C2ADB05D8001C9A8D /* KeyboardManager.swift in Sources */,
 				69891E032AD4FC7300FD4161 /* MainTabBarController.swift in Sources */,
 				FBA1B4C92519058B00A31DF7 /* ViewLogViewController.swift in Sources */,
 				2D0644122AD3125B004A3A65 /* Session.swift in Sources */,
@@ -597,6 +643,7 @@
 				69891E152AD5516700FD4161 /* CalendarCollectionViewCell.swift in Sources */,
 				2D87DA212ADA9267001C9A8D /* MiniStudent.swift in Sources */,
 				69891E1A2AD554E700FD4161 /* UINib+Extension.swift in Sources */,
+				2D87DA342ADBB820001C9A8D /* StudentDetailViewController.swift in Sources */,
 				FBA1B4E3251905A100A31DF7 /* Helper.swift in Sources */,
 				69891E0E2AD4FD8300FD4161 /* RegisterFaceViewController.swift in Sources */,
 				2D87DA1F2AD85B61001C9A8D /* CustomNavigation.swift in Sources */,
@@ -624,6 +671,7 @@
 				69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */,
 				FBA1B4CA2519058B00A31DF7 /* AddNameViewController.swift in Sources */,
 				2D87DA192AD84A26001C9A8D /* Logger.swift in Sources */,
+				2D87DA2A2ADAFADA001C9A8D /* BaseNavigationController.swift in Sources */,
 				951EB35122B698F100A9533B /* FaceNet.swift in Sources */,
 				951EB35322B698F100A9533B /* tensorflow_utils.mm in Sources */,
 				FB3D0F97251DA5CA0059CCB6 /* Define.swift in Sources */,

@@ -19,6 +19,7 @@ target 'ClassFaceAttendance' do
   pod 'FirebaseAuth'
   pod 'FirebaseStorage'
   pod 'ProgressHUD', '~> 13.7.2'
+  pod 'SnapKit', '~> 5.6.0'
   pod 'SDWebImage'
   pod 'RxSwift'
   pod 'RxCocoa'

@@ -292,16 +292,27 @@ class FirebaseManager {
         }
     }
     
-    func getCourseFromSession(courseId: String) {
+    func getCourseFromSession(courseId: String, completion: @escaping (Course) -> Void) {
         let ref = Database.database().reference().child(COURSES)
         let courseRef = ref.child(courseId)
         courseRef.observeSingleEvent(of: .value) { snapshot in
             if snapshot.exists() {
                 if let courseData = snapshot.value as? [String: Any] {
                     if let course = Course(dictionary: courseData) {
-                        print(course.id)
+                        completion(course)
                     }
                 }
+            }
+        }
+    }
+    
+    func getStudent(with studentId: String, completion: @escaping (Student) -> Void) {
+        let ref = Database.database().reference().child("Students")
+        
+        ref.child(studentId).observeSingleEvent(of: .value) { snapshot in
+            if let studentData = snapshot.value as? [String: Any],
+               let student = Student(dictionary: studentData) {
+                completion(student)
             }
         }
     }

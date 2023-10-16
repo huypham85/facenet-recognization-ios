@@ -18,13 +18,8 @@ class SessionDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = false
         setupView()
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
     }
     
     private func setupView() {
@@ -38,7 +33,6 @@ class SessionDetailViewController: BaseViewController {
     
     @IBAction func checkInAction(_ sender: Any) {
         guard let session else { return }
-        firebaseManager.getCourseFromSession(courseId: session.courseId)
         if isCurrentTimeInRange(startTime: session.startTime, endTime: session.endTime) {
             if let mainTabBarVc = AppDelegate.shared?.window?.rootViewController as? MainTabBarController {
                 mainTabBarVc.selectedIndex = 0
@@ -51,6 +45,11 @@ class SessionDetailViewController: BaseViewController {
                                         self?.dismiss(animated: true)
                                     })
         }
+    }
+    @IBAction func studentsAction(_ sender: Any) {
+        let vc = StudentListViewController()
+        vc.session = session
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func isCurrentTimeInRange(startTime: String, endTime: String) -> Bool {

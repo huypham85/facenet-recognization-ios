@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StudentListViewController" customModule="P_Class_Attendance" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="Fhe-6G-Erj" id="XJM-a9-NzX"/>
+                <outlet property="tableView" destination="iez-Fq-6h8" id="3pX-eU-X72"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Fhe-6G-Erj">
+                    <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                    <color key="backgroundColor" name="background"/>
+                    <color key="tintColor" name="red600"/>
+                    <color key="barTintColor" name="background"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="gqq-LY-6Ir"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iez-Fq-6h8">
+                    <rect key="frame" x="0.0" y="115" width="393" height="703"/>
+                    <color key="backgroundColor" name="background"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="iez-Fq-6h8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0ge-6M-n5J"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iez-Fq-6h8" secondAttribute="bottom" id="3iF-cj-yNy"/>
+                <constraint firstItem="Fhe-6G-Erj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6kt-nR-fgk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iez-Fq-6h8" secondAttribute="trailing" id="BO3-gE-rkb"/>
+                <constraint firstItem="Fhe-6G-Erj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MNl-J5-dzs"/>
+                <constraint firstItem="iez-Fq-6h8" firstAttribute="top" secondItem="Fhe-6G-Erj" secondAttribute="bottom" id="Zlf-UK-LIy"/>
+                <constraint firstItem="Fhe-6G-Erj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="z2m-ye-XVf"/>
+            </constraints>
+            <point key="canvasLocation" x="112" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="background">
+            <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="red600">
+            <color red="0.92900002002716064" green="0.36500000953674316" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

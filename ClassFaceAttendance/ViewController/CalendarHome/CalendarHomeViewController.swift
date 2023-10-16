@@ -19,17 +19,14 @@ class CalendarHomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.navigationBar.barTintColor = .red600
         setupView()
         setupCollectionView()
         setupTableView()
         setCellsView()
         setWeekView()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
+
     
     private func setupView() {
         if let id = globalUser?.id {

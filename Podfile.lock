@@ -65,6 +65,7 @@ PODS:
     - SDWebImage/Core (= 5.18.2)
   - SDWebImage/Core (5.18.2)
   - SkyFloatingLabelTextField (3.8.0)
+  - SnapKit (5.6.0)
   - TensorFlow-experimental (1.1.1)
 
 DEPENDENCIES:
@@ -82,6 +83,7 @@ DEPENDENCIES:
   - RxSwift
   - SDWebImage
   - SkyFloatingLabelTextField (~> 3.0)
+  - SnapKit (~> 5.6.0)
   - TensorFlow-experimental
 
 SPEC REPOS:
@@ -111,6 +113,7 @@ SPEC REPOS:
     - RxSwift
     - SDWebImage
     - SkyFloatingLabelTextField
+    - SnapKit
     - TensorFlow-experimental
 
 SPEC CHECKSUMS:
@@ -139,8 +142,9 @@ SPEC CHECKSUMS:
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
   SDWebImage: c0de394d7cf7f9838aed1fd6bb6037654a4572e4
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   TensorFlow-experimental: c38ed2a43acaa2d42ce4174ac076efaa76e26a12
 
-PODFILE CHECKSUM: bfce58486fe7322d03cb9bcb5e5ee5978ef78bf1
+PODFILE CHECKSUM: 170f86b5ce662aa1f0647a2a91626698ecace519
 
 COCOAPODS: 1.12.0

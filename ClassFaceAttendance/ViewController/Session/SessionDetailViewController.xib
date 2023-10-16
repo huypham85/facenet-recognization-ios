@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iBN-cf-0B0">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="282"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="340"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r2G-sV-21d">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
@@ -157,6 +157,48 @@
                                         <constraint firstItem="Lef-HH-v4G" firstAttribute="top" secondItem="vIh-Ln-PeQ" secondAttribute="top" constant="4" id="w6f-kp-T4P"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PcM-rd-Dng">
+                                    <rect key="frame" x="0.0" y="290" width="393" height="50"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPB-Fz-r7O">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal">
+                                                <color key="titleColor" name="red600"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="studentsAction:" destination="-1" eventType="touchUpInside" id="LhZ-FE-A1L"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh sách sinh viên" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQa-8U-NH4">
+                                            <rect key="frame" x="8" y="0.0" width="151.66666666666666" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_forward" translatesAutoresizingMaskIntoConstraints="NO" id="1eb-kc-gMh">
+                                            <rect key="frame" x="353" y="13" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="bBj-Gn-Gym"/>
+                                                <constraint firstAttribute="width" constant="24" id="r7N-mB-Vvn"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="0sT-3A-miX"/>
+                                        <constraint firstItem="1eb-kc-gMh" firstAttribute="centerY" secondItem="PcM-rd-Dng" secondAttribute="centerY" id="1mO-xs-wP6"/>
+                                        <constraint firstItem="oPB-Fz-r7O" firstAttribute="leading" secondItem="PcM-rd-Dng" secondAttribute="leading" id="1oX-oy-Cpd"/>
+                                        <constraint firstItem="eQa-8U-NH4" firstAttribute="top" secondItem="PcM-rd-Dng" secondAttribute="top" id="69J-dc-kLf"/>
+                                        <constraint firstAttribute="trailing" secondItem="oPB-Fz-r7O" secondAttribute="trailing" id="Vym-Uh-JbM"/>
+                                        <constraint firstAttribute="trailing" secondItem="1eb-kc-gMh" secondAttribute="trailing" constant="16" id="a5T-6Q-xne"/>
+                                        <constraint firstItem="eQa-8U-NH4" firstAttribute="centerY" secondItem="PcM-rd-Dng" secondAttribute="centerY" id="cMa-AG-lfg"/>
+                                        <constraint firstItem="oPB-Fz-r7O" firstAttribute="top" secondItem="PcM-rd-Dng" secondAttribute="top" id="oyq-er-3mI"/>
+                                        <constraint firstAttribute="bottom" secondItem="oPB-Fz-r7O" secondAttribute="bottom" id="rur-gt-tic"/>
+                                        <constraint firstItem="eQa-8U-NH4" firstAttribute="leading" secondItem="PcM-rd-Dng" secondAttribute="leading" constant="8" id="uPE-yA-bth"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" name="background"/>
                         </stackView>
@@ -173,8 +215,14 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="pse-Tv-JnB"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Điểm danh"/>
+                    <color key="tintColor" name="red600"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Điểm danh">
+                        <color key="titleColor" name="red600"/>
+                    </state>
+                    <buttonConfiguration key="configuration" style="filled" title="Điểm danh" cornerStyle="capsule">
+                        <color key="baseBackgroundColor" name="red600"/>
+                    </buttonConfiguration>
                     <connections>
                         <action selector="checkInAction:" destination="-1" eventType="touchUpInside" id="aMr-5S-DbV"/>
                     </connections>
@@ -194,8 +242,12 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_forward" width="10.666666984558105" height="10.666666984558105"/>
         <namedColor name="background">
             <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="red600">
+            <color red="0.92900002002716064" green="0.36500000953674316" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
