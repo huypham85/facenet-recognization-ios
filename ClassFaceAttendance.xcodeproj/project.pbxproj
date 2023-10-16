@@ -782,7 +782,7 @@
 				DEVELOPMENT_TEAM = LFKPMBHSSG;
 				INFOPLIST_FILE = ClassFaceAttendance/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Class Attendance";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -807,7 +807,7 @@
 				DEVELOPMENT_TEAM = LFKPMBHSSG;
 				INFOPLIST_FILE = ClassFaceAttendance/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Class Attendance";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

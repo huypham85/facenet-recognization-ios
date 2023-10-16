@@ -7,15 +7,18 @@
 
 import UIKit
 
-var selectedDate = Date()
-
 class CalendarHomeViewController: BaseViewController {
-    @IBOutlet var monthLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     var totalSquares = [Date]()
     var sessions: [Session] = []
+    var selectedDate = Date() {
+        didSet {
+            datePicker.setDate(selectedDate, animated: true)
+        }
+    }
+    @IBOutlet var datePicker: UIDatePicker!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +28,21 @@ class CalendarHomeViewController: BaseViewController {
         setupTableView()
         setCellsView()
         setWeekView()
+        setupDatePicker()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func setupDatePicker() {
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .compact
+        datePicker.locale = Locale(identifier: "vi_VN")
+        datePicker.subviews[0].subviews.compactMap { $0 as? UILabel }.forEach { label in
+            label.textAlignment = .center
+        }
+        datePicker.addTarget(self, action: #selector(onDateChanged), for: .valueChanged)
     }
     
     private func setupView() {
@@ -59,6 +73,11 @@ class CalendarHomeViewController: BaseViewController {
         selectedDate = CalendarHelper().addDays(date: selectedDate, days: 7)
         setWeekView()
     }
+    
+    @objc func onDateChanged() {
+        selectedDate = datePicker.date
+        setWeekView()
+    }
 
     func setCellsView() {}
 
@@ -72,9 +91,7 @@ class CalendarHomeViewController: BaseViewController {
             totalSquares.append(current)
             current = CalendarHelper().addDays(date: current, days: 1)
         }
-
-        monthLabel.text = CalendarHelper().monthString(date: selectedDate)
-            + " " + CalendarHelper().yearString(date: selectedDate)
+        datePicker.setDate(selectedDate, animated: true)
         collectionView.reloadData()
         tableView.reloadData()
     }

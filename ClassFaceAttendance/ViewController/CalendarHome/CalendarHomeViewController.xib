@@ -13,8 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarHomeViewController" customModule="P_Class_Attendance" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Elb-LD-Wyc" id="m4T-G2-ouh"/>
+                <outlet property="datePicker" destination="Trz-h8-bMr" id="Ggm-1R-fHI"/>
                 <outlet property="helloLabel" destination="Nrc-Ba-7Ve" id="wJS-7v-DyW"/>
-                <outlet property="monthLabel" destination="KqX-tl-3Qi" id="LpC-vS-ijK"/>
                 <outlet property="tableView" destination="575-F7-hKb" id="Iy7-A0-I3f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,14 +33,11 @@
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqX-tl-3Qi">
-                            <rect key="frame" x="176.33333333333334" y="61.666666666666679" width="40.666666666666657" height="19.333333333333336"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Trz-h8-bMr">
+                            <rect key="frame" x="90" y="62" width="213" height="34"/>
+                        </datePicker>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P02-7N-C8O">
-                            <rect key="frame" x="0.0" y="54" width="176.33333333333334" height="35"/>
+                            <rect key="frame" x="0.0" y="61.333333333333329" width="89.666666666666671" height="35"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Previous"/>
                             <connections>
@@ -48,7 +45,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdH-vk-7bI">
-                            <rect key="frame" x="217" y="54" width="176" height="35"/>
+                            <rect key="frame" x="303.33333333333331" y="61.333333333333329" width="89.666666666666686" height="35"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Next"/>
                             <connections>
@@ -56,7 +53,7 @@
                             </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-LD-Wyc">
-                            <rect key="frame" x="0.0" y="113" width="393" height="80"/>
+                            <rect key="frame" x="0.0" y="112" width="393" height="80"/>
                             <color key="backgroundColor" name="background"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="dTa-aG-qYn"/>
@@ -69,29 +66,29 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="575-F7-hKb">
-                            <rect key="frame" x="8" y="193" width="377" height="566"/>
+                            <rect key="frame" x="8" y="192" width="377" height="567"/>
                             <color key="backgroundColor" name="background"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="KqX-tl-3Qi" firstAttribute="centerX" secondItem="tUF-qv-dGv" secondAttribute="centerX" id="02d-UF-Lqo"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="centerX" secondItem="tUF-qv-dGv" secondAttribute="centerX" id="01f-OH-Ex5"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="trailing" secondItem="QdH-vk-7bI" secondAttribute="leading" id="15v-vd-8CY"/>
                         <constraint firstItem="Nrc-Ba-7Ve" firstAttribute="top" secondItem="tUF-qv-dGv" secondAttribute="top" constant="16" id="BRA-9M-GOW"/>
-                        <constraint firstItem="QdH-vk-7bI" firstAttribute="centerY" secondItem="KqX-tl-3Qi" secondAttribute="centerY" id="Hfy-qQ-UUL"/>
                         <constraint firstItem="Nrc-Ba-7Ve" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="24" id="JRQ-sJ-9ik"/>
-                        <constraint firstItem="Elb-LD-Wyc" firstAttribute="top" secondItem="KqX-tl-3Qi" secondAttribute="bottom" constant="32" id="PGF-E6-tQY"/>
+                        <constraint firstItem="Elb-LD-Wyc" firstAttribute="top" secondItem="Trz-h8-bMr" secondAttribute="bottom" constant="16" id="Mo8-oS-8Yu"/>
                         <constraint firstItem="575-F7-hKb" firstAttribute="top" secondItem="Elb-LD-Wyc" secondAttribute="bottom" id="Rtw-Th-wgS"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="top" secondItem="Nrc-Ba-7Ve" secondAttribute="bottom" constant="24" id="UIU-Xa-qJj"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="leading" secondItem="P02-7N-C8O" secondAttribute="trailing" id="UMa-sN-vBh"/>
                         <constraint firstAttribute="trailing" secondItem="Elb-LD-Wyc" secondAttribute="trailing" id="WmL-Yy-TnK"/>
                         <constraint firstItem="575-F7-hKb" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="8" id="cc7-6h-Ego"/>
-                        <constraint firstItem="QdH-vk-7bI" firstAttribute="leading" secondItem="KqX-tl-3Qi" secondAttribute="trailing" id="gWk-gx-Y21"/>
-                        <constraint firstItem="P02-7N-C8O" firstAttribute="centerY" secondItem="KqX-tl-3Qi" secondAttribute="centerY" id="kdC-HK-ytw"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="centerY" secondItem="P02-7N-C8O" secondAttribute="centerY" id="e7E-aX-WGY"/>
                         <constraint firstItem="Elb-LD-Wyc" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" id="o4a-BW-mj6"/>
                         <constraint firstAttribute="trailing" secondItem="575-F7-hKb" secondAttribute="trailing" constant="8" id="pCj-hU-bY4"/>
                         <constraint firstItem="P02-7N-C8O" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" id="q5s-XJ-iWw"/>
                         <constraint firstAttribute="bottom" secondItem="575-F7-hKb" secondAttribute="bottom" id="r1Q-hk-hOH"/>
                         <constraint firstAttribute="trailing" secondItem="QdH-vk-7bI" secondAttribute="trailing" id="s9Z-ME-g2V"/>
-                        <constraint firstItem="P02-7N-C8O" firstAttribute="trailing" secondItem="KqX-tl-3Qi" secondAttribute="leading" id="y10-ig-Xki"/>
-                        <constraint firstItem="KqX-tl-3Qi" firstAttribute="top" secondItem="Nrc-Ba-7Ve" secondAttribute="bottom" constant="24" id="yQf-OU-Wb1"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="centerY" secondItem="QdH-vk-7bI" secondAttribute="centerY" id="vlx-jL-maw"/>
                     </constraints>
                 </view>
             </subviews>
