@@ -100,7 +100,8 @@ class FirebaseManager {
                     let object = Vector(name: name, vector: stringToArray(string: vector), distance: distance)
                     vectors.append(object)
                 }
-            } else {
+            }
+            else {
                 print("parse json error when load K Means Vector")
             }
             completionHandler(vectors)
@@ -111,7 +112,7 @@ class FirebaseManager {
         }
     }
     
-    func loadAllVector(name: String, completionHandler: @escaping ([Vector]) -> Void) {
+    func loadAllVector(name _: String, completionHandler: @escaping ([Vector]) -> Void) {
         var vectors = [Vector]()
         Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "").child(ALL_VECTOR).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             
@@ -141,16 +142,15 @@ class FirebaseManager {
         }
     }
     
-    func uploadLogTimes(user: Attendance, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(user.name) - \(user.time.dropLast(10))")
+    // MARK: Attendances
+    func uploadLogTimes(attendance: Attendance, completionHandler: @escaping (Error?) -> Void) {
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(attendance.name) - \(attendance.time.dropLast(10))")
         
         let metadata = StorageMetadata()
         
-        if let imageData = user.image.jpegData(compressionQuality: 1.0) {
+        if let imageData = attendance.image.jpegData(compressionQuality: 1.0),
+           let sessionId = attendance.sessionId {
             metadata.contentType = "image/jpg"
-            print(metadata)
-            print(imageData)
-            // upload image to firebase storage
             storageRef.putData(imageData, metadata: metadata, completion: {
                 _, error in
                 if error != nil {
@@ -163,11 +163,12 @@ class FirebaseManager {
                         url, error in
                         if let metaImageUrl = url?.absoluteString {
                             let dict: [String: Any] = [
-                                "name": user.name,
-                                "imageURL": metaImageUrl,
-                                "time": user.time
+                                "id": attendance.name,
+                                "name": attendance.fullName,
+                                "photo": metaImageUrl,
+                                "checkInTime": attendance.time
                             ]
-                            Database.database().reference().child(LOG_TIME).child("\(user.name) - \(user.time.dropLast(10))").updateChildValues(dict, withCompletionBlock: {
+                            Database.database().reference().child(ATTENDANCES).child(sessionId).child(attendance.name).updateChildValues(dict, withCompletionBlock: {
                                 error, _ in
                                 if error == nil {
                                     print("Uploaded log time.")
@@ -188,16 +189,14 @@ class FirebaseManager {
 
         if let imageData = image.jpegData(compressionQuality: 1.0) {
             metadata.contentType = "image/jpg"
-            print(metadata)
-            print(imageData)
-            // upload image to firebase storage
             storageRef.putData(imageData, metadata: metadata, completion: {
                 _, error in
                 if error != nil {
                     print(error?.localizedDescription as Any)
                     completionHandler(error)
                     return
-                } else {
+                }
+                else {
                     storageRef.downloadURL(completion: {
                         url, error in
                         if let metaImageUrl = url?.absoluteString {
@@ -345,6 +344,7 @@ class FirebaseManager {
     }
     
     // MARK: Student
+
     func getStudent(with studentId: String, completion: @escaping (Student) -> Void) {
         let ref = Database.database().reference().child(STUDENT_CHILD)
         
@@ -362,11 +362,11 @@ class FirebaseManager {
         ref.observeSingleEvent(of: .value) { snapshot in
             if let studentData = snapshot.value as? [String: Any],
                let currentFace = studentData["currentFace"] as? String,
-               !currentFace.isEmpty
-            {
+               !currentFace.isEmpty {
                 // The student's "currentFace" field exists and has a value
                 completion(true)
-            } else {
+            }
+            else {
                 // The student's "currentFace" field does not exist or is empty
                 completion(false)
             }

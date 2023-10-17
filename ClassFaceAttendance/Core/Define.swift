@@ -1,10 +1,4 @@
-//
-//  Define.swift
-//  PersonRecognize
-//
-//  Created by Hồ Sĩ Tuấn on 25/09/2020.
-//  Copyright © 2020 Sun*. All rights reserved.
-//
+
 
 import Foundation
 
@@ -16,6 +10,7 @@ let STUDENT_CHILD = "Students"
 let USERS = "Users"
 let SESSIONS = "Sessions"
 let COURSES = "Courses"
+let ATTENDANCES = "Attendance"
 
 
 let STORAGE_URL = "gs://face-attendance-470c2.appspot.com"

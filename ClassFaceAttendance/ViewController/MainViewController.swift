@@ -36,6 +36,12 @@ class MainViewController: BaseViewController {
             case .teacher:
                 break
             }
+            guard let globalUser = globalUser else {
+                return
+            }
+            firebaseManager.getStudent(with: globalUser.id) { student in
+                userFullName = student.name
+            }
         }
     }
 }

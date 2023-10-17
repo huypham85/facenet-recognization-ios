@@ -46,3 +46,4 @@ var current: CGImage?
 
 // User
 var globalUser: User?
+var userFullName: String?

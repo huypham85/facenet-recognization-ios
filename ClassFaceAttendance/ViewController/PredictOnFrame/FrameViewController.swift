@@ -13,7 +13,7 @@ class FrameViewController: UIViewController {
     @IBOutlet weak var previewView: PreviewView!
     //    private var faceDetectionRequest: VNRequest!
     private var devicePosition: AVCaptureDevice.Position = .front
-    
+    private var sessionId: String?
     
     // Session Management
     private enum SessionSetupResult {
@@ -144,7 +144,7 @@ class FrameViewController: UIViewController {
         let today = Date()
         formatter.dateFormat = DATE_FORMAT
         let timestamp = formatter.string(from: today)
-        let user = Attendance(name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
+        let user = Attendance(sessionId: sessionId, name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
         showDiaglog3s(name: TAKE_PHOTO_NAME, true)
         
         //        api.uploadLogs(user: user) { error in
@@ -152,7 +152,7 @@ class FrameViewController: UIViewController {
         //                self.showDiaglog3s(name: TAKE_PHOTO_NAME, false)
         //            }
         //        }
-        firebaseManager.uploadLogTimes(user: user) { error in
+        firebaseManager.uploadLogTimes(attendance: user) { error in
             if error != nil {
                 self.showDiaglog3s(name: TAKE_PHOTO_NAME, false)
             }
@@ -339,7 +339,7 @@ extension FrameViewController {
             } else {
                 numberOfFramesDeteced += 1
             }
-            let detectedUser = Attendance(name: label, image: frame, time: timestamp)
+            let detectedUser = Attendance(sessionId: sessionId,name: label, image: frame, time: timestamp)
             if numberOfFramesDeteced > validFrames  {
                 print("Detected")
                 if localUserList.count == 0 {
@@ -349,7 +349,7 @@ extension FrameViewController {
                     localUserList.append(detectedUser)
                     
                     //upload to firebase db
-                    firebaseManager.uploadLogTimes(user: detectedUser)  {
+                    firebaseManager.uploadLogTimes(attendance: detectedUser)  {
                         error in
                         if error != nil {
                             self.showDiaglog3s(name: label, false)
@@ -374,7 +374,7 @@ extension FrameViewController {
                                     
                                     
                                     //upload to firebase db
-                                    firebaseManager.uploadLogTimes(user: detectedUser)  {
+                                    firebaseManager.uploadLogTimes(attendance: detectedUser)  {
                                         error in
                                         if error != nil {
                                             self.showDiaglog3s(name: label, false)
@@ -395,7 +395,7 @@ extension FrameViewController {
                         speak(name: label)
                         trainingDataset.saveImage(detectedUser.image, for: detectedUser.name)
                         //upload to firebase db
-                        firebaseManager.uploadLogTimes(user: detectedUser) { error in
+                        firebaseManager.uploadLogTimes(attendance: detectedUser) { error in
                             if error != nil {
                                 self.showDiaglog3s(name: label, false)
                             }
@@ -514,6 +514,14 @@ extension FrameViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         
     }
     
+}
+
+extension FrameViewController {
+    static func create(sessionId: String?) -> FrameViewController {
+        let vc = FrameViewController.loadStoryboard(.main)
+        vc.sessionId = sessionId
+        return vc
+    }
 }
 
 
