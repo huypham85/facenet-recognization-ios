@@ -71,7 +71,7 @@ class HomeViewController: BaseViewController {
     func loadData() {
         if NetworkChecker.isConnectedToInternet {
             ProgressHUD.show("Loading users...")
-            firebaseManager.loadVector { [self] (result) in
+            firebaseManager.loadAllKMeansVector { [self] (result) in
                 kMeanVectors = result
                 print("Number of k-Means vectors: \(kMeanVectors.count)")
                 vectorsLabel.text = "You have \(kMeanVectors.count / NUMBER_OF_K) users."
