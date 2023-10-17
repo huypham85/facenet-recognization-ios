@@ -113,3 +113,10 @@ class RecordVideoViewController: UIViewController, AVCaptureFileOutputRecordingD
         }
     }
 }
+
+extension RecordVideoViewController {
+    static func create() -> RecordVideoViewController {
+        let vc = RecordVideoViewController.loadStoryboard(.main)
+        return vc
+    }
+}
