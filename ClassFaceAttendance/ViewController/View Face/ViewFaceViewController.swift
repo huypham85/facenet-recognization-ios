@@ -14,7 +14,7 @@ class ViewFaceViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var name = ""
-    var imgList:[UIImage?] = []
+    var imgList:[UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

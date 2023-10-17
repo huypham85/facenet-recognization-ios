@@ -53,7 +53,7 @@ extension ImageDataset {
         }
     }
     
-    func getImage(label: String) -> [UIImage?] {
+    func getImage(label: String) -> [UIImage] {
         var imageUrl: [URL] = []
         var imageList:[UIImage] = []
         let url = documentDirectory.appendingPathComponent(split.folderName).appendingPathComponent(label)
@@ -63,8 +63,9 @@ extension ImageDataset {
         
         for i in 0..<imageUrl.count
         {
-            let image = UIImage(contentsOfFile: imageUrl[i].path)
-            imageList.append(image!)
+            if let image = UIImage(contentsOfFile: imageUrl[i].path) {
+                imageList.append(image)
+            }
         }
         return imageList
         

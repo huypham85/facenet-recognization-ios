@@ -39,7 +39,7 @@ class VectorHelper  {
         print("images of user: \(imageList.count)")
         if imageList.count > 0  {
             for item in imageList {
-                if let vector = createVector(name: name, image: item!) {
+                if let vector = createVector(name: name, image: item) {
                     vectors.append(vector)
                 } else {
                     print("can not create vector from image of \(name)")

@@ -28,28 +28,15 @@ class AddNameViewController: UIViewController {
     }
     
     @IBAction func tapDoneButoon(_ sender: UIButton) {
-        if textField.text != "" && videoURL != nil && idTextField.text != "" {
-            guard let user_id = Int(idTextField.text!) else {
-                showDialog(message: "ID is only number!")
-                return
-            }
-            ProgressHUD.show("Adding...")
-            let getFrames = GetFrames()
-            print("Your Name is: \(textField.text!)")
-//            firebaseManager.uploadUser(name: textField.text!, user_id: user_id) {
-//                //ProgressHUD.dismiss()
-//            }
-            
-            //saved to local data
-            savedUserList.append(textField.text!)
-            defaults.set(savedUserList, forKey: SAVED_USERS)
-            
-            getFrames.getAllFrames(videoURL!, for: globalUser!.id)
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        ProgressHUD.show("Adding...")
+        let getFrames = GetFrames()
+        if let videoURL,
+           let studentId = globalUser?.id,
+           let currentFace = faceImageView.image
+        {
+            getFrames.getAllFrames(videoURL, for: studentId, currentFace: currentFace)
         }
-        else {
-            self.showDialog(message: "Please fill User ID and Name!")
-        }
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {

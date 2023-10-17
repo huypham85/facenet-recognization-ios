@@ -25,9 +25,9 @@ class FirebaseManager {
                 if error == nil {
                     print("uploaded vector")
                 }
-                completionHandler()
             })
         }
+        completionHandler()
     }
 
     func uploadKMeanVectors(vectors: [Vector], completionHandler: @escaping () -> Void) {
@@ -44,9 +44,9 @@ class FirebaseManager {
                 if error == nil {
                     print("uploaded vector")
                 }
-                completionHandler()
             })
         }
+        completionHandler()
     }
     
     func loadLogTimes(completionHandler: @escaping ([Attendances]) -> Void) {
@@ -181,6 +181,42 @@ class FirebaseManager {
         }
     }
     
+    func uploadCurrentFace(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
+
+        let metadata = StorageMetadata()
+
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            metadata.contentType = "image/jpg"
+            print(metadata)
+            print(imageData)
+            // upload image to firebase storage
+            storageRef.putData(imageData, metadata: metadata, completion: {
+                _, error in
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                    completionHandler(error)
+                    return
+                } else {
+                    storageRef.downloadURL(completion: {
+                        url, error in
+                        if let metaImageUrl = url?.absoluteString {
+                            let dict: [String: Any] = ["currentFace": metaImageUrl]
+                            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "")
+                                .updateChildValues(dict, withCompletionBlock: {
+                                    error, _ in
+                                    if error == nil {
+                                        print("Updated current face")
+                                        completionHandler(nil)
+                                    }
+                                })
+                        }
+                    })
+                }
+            })
+        }
+    }
+
     func loadUsers(completionHandler: @escaping ([String: Int]) -> Void) {
         var userList: [String: Int] = [:]
         Database.database().reference().child(STUDENT_CHILD).queryLimited(toLast: 300).observeSingleEvent(of: .value, with: { snapshot in
@@ -308,13 +344,31 @@ class FirebaseManager {
         }
     }
     
+    // MARK: Student
     func getStudent(with studentId: String, completion: @escaping (Student) -> Void) {
-        let ref = Database.database().reference().child("Students")
+        let ref = Database.database().reference().child(STUDENT_CHILD)
         
         ref.child(studentId).observeSingleEvent(of: .value) { snapshot in
             if let studentData = snapshot.value as? [String: Any],
                let student = Student(dictionary: studentData) {
                 completion(student)
+            }
+        }
+    }
+    
+    func isStudentRegisteredFace(completion: @escaping (Bool) -> Void) {
+        let ref = Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "")
+
+        ref.observeSingleEvent(of: .value) { snapshot in
+            if let studentData = snapshot.value as? [String: Any],
+               let currentFace = studentData["currentFace"] as? String,
+               !currentFace.isEmpty
+            {
+                // The student's "currentFace" field exists and has a value
+                completion(true)
+            } else {
+                // The student's "currentFace" field does not exist or is empty
+                completion(false)
             }
         }
     }

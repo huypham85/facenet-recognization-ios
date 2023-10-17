@@ -28,4 +28,11 @@ extension Date {
         dateFormat.dateFormat = format
         return dateFormat.string(from: self as Date)
     }
+    
+    func toIsoString(withFormat format: String? = "yyyy-MM-dd'T'HH:mm:ss") -> String {
+        let dateFormat = DateFormatter()
+        dateFormat.locale = Locale(identifier: "en_US_POSIX")
+        dateFormat.dateFormat = format
+        return dateFormat.string(from: self as Date)
+    }
 }
