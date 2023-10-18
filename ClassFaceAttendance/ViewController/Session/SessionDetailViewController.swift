@@ -38,10 +38,11 @@ class SessionDetailViewController: BaseViewController {
     }
     
     private func checkAttendance() {
+        checkedInLabel.isHidden = true
         guard let session = session else { return }
         firebaseManager.getAttendanceOfSession(sessionId: session.id) { [weak self] attendance in
-            if attendance.checkInTime != "" {
-                if let dateString = attendance.checkInTime.convertIsoStringToHour() {
+            if let attendance = attendance {
+                if let dateString = attendance.checkInTime.convertIsoStringToDateHour() {
                     self?.checkedInLabel.isHidden = false
                     self?.checkedInLabel.text = "Bạn đã điểm danh lúc \(dateString)"
                     self?.checkInButton.isHidden = true
@@ -130,7 +131,7 @@ class SessionDetailViewController: BaseViewController {
                     vectorHelper.saveVector(vector)
                 }
                 ProgressHUD.dismiss()
-                let vc = FrameViewController.create(sessionId: self?.session?.id)
+                let vc = FrameViewController.create(session: self?.session)
                 self?.present(vc, animated: true)
             }
         } else {

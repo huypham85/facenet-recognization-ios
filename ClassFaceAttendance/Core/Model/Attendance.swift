@@ -4,7 +4,7 @@ import RealmSwift
 
 //local user
 struct Attendance {
-    var sessionId: String?
+    var session: Session?
     /// student's id
     var name: String
     var image: UIImage

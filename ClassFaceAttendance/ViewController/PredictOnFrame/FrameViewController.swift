@@ -13,7 +13,7 @@ class FrameViewController: UIViewController {
     @IBOutlet weak var previewView: PreviewView!
     //    private var faceDetectionRequest: VNRequest!
     private var devicePosition: AVCaptureDevice.Position = .front
-    private var sessionId: String?
+    private var currentSession: Session?
     
     // Session Management
     private enum SessionSetupResult {
@@ -144,7 +144,7 @@ class FrameViewController: UIViewController {
         let today = Date()
         formatter.dateFormat = DATE_FORMAT
         let timestamp = formatter.string(from: today)
-        let user = Attendance(sessionId: sessionId, name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
+        let user = Attendance(session: currentSession, name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
         showDiaglog3s(name: TAKE_PHOTO_NAME, true)
         
         //        api.uploadLogs(user: user) { error in
@@ -339,7 +339,7 @@ extension FrameViewController {
             } else {
                 numberOfFramesDeteced += 1
             }
-            let detectedUser = Attendance(sessionId: sessionId,name: label, image: frame, time: timestamp)
+            let detectedUser = Attendance(session: currentSession,name: label, image: frame, time: timestamp)
             if numberOfFramesDeteced > validFrames  {
                 print("Detected")
                 if localUserList.count == 0 {
@@ -517,9 +517,9 @@ extension FrameViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 }
 
 extension FrameViewController {
-    static func create(sessionId: String?) -> FrameViewController {
+    static func create(session: Session?) -> FrameViewController {
         let vc = FrameViewController.loadStoryboard(.main)
-        vc.sessionId = sessionId
+        vc.currentSession = session
         return vc
     }
 }

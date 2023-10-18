@@ -26,12 +26,30 @@ extension UIColor {
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
+        
+    @nonobjc class var red400: UIColor {
+        return UIColor(hexString: "#F6928A")
+    }
     
     @nonobjc class var red600: UIColor {
         return UIColor(hexString: "#ED5D51")
     }
     
-    @nonobjc class var red400: UIColor {
-        return UIColor(hexString: "#F6928A")
+    @nonobjc class var primaryBrown: UIColor {
+        return UIColor(hexString: "#57423E")
     }
+    
+    @nonobjc class var secondaryBrown: UIColor {
+        return UIColor(hexString: "#BFA6A2")
+    }
+    
+    @nonobjc class var lightGreen: UIColor {
+        return UIColor(hexString: "#8ce515")
+    }
+    
+    @nonobjc class var darkGreen: UIColor {
+        return UIColor(hexString: "#316700")
+    }
+    
+    
 }

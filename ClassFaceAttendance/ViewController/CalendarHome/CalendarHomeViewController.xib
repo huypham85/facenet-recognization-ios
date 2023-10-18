@@ -68,7 +68,7 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="575-F7-hKb">
-                            <rect key="frame" x="8" y="192" width="377" height="567"/>
+                            <rect key="frame" x="8" y="200" width="377" height="559"/>
                             <color key="backgroundColor" name="background"/>
                         </tableView>
                     </subviews>
@@ -79,7 +79,7 @@
                         <constraint firstItem="Nrc-Ba-7Ve" firstAttribute="top" secondItem="tUF-qv-dGv" secondAttribute="top" constant="16" id="BRA-9M-GOW"/>
                         <constraint firstItem="Nrc-Ba-7Ve" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="24" id="JRQ-sJ-9ik"/>
                         <constraint firstItem="Elb-LD-Wyc" firstAttribute="top" secondItem="Trz-h8-bMr" secondAttribute="bottom" constant="16" id="Mo8-oS-8Yu"/>
-                        <constraint firstItem="575-F7-hKb" firstAttribute="top" secondItem="Elb-LD-Wyc" secondAttribute="bottom" id="Rtw-Th-wgS"/>
+                        <constraint firstItem="575-F7-hKb" firstAttribute="top" secondItem="Elb-LD-Wyc" secondAttribute="bottom" constant="8" id="Rtw-Th-wgS"/>
                         <constraint firstItem="Trz-h8-bMr" firstAttribute="top" secondItem="Nrc-Ba-7Ve" secondAttribute="bottom" constant="24" id="UIU-Xa-qJj"/>
                         <constraint firstItem="Trz-h8-bMr" firstAttribute="leading" secondItem="P02-7N-C8O" secondAttribute="trailing" id="UMa-sN-vBh"/>
                         <constraint firstAttribute="trailing" secondItem="Elb-LD-Wyc" secondAttribute="trailing" id="WmL-Yy-TnK"/>

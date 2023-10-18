@@ -7,6 +7,16 @@
 
 import Foundation
 
+struct AttendanceTime {
+    var studentId: String
+    var checkedInTime: String
+    
+    init(studentId: String, checkedInTime: String) {
+        self.studentId = studentId
+        self.checkedInTime = checkedInTime
+    }
+}
+
 struct Session {
     var id: String
     var date: String
@@ -19,7 +29,7 @@ struct Session {
     var courseName: String
     var teacherName: String
     var teacherId: String
-    var students: [String: Int]
+    var students: [AttendanceTime]
     var startTimeDate: Date?
 }
 
@@ -34,7 +44,7 @@ extension Session {
               let endCheckInTime = dictionary["endCheckInTime"] as? String,
               let id = dictionary["id"] as? String,
               let endTime = dictionary["endTime"] as? String,
-              let students = dictionary["students"] as? [String: Int],
+              let students = dictionary["students"] as? [String: String],
               let teacherId = dictionary["teacherId"] as? String,
               let teacherName = dictionary["teacherName"] as? String else {
             return nil
@@ -49,10 +59,17 @@ extension Session {
         self.endCheckInTime = endCheckInTime
         self.id = id
         self.endTime = endTime
-        self.students = students
         self.teacherName = teacherName
         self.teacherId = teacherId
         formatter.dateFormat = "HH:mm"
         self.startTimeDate = formatter.date(from: startTime)
+        
+        var attendanceArray: [AttendanceTime] = []
+
+        for (studentId, checkedInTime) in students {
+            let attendanceTime = AttendanceTime(studentId: studentId, checkedInTime: checkedInTime)
+            attendanceArray.append(attendanceTime)
+        }
+        self.students = attendanceArray
     }
 }

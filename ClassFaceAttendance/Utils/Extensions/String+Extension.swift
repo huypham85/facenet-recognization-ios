@@ -16,7 +16,19 @@ extension String {
             formatter.timeZone = TimeZone(identifier: "Asia/Ho_Chi_Minh")
             let formattedTime = formatter.string(from: date)
             return formattedTime
-            print("Formatted Time in Vietnam: \(formattedTime)")
+        } else {
+            return nil
+        }
+    }
+    
+    func convertIsoStringToDateHour() -> String? {
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+
+        if let date = formatter.date(from: self) {
+            formatter.dateFormat = "HH:mm dd/MM/yyyy"
+            formatter.timeZone = TimeZone(identifier: "Asia/Ho_Chi_Minh")
+            let formattedTime = formatter.string(from: date)
+            return formattedTime
         } else {
             return nil
         }

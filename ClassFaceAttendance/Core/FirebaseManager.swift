@@ -143,13 +143,14 @@ class FirebaseManager {
     }
     
     // MARK: Attendances
+
     func uploadLogTimes(attendance: Attendance, completionHandler: @escaping (Error?) -> Void) {
         let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(attendance.name) - \(attendance.time.dropLast(10))")
         
         let metadata = StorageMetadata()
         
         if let imageData = attendance.image.jpegData(compressionQuality: 1.0),
-           let sessionId = attendance.sessionId {
+           let sessionId = attendance.session?.id {
             metadata.contentType = "image/jpg"
             storageRef.putData(imageData, metadata: metadata, completion: {
                 _, error in
@@ -159,8 +160,7 @@ class FirebaseManager {
                     return
                 }
                 else {
-                    storageRef.downloadURL(completion: {
-                        url, error in
+                    storageRef.downloadURL(completion: { [weak self] url, error in
                         if let metaImageUrl = url?.absoluteString {
                             let dict: [String: Any] = [
                                 "id": attendance.name,
@@ -171,8 +171,17 @@ class FirebaseManager {
                             Database.database().reference().child(ATTENDANCES).child(sessionId).child(attendance.name).updateChildValues(dict, withCompletionBlock: {
                                 error, _ in
                                 if error == nil {
-                                    print("Uploaded log time.")
-                                    completionHandler(nil)
+                                    self?.updateAttendanceSession(attendance: attendance) { error in
+                                        if error == nil {
+                                            completionHandler(nil)
+                                        }
+                                        else {
+                                            completionHandler(error)
+                                        }
+                                    }
+                                }
+                                else {
+                                    completionHandler(error)
                                 }
                             })
                         }
@@ -182,10 +191,28 @@ class FirebaseManager {
         }
     }
     
+    func updateAttendanceSession(attendance: Attendance, completion: @escaping (Error?) -> Void) {
+        guard let session = attendance.session
+        else {
+            return
+        }
+        let ref = Database.database().reference().child(SESSIONS).child(session.date)
+            .child(session.id).child("students")
+        let dict = [attendance.name: attendance.time]
+        ref.updateChildValues(dict) { error, _ in
+            if error == nil {
+                print("Uploaded log time.")
+                completion(nil)
+            }
+            else {
+                completion(error)
+            }
+        }
+    }
+    
     func getAttendanceOfSession(sessionId: String,
-                                studentId: String = globalUser?.id ?? "",
-                                completion: @escaping (StudentAttendance) -> Void)
-    {
+                                studentId _: String = globalUser?.id ?? "",
+                                completion: @escaping (StudentAttendance?) -> Void) {
         let ref = Database.database().reference().child(ATTENDANCES).child(sessionId).child(globalUser?.id ?? "")
         ref.observeSingleEvent(of: .value) { snapshot in
             if snapshot.exists() {
@@ -194,6 +221,12 @@ class FirebaseManager {
                 {
                     completion(studentAttendance)
                 }
+                else {
+                    completion(nil)
+                }
+            }
+            else {
+                completion(nil)
             }
         }
     }
@@ -331,7 +364,9 @@ class FirebaseManager {
                             print("Session ID: \(sessionId)")
                             print("Session Data: \(session)")
                             if let newSession = Session(dictionary: session),
-                               newSession.students.keys.contains(globalUser?.id ?? "") {
+                               newSession.students.map({
+                                   $0.studentId
+                               }).contains(globalUser?.id ?? "") {
                                 sessions.append(newSession)
                             }
                         }
