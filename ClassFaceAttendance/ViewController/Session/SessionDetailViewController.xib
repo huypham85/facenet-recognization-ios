@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SessionDetailViewController" customModule="P_Class_Attendance" customModuleProvider="target">
             <connections>
+                <outlet property="checkInButton" destination="43j-lv-lQg" id="OtC-wa-K5l"/>
                 <outlet property="checkInTimeLabel" destination="PCg-XQ-Qe1" id="vgV-wf-Z98"/>
+                <outlet property="checkedInLabel" destination="Vn5-l0-Isc" id="x7i-qs-yR9"/>
                 <outlet property="roomLabel" destination="Vu3-0u-sPd" id="MeB-ZX-uwp"/>
                 <outlet property="sessionTimeLabel" destination="YLf-hX-Vzj" id="FSB-gQ-YsQ"/>
                 <outlet property="subjectLabel" destination="SSM-L1-EvG" id="eJJ-yq-UWQ"/>
@@ -210,6 +212,12 @@
                         <constraint firstAttribute="trailing" secondItem="iBN-cf-0B0" secondAttribute="trailing" id="pYQ-kO-wVd"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bạn đã điểm danh lúc 18:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn5-l0-Isc">
+                    <rect key="frame" x="82.333333333333329" y="760" width="228.66666666666669" height="21.666666666666629"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <color key="textColor" systemColor="systemGreenColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43j-lv-lQg">
                     <rect key="frame" x="121.66666666666669" y="753.66666666666663" width="150" height="34.333333333333371"/>
                     <constraints>
@@ -234,8 +242,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qg5-Hx-Ugb" secondAttribute="bottom" id="2NS-fm-OD6"/>
                 <constraint firstItem="qg5-Hx-Ugb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2bk-f1-ZiJ"/>
                 <constraint firstItem="qg5-Hx-Ugb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="M0K-6w-dhJ"/>
+                <constraint firstItem="Vn5-l0-Isc" firstAttribute="centerY" secondItem="43j-lv-lQg" secondAttribute="centerY" id="PEJ-ZU-END"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="43j-lv-lQg" secondAttribute="bottom" constant="30" id="SOm-rL-N0q"/>
                 <constraint firstItem="43j-lv-lQg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WZx-dg-xld"/>
+                <constraint firstItem="Vn5-l0-Isc" firstAttribute="centerX" secondItem="43j-lv-lQg" secondAttribute="centerX" id="h1O-3Z-KNT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qg5-Hx-Ugb" secondAttribute="trailing" id="jwT-95-8FB"/>
             </constraints>
             <point key="canvasLocation" x="36" y="-11"/>
@@ -251,6 +261,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

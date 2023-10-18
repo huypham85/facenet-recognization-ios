@@ -10,17 +10,21 @@ import RealmSwift
 import UIKit
 
 class SessionDetailViewController: BaseViewController {
-    @IBOutlet var teacherNameLabel: UILabel!
-    @IBOutlet var roomLabel: UILabel!
-    @IBOutlet var checkInTimeLabel: UILabel!
-    @IBOutlet var sessionTimeLabel: UILabel!
-    @IBOutlet var subjectLabel: UILabel!
-
+    @IBOutlet private var teacherNameLabel: UILabel!
+    @IBOutlet private var roomLabel: UILabel!
+    @IBOutlet private var checkInTimeLabel: UILabel!
+    @IBOutlet private var sessionTimeLabel: UILabel!
+    @IBOutlet private weak var checkInButton: UIButton!
+    @IBOutlet private var subjectLabel: UILabel!
+    @IBOutlet private weak var checkedInLabel: UILabel!
     var session: Session?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        if globalUser?.role == .student {
+            checkAttendance()
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -32,6 +36,22 @@ class SessionDetailViewController: BaseViewController {
         roomLabel.text = session.roomNo
         teacherNameLabel.text = session.teacherName
     }
+    
+    private func checkAttendance() {
+        guard let session = session else { return }
+        firebaseManager.getAttendanceOfSession(sessionId: session.id) { [weak self] attendance in
+            if attendance.checkInTime != "" {
+                if let dateString = attendance.checkInTime.convertIsoStringToHour() {
+                    self?.checkedInLabel.isHidden = false
+                    self?.checkedInLabel.text = "Bạn đã điểm danh lúc \(dateString)"
+                    self?.checkInButton.isHidden = true
+                }
+            } else {
+                self?.checkInButton.isHidden = false
+                self?.checkedInLabel.isHidden = true
+            }
+        }
+    }
 
     @IBAction func checkInAction(_: Any) {
         firebaseManager.isStudentRegisteredFace(completion: { [weak self] in
@@ -41,7 +61,7 @@ class SessionDetailViewController: BaseViewController {
             if $0 {
                 if self.isCurrentTimeInRange(startTime: "\(session.startTime) \(session.date)",
                                              endTime: "\(session.endTime) \(session.date)") {
-                    setupCheckIn()
+                    self.setupCheckIn()
                 } else {
                     self.showAlertViewController(title: "Ngoài thời gian điểm danh",
                                                  actions: [],

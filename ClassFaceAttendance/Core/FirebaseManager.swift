@@ -182,6 +182,22 @@ class FirebaseManager {
         }
     }
     
+    func getAttendanceOfSession(sessionId: String,
+                                studentId: String = globalUser?.id ?? "",
+                                completion: @escaping (StudentAttendance) -> Void)
+    {
+        let ref = Database.database().reference().child(ATTENDANCES).child(sessionId).child(globalUser?.id ?? "")
+        ref.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.exists() {
+                if let attendanceData = snapshot.value as? [String: Any],
+                   let studentAttendance = StudentAttendance(dictionary: attendanceData, sessionId: sessionId)
+                {
+                    completion(studentAttendance)
+                }
+            }
+        }
+    }
+    
     func uploadCurrentFace(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
         let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
 

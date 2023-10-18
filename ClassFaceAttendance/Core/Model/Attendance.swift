@@ -11,7 +11,31 @@ struct Attendance {
     /// student's full name
     var fullName: String = userFullName ?? ""
     var time: String
-    //var confidence: String
+}
+
+struct StudentAttendance {
+    var sessionId: String?
+    var id: String
+    var photo: String
+    var name: String = userFullName ?? ""
+    var checkInTime: String
+    
+    init?(dictionary: [String: Any], sessionId: String) {
+        guard
+            let id = dictionary["id"] as? String,
+            let name = dictionary["name"] as? String,
+            let checkInTime = dictionary["checkInTime"] as? String,
+            let photo = dictionary["photo"] as? String
+        else {
+            return nil
+        }
+
+        self.name = name
+        self.id = id
+        self.checkInTime = checkInTime
+        self.photo = photo
+        self.sessionId = sessionId
+    }
 }
 
 //upload user
