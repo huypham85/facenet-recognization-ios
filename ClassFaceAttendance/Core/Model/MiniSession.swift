@@ -8,16 +8,11 @@
 import Foundation
 
 struct MiniSession {
-    var name: String
+    var sessionId: String
     var date: String
     
-    init?(dictionary: [String: Any], date: String) {
-        guard
-            let name = dictionary["name"] as? String
-        else {
-            return nil
-        }
-        self.name = name
+    init?(sessionId: String, date: String) {
+        self.sessionId = sessionId
         self.date = date
     }
 }

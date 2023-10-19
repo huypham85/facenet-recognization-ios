@@ -44,8 +44,10 @@ struct Course {
         // Parse sessions
         var sessions = [MiniSession]()
         for (sessionDate, sessionData) in sessionsDict {
-            if let session = MiniSession(dictionary: sessionData, date: sessionDate) {
-                sessions.append(session)
+            for (sessionId, _) in sessionData {
+                if let session = MiniSession(sessionId: sessionId, date: sessionDate) {
+                    sessions.append(session)
+                }
             }
         }
         self.sessions = sessions

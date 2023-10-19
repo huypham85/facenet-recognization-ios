@@ -35,4 +35,17 @@ extension Date {
         dateFormat.dateFormat = format
         return dateFormat.string(from: self as Date)
     }
+    
+    func isOverSessionTime(dateString: String) -> Bool {
+        formatter.dateFormat = "HH:mm yyyy-MM-dd"
+        if let targetDate = formatter.date(from: dateString) {
+            if self > targetDate {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
 }

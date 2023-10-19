@@ -76,11 +76,10 @@ extension StudentListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let student = filteredStudents[safe: indexPath.row] {
-            firebaseManager.getStudent(with: student.id) { [weak self] student in
-                let vc = StudentDetailViewController()
-                vc.student = student
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
+            let vc = StudentDetailViewController()
+            vc.session = session
+            vc.studentId = student.id
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

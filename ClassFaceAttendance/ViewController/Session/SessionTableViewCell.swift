@@ -26,6 +26,10 @@ class SessionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func prepareForReuse() {
+        backgroundSessionView.backgroundColor = .lightGray
+    }
 
     func setData(session: Session) {
         self.session = session
@@ -35,7 +39,7 @@ class SessionTableViewCell: UITableViewCell {
         endTime.text = session.endTime
         courseIdLabel.text = session.courseId
         subjectLabel.text = session.courseName
-
+        backgroundSessionView.backgroundColor = .lightGray
         setCheckedInStatus()
     }
 
@@ -43,11 +47,16 @@ class SessionTableViewCell: UITableViewCell {
         if globalUser?.role == .student {
             if let attendance = session?.students.first(where: {
                 $0.studentId == globalUser?.id
-            }),
-                attendance.checkedInTime != ""
-            {
+            }), attendance.checkedInTime != "" {
                 backgroundSessionView.backgroundColor = .lightGreen
+            } else {
+                if let session = session,
+                   Date().isOverSessionTime(dateString: "\(session.endTime) \(session.date)") {
+                    backgroundSessionView.backgroundColor = .appPurple
+                }
             }
         }
     }
+
+    
 }

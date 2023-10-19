@@ -40,6 +40,7 @@ class SessionDetailViewController: BaseViewController {
     private func checkAttendance() {
         checkedInLabel.isHidden = true
         guard let session = session else { return }
+        ProgressHelper.showLoading()
         firebaseManager.getAttendanceOfSession(sessionId: session.id) { [weak self] attendance in
             if let attendance = attendance {
                 if let dateString = attendance.checkInTime.convertIsoStringToDateHour() {
@@ -48,9 +49,17 @@ class SessionDetailViewController: BaseViewController {
                     self?.checkInButton.isHidden = true
                 }
             } else {
-                self?.checkInButton.isHidden = false
-                self?.checkedInLabel.isHidden = true
+                if Date().isOverSessionTime(dateString: "\(session.endTime) \(session.date)") {
+                    self?.checkInButton.isHidden = true
+                    self?.checkedInLabel.isHidden = false
+                    self?.checkedInLabel.text = "Vắng mặt"
+                    self?.checkedInLabel.textColor = .systemRed
+                } else {
+                    self?.checkInButton.isHidden = false
+                    self?.checkedInLabel.isHidden = true
+                }
             }
+            ProgressHelper.hideLoading()
         }
     }
 

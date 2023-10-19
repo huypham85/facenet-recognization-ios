@@ -14,16 +14,28 @@ class StudentDetailViewController: BaseViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var dobLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var currentCourseLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var logOutView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
-    
-    var student: Student?
+    var studentId: String?
+    private var student: Student?
+    private var course: Course?
+    var session: Session?
+    var navigateFromSession = true
+    private var studentAttendances: [StudentAttendance] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        // Do any additional setup after loading the view.
+        getStudent()
+        if globalUser?.role == .teacher {
+            setupCourseAttendance()
+        } else {
+            currentCourseLabel.isHidden = true
+            tableView.isHidden = true
+        }
     }
     
     @IBAction func logOutAction(_ sender: Any) {
@@ -35,6 +47,18 @@ class StudentDetailViewController: BaseViewController {
         }
     }
     
+    private func getStudent() {
+        let id = navigateFromSession ? studentId : globalUser?.id
+        if let id = id {
+            ProgressHelper.showLoading()
+            firebaseManager.getStudent(with: id) { [weak self] student in
+                self?.student = student
+                self?.setupView()
+                ProgressHelper.hideLoading()
+            }
+        }
+    }
+
     private func setupView() {
         guard let student = student else { return }
         profileImageView.sd_setImage(with: URL(string: student.photo))
@@ -44,18 +68,33 @@ class StudentDetailViewController: BaseViewController {
         emailLabel.text = student.email
         dobLabel.text = student.dob
         genderLabel.text = student.gender
-        
+        if navigateFromSession {
+            logOutView.isHidden = true
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupCourseAttendance() {
+        currentCourseLabel.isHidden = false
+        tableView.isHidden = false
     }
-    */
+    
+    private func fetchCourse() {
+        if let sessionId = session?.courseId {
+            firebaseManager.getCourseFromSession(courseId: sessionId) { [weak self] course in
+                self?.course = course
+//                let sessionIds = course.sessions.map { $0.sessionId }
+                for session in course.sessions {
+                    firebaseManager.getAttendanceOfSession(sessionId: session.sessionId, studentId: self?.student?.id ?? "") { attendance in
+                        if let attendance = attendance {
+                            
+                        } else {
+                            
+                        }
+                    }
+                }
+                self?.tableView.reloadData()
+            }
+        }
+    }
 
 }

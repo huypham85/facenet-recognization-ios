@@ -15,6 +15,7 @@ struct Attendance {
 
 struct StudentAttendance {
     var sessionId: String?
+    /// student's id
     var id: String
     var photo: String
     var name: String = userFullName ?? ""

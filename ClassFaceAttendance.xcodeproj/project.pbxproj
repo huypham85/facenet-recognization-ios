@@ -52,6 +52,7 @@
 		69891E182AD554BB00FD4161 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891E172AD554BB00FD4161 /* UITableView+Extension.swift */; };
 		69891E1A2AD554E700FD4161 /* UINib+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891E192AD554E700FD4161 /* UINib+Extension.swift */; };
 		69F4E4A12ADFF6EC00E4C21D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F4E4A02ADFF6EC00E4C21D /* String+Extension.swift */; };
+		69F4E4A52AE11DA300E4C21D /* ProgressHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F4E4A42AE11DA300E4C21D /* ProgressHelper.swift */; };
 		69FF2CF12AD6B416008735FD /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FF2CEF2AD6B416008735FD /* SessionDetailViewController.swift */; };
 		69FF2CF22AD6B416008735FD /* SessionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69FF2CF02AD6B416008735FD /* SessionDetailViewController.xib */; };
 		69FF2CF42AD6BDD4008735FD /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FF2CF32AD6BDD4008735FD /* UIView+Designable.swift */; };
@@ -142,6 +143,7 @@
 		69891E172AD554BB00FD4161 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		69891E192AD554E700FD4161 /* UINib+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINib+Extension.swift"; sourceTree = "<group>"; };
 		69F4E4A02ADFF6EC00E4C21D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		69F4E4A42AE11DA300E4C21D /* ProgressHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHelper.swift; sourceTree = "<group>"; };
 		69FF2CEF2AD6B416008735FD /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		69FF2CF02AD6B416008735FD /* SessionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailViewController.xib; sourceTree = "<group>"; };
 		69FF2CF32AD6BDD4008735FD /* UIView+Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				2D0644082AD07664004A3A65 /* Extensions */,
 				FBA1B4852519052D00A31DF7 /* CustomButton.swift */,
 				2D87DA182AD84A26001C9A8D /* Logger.swift */,
+				69F4E4A42AE11DA300E4C21D /* ProgressHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				69FF2CF42AD6BDD4008735FD /* UIView+Designable.swift in Sources */,
 				FBA1B4E2251905A100A31DF7 /* CreateUserData.swift in Sources */,
 				69891E002AD4F26100FD4161 /* MainViewController.swift in Sources */,
+				69F4E4A52AE11DA300E4C21D /* ProgressHelper.swift in Sources */,
 				FB7502B825198B7100193FF9 /* VectorHelper.swift in Sources */,
 				FBA1B4C72519058B00A31DF7 /* FrameViewController.swift in Sources */,
 				FB3D0FBE251DAC760059CCB6 /* Date.swift in Sources */,
