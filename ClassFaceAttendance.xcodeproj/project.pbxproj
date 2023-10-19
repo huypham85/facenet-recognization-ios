@@ -16,6 +16,8 @@
 		2D0644122AD3125B004A3A65 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644112AD3125B004A3A65 /* Session.swift */; };
 		2D0644142AD31BA7004A3A65 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644132AD31BA7004A3A65 /* Teacher.swift */; };
 		2D0644162AD3240C004A3A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644152AD3240C004A3A65 /* User.swift */; };
+		2D87501D2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87501B2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift */; };
+		2D87501E2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87501C2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib */; };
 		2D87DA172AD849E0001C9A8D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA162AD849E0001C9A8D /* BaseViewController.swift */; };
 		2D87DA192AD84A26001C9A8D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA182AD84A26001C9A8D /* Logger.swift */; };
 		2D87DA1B2AD84ABC001C9A8D /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA1A2AD84ABC001C9A8D /* NSObject+.swift */; };
@@ -106,6 +108,8 @@
 		2D0644112AD3125B004A3A65 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		2D0644132AD31BA7004A3A65 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		2D0644152AD3240C004A3A65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2D87501B2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAttendanceTableViewCell.swift; sourceTree = "<group>"; };
+		2D87501C2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionAttendanceTableViewCell.xib; sourceTree = "<group>"; };
 		2D87DA162AD849E0001C9A8D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2D87DA182AD84A26001C9A8D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		2D87DA1A2AD84ABC001C9A8D /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 			children = (
 				2D87DA322ADBB820001C9A8D /* StudentDetailViewController.swift */,
 				2D87DA332ADBB820001C9A8D /* StudentDetailViewController.xib */,
+				2D87501B2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift */,
+				2D87501C2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib */,
 			);
 			path = StudentDetail;
 			sourceTree = "<group>";
@@ -550,6 +556,7 @@
 				69FF2CF22AD6B416008735FD /* SessionDetailViewController.xib in Resources */,
 				2D87DA302ADB083D001C9A8D /* StudentListTableViewCell.xib in Resources */,
 				69891E0B2AD4FD5B00FD4161 /* ProfileViewController.xib in Resources */,
+				2D87501E2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib in Resources */,
 				69891E072AD4FCD200FD4161 /* CalendarHomeViewController.xib in Resources */,
 				2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */,
 				69891E0F2AD4FD8300FD4161 /* RegisterFaceViewController.xib in Resources */,
@@ -632,6 +639,7 @@
 				FBA1B4C82519058B00A31DF7 /* LogTableViewCell.swift in Sources */,
 				2D87DA272ADAF4B7001C9A8D /* StudentListViewController.swift in Sources */,
 				FBA1B4D12519058B00A31DF7 /* VideoView.swift in Sources */,
+				2D87501D2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift in Sources */,
 				FB3B2E1C2529AE7B00117249 /* K-dTree.swift in Sources */,
 				951EB35422B698F100A9533B /* tfWrap.mm in Sources */,
 				2D87DA2C2ADB05D8001C9A8D /* KeyboardManager.swift in Sources */,

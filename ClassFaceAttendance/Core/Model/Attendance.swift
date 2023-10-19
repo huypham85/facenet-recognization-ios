@@ -21,6 +21,14 @@ struct StudentAttendance {
     var name: String = userFullName ?? ""
     var checkInTime: String
     
+    init(sessionId: String, id: String, photo: String, name: String, checkInTime: String) {
+        self.sessionId = sessionId
+        self.id = id
+        self.photo = photo
+        self.name = name
+        self.checkInTime = checkInTime
+    }
+    
     init?(dictionary: [String: Any], sessionId: String) {
         guard
             let id = dictionary["id"] as? String,

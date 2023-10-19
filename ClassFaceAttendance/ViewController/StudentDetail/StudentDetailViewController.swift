@@ -8,25 +8,24 @@
 import UIKit
 
 class StudentDetailViewController: BaseViewController {
-
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var classLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var dobLabel: UILabel!
-    @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var currentCourseLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var logOutButton: UIButton!
-    @IBOutlet weak var logOutView: UIView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var idLabel: UILabel!
+    @IBOutlet var classLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var dobLabel: UILabel!
+    @IBOutlet var genderLabel: UILabel!
+    @IBOutlet var currentCourseLabel: UILabel!
+    @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var logOutButton: UIButton!
+    @IBOutlet var logOutView: UIView!
+    @IBOutlet var nameLabel: UILabel!
     var studentId: String?
     private var student: Student?
     private var course: Course?
     var session: Session?
     var navigateFromSession = true
     private var studentAttendances: [StudentAttendance] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getStudent()
@@ -37,16 +36,16 @@ class StudentDetailViewController: BaseViewController {
             tableView.isHidden = true
         }
     }
-    
+
     @IBAction func logOutAction(_ sender: Any) {
         firebaseManager.logOut()
         firebaseManager.hasLogInSession {
             if !$0 {
-                Application.shared.changeRootViewMainWindow(viewController: LoginViewController.create(),animated: true)
+                Application.shared.changeRootViewMainWindow(viewController: LoginViewController.create(), animated: true)
             }
         }
     }
-    
+
     private func getStudent() {
         let id = navigateFromSession ? studentId : globalUser?.id
         if let id = id {
@@ -71,30 +70,51 @@ class StudentDetailViewController: BaseViewController {
         if navigateFromSession {
             logOutView.isHidden = true
         }
+        if globalUser?.role == .teacher {
+            setupCourseAttendance()
+        } else {
+            currentCourseLabel.isHidden = true
+            tableView.isHidden = true
+        }
     }
-    
+
     private func setupCourseAttendance() {
         currentCourseLabel.isHidden = false
         tableView.isHidden = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        fetchCourse()
     }
-    
+
     private func fetchCourse() {
         if let sessionId = session?.courseId {
             firebaseManager.getCourseFromSession(courseId: sessionId) { [weak self] course in
                 self?.course = course
-//                let sessionIds = course.sessions.map { $0.sessionId }
+                let dispatchGroup = DispatchGroup()
+
                 for session in course.sessions {
-                    firebaseManager.getAttendanceOfSession(sessionId: session.sessionId, studentId: self?.student?.id ?? "") { attendance in
+                    dispatchGroup.enter()
+
+                    firebaseManager.getAttendanceOfSession(sessionId: session.sessionId, studentId: self?.student?.id ?? "") { [weak self] attendance in
                         if let attendance = attendance {
-                            
+                            self?.studentAttendances.append(attendance)
                         } else {
-                            
+                            let newAttendance = StudentAttendance(sessionId: sessionId, id: self?.studentId ?? "", photo: "", name: self?.student?.name ?? "", checkInTime: "")
+                            self?.studentAttendances.append(newAttendance)
                         }
+
+                        dispatchGroup.leave()
                     }
                 }
-                self?.tableView.reloadData()
+
+                dispatchGroup.notify(queue: .main) {
+                    self?.tableView.reloadData()
+                }
             }
         }
     }
+}
 
+extension StudentDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
 }
