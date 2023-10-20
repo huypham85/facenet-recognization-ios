@@ -166,7 +166,8 @@ class FirebaseManager {
                                 "id": attendance.name,
                                 "name": attendance.fullName,
                                 "photo": metaImageUrl,
-                                "checkInTime": attendance.time
+                                "checkInTime": attendance.time,
+                                "sessionTime": attendance.sessionStartTime
                             ]
                             Database.database().reference().child(ATTENDANCES).child(sessionId).child(attendance.name).updateChildValues(dict, withCompletionBlock: {
                                 error, _ in
@@ -211,9 +212,9 @@ class FirebaseManager {
     }
     
     func getAttendanceOfSession(sessionId: String,
-                                studentId _: String = globalUser?.id ?? "",
+                                studentId: String = globalUser?.id ?? "",
                                 completion: @escaping (StudentAttendance?) -> Void) {
-        let ref = Database.database().reference().child(ATTENDANCES).child(sessionId).child(globalUser?.id ?? "")
+        let ref = Database.database().reference().child(ATTENDANCES).child(sessionId).child(studentId)
         ref.observeSingleEvent(of: .value) { snapshot in
             if snapshot.exists() {
                 if let attendanceData = snapshot.value as? [String: Any],
@@ -363,17 +364,17 @@ class FirebaseManager {
                         if let session = sessionData as? [String: Any] {
                             print("Session ID: \(sessionId)")
                             print("Session Data: \(session)")
-                            if let newSession = Session(dictionary: session),
-                               newSession.students.map({
-                                   $0.studentId
-                               }).contains(globalUser?.id ?? "") {
-                                sessions.append(newSession)
+                            if let newSession = Session(dictionary: session) {
+                                if newSession.students.map({ $0.studentId })
+                                    .contains(globalUser?.id ?? "") || newSession.teacherId == globalUser?.id
+                                {
+                                    sessions.append(newSession)
+                                }
                             }
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 print("No sessions found for the specified date.")
             }
             completion(sessions)

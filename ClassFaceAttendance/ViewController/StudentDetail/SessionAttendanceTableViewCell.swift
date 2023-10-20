@@ -23,7 +23,8 @@ class SessionAttendanceTableViewCell: UITableViewCell {
     }
     
     func setData(studentAttendance: StudentAttendance) {
-        sessionCheckInTime.text = studentAttendance.checkInTime
+        sessionCheckInTime.text = studentAttendance.checkInTime.convertIsoStringToHour()
+        sessionDate.text = studentAttendance.sessionStartTime
     }
     
 }

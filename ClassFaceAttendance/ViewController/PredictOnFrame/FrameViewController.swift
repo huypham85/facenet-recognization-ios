@@ -144,19 +144,19 @@ class FrameViewController: UIViewController {
         let today = Date()
         formatter.dateFormat = DATE_FORMAT
         let timestamp = formatter.string(from: today)
-        let user = Attendance(session: currentSession, name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
-        showDiaglog3s(name: TAKE_PHOTO_NAME, true)
-        
-        //        api.uploadLogs(user: user) { error in
-        //            if error != nil {
-        //                self.showDiaglog3s(name: TAKE_PHOTO_NAME, false)
-        //            }
-        //        }
-        firebaseManager.uploadLogTimes(attendance: user) { error in
-            if error != nil {
-                self.showDiaglog3s(name: TAKE_PHOTO_NAME, false)
-            }
-        }
+//        let user = Attendance(session: currentSession, name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
+//        showDiaglog3s(name: TAKE_PHOTO_NAME, true)
+//
+//        //        api.uploadLogs(user: user) { error in
+//        //            if error != nil {
+//        //                self.showDiaglog3s(name: TAKE_PHOTO_NAME, false)
+//        //            }
+//        //        }
+//        firebaseManager.uploadLogTimes(attendance: user) { error in
+//            if error != nil {
+//                self.showDiaglog3s(name: TAKE_PHOTO_NAME, false)
+//            }
+//        }
         
     }
     
@@ -324,7 +324,7 @@ extension FrameViewController {
     
     func getLabel(image: UIImage?) -> String {
         var lb = UNKNOWN
-        guard let frame = image else { return UNKNOWN }
+        guard let frame = image, let currentSession else { return UNKNOWN }
         let res = vectorHelper.getResult(image: frame)
         lb = "\(res.name): \(res.distance)%"
         let result = res.name
@@ -339,7 +339,7 @@ extension FrameViewController {
             } else {
                 numberOfFramesDeteced += 1
             }
-            let detectedUser = Attendance(session: currentSession,name: label, image: frame, time: timestamp)
+            let detectedUser = Attendance(session: currentSession,name: label, image: frame, time: timestamp, sessionStartTime: "\(currentSession.date)")
             if numberOfFramesDeteced > validFrames  {
                 print("Detected")
                 if localUserList.count == 0 {

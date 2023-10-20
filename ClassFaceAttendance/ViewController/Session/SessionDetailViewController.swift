@@ -24,6 +24,9 @@ class SessionDetailViewController: BaseViewController {
         setupView()
         if globalUser?.role == .student {
             checkAttendance()
+        } else {
+            checkInButton.isHidden = true
+            checkedInLabel.isHidden = true
         }
         // Do any additional setup after loading the view.
     }

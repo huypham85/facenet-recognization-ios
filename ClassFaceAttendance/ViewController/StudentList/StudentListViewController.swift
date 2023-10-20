@@ -70,7 +70,9 @@ extension StudentListViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StudentListTableViewCell.cellId) as? StudentListTableViewCell else {
             return UITableViewCell()
         }
-        cell.setData(student: filteredStudents[safe: indexPath.row])
+        if let session = session {
+            cell.setData(student: filteredStudents[safe: indexPath.row], session: session)
+        }
         return cell
     }
     

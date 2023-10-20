@@ -2,7 +2,7 @@
 import Foundation
 import RealmSwift
 
-//local user
+// local user
 struct Attendance {
     var session: Session?
     /// student's id
@@ -10,7 +10,9 @@ struct Attendance {
     var image: UIImage
     /// student's full name
     var fullName: String = userFullName ?? ""
+    /// check in time
     var time: String
+    var sessionStartTime: String
 }
 
 struct StudentAttendance {
@@ -20,21 +22,27 @@ struct StudentAttendance {
     var photo: String
     var name: String = userFullName ?? ""
     var checkInTime: String
-    
-    init(sessionId: String, id: String, photo: String, name: String, checkInTime: String) {
+    var sessionStartTime: String
+    var sessionStartDate: Date?
+
+    init(sessionId: String, id: String, photo: String, name: String, checkInTime: String, sessionStartTime: String) {
         self.sessionId = sessionId
         self.id = id
         self.photo = photo
         self.name = name
         self.checkInTime = checkInTime
+        self.sessionStartTime = sessionStartTime
+        formatter.dateFormat = "yyyy-MM-dd"
+        self.sessionStartDate = formatter.date(from: sessionStartTime) ?? Date()
     }
-    
+
     init?(dictionary: [String: Any], sessionId: String) {
         guard
             let id = dictionary["id"] as? String,
             let name = dictionary["name"] as? String,
             let checkInTime = dictionary["checkInTime"] as? String,
-            let photo = dictionary["photo"] as? String
+            let photo = dictionary["photo"] as? String,
+            let sessionStartTime = dictionary["sessionStartTime"] as? String
         else {
             return nil
         }
@@ -44,10 +52,13 @@ struct StudentAttendance {
         self.checkInTime = checkInTime
         self.photo = photo
         self.sessionId = sessionId
+        self.sessionStartTime = sessionStartTime
+        formatter.dateFormat = "HH:mm yyyy-MM-dd"
+        self.sessionStartDate = formatter.date(from: sessionStartTime)
     }
 }
 
-//upload user
+// upload user
 struct Attendances: Codable {
     var name: String
     var imageURL: String

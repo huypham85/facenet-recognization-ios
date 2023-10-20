@@ -29,19 +29,16 @@ class StudentDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getStudent()
-        if globalUser?.role == .teacher {
-            setupCourseAttendance()
-        } else {
-            currentCourseLabel.isHidden = true
-            tableView.isHidden = true
-        }
     }
 
-    @IBAction func logOutAction(_ sender: Any) {
+    @IBAction func logOutAction(_: Any) {
         firebaseManager.logOut()
         firebaseManager.hasLogInSession {
             if !$0 {
-                Application.shared.changeRootViewMainWindow(viewController: LoginViewController.create(), animated: true)
+                Application.shared.changeRootViewMainWindow(
+                    viewController: LoginViewController.create(),
+                    animated: true
+                )
             }
         }
     }
@@ -83,24 +80,40 @@ class StudentDetailViewController: BaseViewController {
         tableView.isHidden = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.registerCell(SessionAttendanceTableViewCell.self)
         fetchCourse()
     }
 
     private func fetchCourse() {
-        if let sessionId = session?.courseId {
-            firebaseManager.getCourseFromSession(courseId: sessionId) { [weak self] course in
-                self?.course = course
+        if let courseId = session?.courseId {
+            firebaseManager.getCourseFromSession(courseId: courseId) { [weak self] currentCourse in
+                guard let self,
+                      let student = self.student
+                else { return }
+                self.course = currentCourse
+                self.currentCourseLabel.text = currentCourse.name
                 let dispatchGroup = DispatchGroup()
-
-                for session in course.sessions {
+                for miniSession in currentCourse.sessions {
                     dispatchGroup.enter()
 
-                    firebaseManager.getAttendanceOfSession(sessionId: session.sessionId, studentId: self?.student?.id ?? "") { [weak self] attendance in
+                    firebaseManager
+                        .getAttendanceOfSession(sessionId: miniSession.sessionId,
+                                                studentId: student.id)
+                    { attendance in
+
                         if let attendance = attendance {
-                            self?.studentAttendances.append(attendance)
+                            self.studentAttendances.append(attendance)
                         } else {
-                            let newAttendance = StudentAttendance(sessionId: sessionId, id: self?.studentId ?? "", photo: "", name: self?.student?.name ?? "", checkInTime: "")
-                            self?.studentAttendances.append(newAttendance)
+                            // create empty attendance
+                            let newAttendance = StudentAttendance(
+                                sessionId: miniSession.sessionId,
+                                id: self.studentId ?? "",
+                                photo: "",
+                                name: student.name,
+                                checkInTime: "",
+                                sessionStartTime: "\(miniSession.date)"
+                            )
+                            self.studentAttendances.append(newAttendance)
                         }
 
                         dispatchGroup.leave()
@@ -108,13 +121,32 @@ class StudentDetailViewController: BaseViewController {
                 }
 
                 dispatchGroup.notify(queue: .main) {
-                    self?.tableView.reloadData()
+                    self.studentAttendances.sort {
+                        $0.sessionStartDate ?? Date() < $1.sessionStartDate ?? Date()
+                    }
+                    self.tableView.reloadData()
                 }
             }
         }
     }
 }
 
+
 extension StudentDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
-}
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return studentAttendances.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SessionAttendanceTableViewCell.cellId) as? SessionAttendanceTableViewCell else {
+            return UITableViewCell()
+        }
+        if let attendance = studentAttendances[safe: indexPath.row] {
+            cell.setData(studentAttendance: attendance)
+        }
+        return cell
+    }
+    
+
+ }
