@@ -13,4 +13,26 @@ struct Teacher {
     var gender: String
     var email: String
     var courseIds: [String]
+    var deviceId: String?
+    
+    init?(dictionary: [String: Any]) {
+        guard
+            let id = dictionary["id"] as? String,
+            let name = dictionary["name"] as? String,
+            let email = dictionary["email"] as? String,
+            let gender = dictionary["gender"] as? String,
+            let coursesDict = dictionary["courses"] as? [String: Bool]
+        else {
+            return nil
+        }
+
+        self.id = id
+        self.name = name
+        self.email = email
+        self.gender = gender
+        self.courseIds = Array(coursesDict.keys)
+        
+        let deviceId = dictionary["deviceId"] as? String
+        self.deviceId = deviceId
+    }
 }

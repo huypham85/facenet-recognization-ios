@@ -15,6 +15,21 @@ struct Attendance {
     var sessionStartTime: String
 }
 
+struct ManualAttendance {
+    var session: Session?
+    /// student's id
+    var name: String
+    /// student's full name
+    var fullName: String
+    /// check in time
+    var time: String = {
+        formatter.dateFormat = DATE_FORMAT
+        return formatter.string(from: Date())
+    }()
+    var sessionStartTime: String
+}
+
+/// response from attendance DB
 struct StudentAttendance {
     var sessionId: String?
     /// student's id
@@ -41,16 +56,21 @@ struct StudentAttendance {
             let id = dictionary["id"] as? String,
             let name = dictionary["name"] as? String,
             let checkInTime = dictionary["checkInTime"] as? String,
-            let photo = dictionary["photo"] as? String,
             let sessionStartTime = dictionary["sessionStartTime"] as? String
         else {
             return nil
         }
+        
+        if let photo = dictionary["photo"] as? String {
+            self.photo = photo
+        } else {
+            self.photo = ""
+        }
+
 
         self.name = name
         self.id = id
         self.checkInTime = checkInTime
-        self.photo = photo
         self.sessionId = sessionId
         self.sessionStartTime = sessionStartTime
         formatter.dateFormat = "HH:mm yyyy-MM-dd"

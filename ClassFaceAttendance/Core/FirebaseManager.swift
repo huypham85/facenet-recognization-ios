@@ -167,7 +167,7 @@ class FirebaseManager {
                                 "name": attendance.fullName,
                                 "photo": metaImageUrl,
                                 "checkInTime": attendance.time,
-                                "sessionTime": attendance.sessionStartTime
+                                "sessionStartTime": attendance.sessionStartTime
                             ]
                             Database.database().reference().child(ATTENDANCES).child(sessionId).child(attendance.name).updateChildValues(dict, withCompletionBlock: {
                                 error, _ in
@@ -192,7 +192,51 @@ class FirebaseManager {
         }
     }
     
+    func uploadManualCheckIn(attendance: ManualAttendance, completionHandler: @escaping (Error?) -> Void) {
+        let dict: [String: Any] = [
+            "id": attendance.name,
+            "name": attendance.fullName,
+            "photo": "",
+            "checkInTime": attendance.time,
+            "sessionStartTime": attendance.sessionStartTime
+        ]
+        Database.database().reference().child(ATTENDANCES).child(attendance.session?.id ?? "").child(attendance.name).updateChildValues(dict, withCompletionBlock: { [weak self] error, _ in
+            if error == nil {
+                self?.updateManualAttendanceSession(attendance: attendance) { error in
+                    if error == nil {
+                        completionHandler(nil)
+                    }
+                    else {
+                        completionHandler(error)
+                    }
+                }
+            }
+            else {
+                completionHandler(error)
+            }
+        })
+    }
+    
     func updateAttendanceSession(attendance: Attendance, completion: @escaping (Error?) -> Void) {
+        guard let session = attendance.session
+        else {
+            return
+        }
+        let ref = Database.database().reference().child(SESSIONS).child(session.date)
+            .child(session.id).child("students")
+        let dict = [attendance.name: attendance.time]
+        ref.updateChildValues(dict) { error, _ in
+            if error == nil {
+                print("Uploaded log time.")
+                completion(nil)
+            }
+            else {
+                completion(error)
+            }
+        }
+    }
+    
+    func updateManualAttendanceSession(attendance: ManualAttendance, completion: @escaping (Error?) -> Void) {
         guard let session = attendance.session
         else {
             return
@@ -395,7 +439,7 @@ class FirebaseManager {
         }
     }
     
-    // MARK: Student
+    // MARK: Student and Teacher
 
     func getStudent(with studentId: String, completion: @escaping (Student) -> Void) {
         let ref = Database.database().reference().child(STUDENT_CHILD)
@@ -406,6 +450,27 @@ class FirebaseManager {
                 completion(student)
             }
         }
+    }
+    
+    func getTeacher(with teacherId: String, completion: @escaping (Teacher) -> Void) {
+        let ref = Database.database().reference().child(TEACHER_CHILD)
+        
+        ref.child(teacherId).observeSingleEvent(of: .value) { snapshot in
+            if let teacherData = snapshot.value as? [String: Any],
+               let teacher = Teacher(dictionary: teacherData) {
+                completion(teacher)
+            }
+        }
+    }
+    
+    func uploadTeacherDeviceName(deviceName: String, teacherId: String) {
+        let dict = ["deviceId": deviceName]
+        Database.database().reference().child(TEACHER_CHILD).child(teacherId).updateChildValues(dict, withCompletionBlock: {
+            error, _ in
+            if error == nil {
+                print("update device name.")
+            }
+        })
     }
     
     func isStudentRegisteredFace(completion: @escaping (Bool) -> Void) {

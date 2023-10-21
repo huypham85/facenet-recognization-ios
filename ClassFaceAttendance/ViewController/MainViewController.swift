@@ -5,10 +5,12 @@
 //  Created by HuyPT3 on 10/10/2023.
 //
 
+import CoreBluetooth
 import UIKit
 
 class MainViewController: BaseViewController {
     let mainTabBarController = MainTabBarController()
+    var peripheralManager: CBPeripheralManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,23 +27,45 @@ class MainViewController: BaseViewController {
             mainTabBarController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainTabBarController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-        
     }
-    
+
     private func checkUserRole() {
-        firebaseManager.checkUserRole { role in
+        guard let globalUser = globalUser else {
+            return
+        }
+        firebaseManager.checkUserRole { [weak self] role in
             switch role {
             case .student:
-                break
+                firebaseManager.getStudent(with: globalUser.id) { student in
+                    userFullName = student.name
+                }
             case .teacher:
-                break
+                self?.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
             }
-            guard let globalUser = globalUser else {
-                return
-            }
-            firebaseManager.getStudent(with: globalUser.id) { student in
-                userFullName = student.name
-            }
+        }
+    }
+}
+
+extension MainViewController: CBPeripheralManagerDelegate {
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+        if peripheral.state == .poweredOn {
+            let serviceUUID = CBUUID(string: UUID().uuidString)
+            let service = CBMutableService(type: serviceUUID, primary: true)
+            peripheralManager?.add(service)
+
+            peripheralManager?.startAdvertising([
+                CBAdvertisementDataServiceUUIDsKey: [serviceUUID],
+                CBAdvertisementDataLocalNameKey: globalUser?.id ?? "teacher device",
+            ])
+            firebaseManager.uploadTeacherDeviceName(deviceName: globalUser?.id ?? "", teacherId: globalUser?.id ?? "")
+        }
+    }
+
+    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+        if error == nil {
+            print("Peripheral is advertising")
+        } else {
+            print("Error advertising peripheral: \(error!.localizedDescription)")
         }
     }
 }

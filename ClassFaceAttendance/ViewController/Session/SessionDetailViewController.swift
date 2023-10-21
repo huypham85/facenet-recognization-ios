@@ -129,10 +129,11 @@ class SessionDetailViewController: BaseViewController {
         loadVectorFromDB()
     }
 
-    func loadVectorFromDB() {
+    private func loadVectorFromDB() {
         if NetworkChecker.isConnectedToInternet {
             ProgressHUD.show()
             firebaseManager.loadAllKMeansVector { [weak self] result in
+                guard let self else { return }
                 kMeanVectors = result
                 print("Number of k-Means vectors: \(kMeanVectors.count)")
                 // save to local data
@@ -142,9 +143,16 @@ class SessionDetailViewController: BaseViewController {
                 for vector in kMeanVectors {
                     vectorHelper.saveVector(vector)
                 }
-                ProgressHUD.dismiss()
-                let vc = FrameViewController.create(session: self?.session)
-                self?.present(vc, animated: true)
+                firebaseManager.getTeacher(with: self.session?.teacherId ?? "") { teacher in
+                    if let teacherDeviceId = teacher.deviceId {
+                        let vc = FrameViewController.create(session: self.session, teacherDeviceId: teacherDeviceId)
+                        self.present(vc, animated: true)
+                    } else {
+                        self.showAlertViewController(title: "Giảng viên môn học này chưa đăng nhập vào app. Vui lòng đợi!", actions: [], cancel: "OK")
+                    }
+                    ProgressHUD.dismiss()
+                }
+                
             }
         } else {
             // for local data

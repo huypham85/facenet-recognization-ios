@@ -16,7 +16,6 @@ class MainTabBarController: UITabBarController {
         let viewLogViewController = ViewLogViewController.create()
         let registerFaceViewController = HomeViewController.create()
         let profileViewController = StudentDetailViewController()
-        profileViewController.navigateFromSession = false
 
         // Create an array of view controllers
         let viewControllers = [

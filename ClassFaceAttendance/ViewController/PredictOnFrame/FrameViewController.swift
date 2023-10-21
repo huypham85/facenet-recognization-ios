@@ -4,6 +4,9 @@ import Vision
 import AVFoundation
 import FaceCropper
 import ProgressHUD
+import CoreBluetooth
+import RxSwift
+import RxCocoa
 
 class FrameViewController: UIViewController {
     
@@ -14,6 +17,14 @@ class FrameViewController: UIViewController {
     //    private var faceDetectionRequest: VNRequest!
     private var devicePosition: AVCaptureDevice.Position = .front
     private var currentSession: Session?
+    private var teacherDeviceId: String?
+    private var detectedTeacherDevice = false {
+        didSet {
+            if detectedTeacherDevice {
+                setupVision()
+            }
+        }
+    }
     
     // Session Management
     private enum SessionSetupResult {
@@ -35,6 +46,8 @@ class FrameViewController: UIViewController {
     
     private var requests = [VNRequest]()
     
+    private var centralManager: CBCentralManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) 
@@ -44,10 +57,11 @@ class FrameViewController: UIViewController {
         fnet.load()
         print("Number of kMeans: \(kMeanVectors.count)")
         session = AVCaptureSession()
+        centralManager = CBCentralManager(delegate: self, queue: nil)
         previewView.session = session
         
-        // Set up Vision Request
-        setupVision()
+        // Set up Vision Request and recognize face
+//        setupVision()
         
         switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video){
         case .authorized:
@@ -339,7 +353,7 @@ extension FrameViewController {
             } else {
                 numberOfFramesDeteced += 1
             }
-            let detectedUser = Attendance(session: currentSession,name: label, image: frame, time: timestamp, sessionStartTime: "\(currentSession.date)")
+            let detectedUser = Attendance(session: currentSession,name: label, image: frame, time: timestamp, sessionStartTime: currentSession.date)
             if numberOfFramesDeteced > validFrames  {
                 print("Detected")
                 if localUserList.count == 0 {
@@ -516,10 +530,26 @@ extension FrameViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     
 }
 
+extension FrameViewController: CBCentralManagerDelegate {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        if central.state == .poweredOn {
+            central.scanForPeripherals(withServices: nil, options: nil)
+        }
+    }
+
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        print("Periferal \(peripheral.name) - \(peripheral.identifier.uuidString)")
+        if peripheral.name == teacherDeviceId {
+            detectedTeacherDevice = true
+        }
+    }
+}
+
 extension FrameViewController {
-    static func create(session: Session?) -> FrameViewController {
+    static func create(session: Session?, teacherDeviceId: String) -> FrameViewController {
         let vc = FrameViewController.loadStoryboard(.main)
         vc.currentSession = session
+        vc.teacherDeviceId = teacherDeviceId
         return vc
     }
 }

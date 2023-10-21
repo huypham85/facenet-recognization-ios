@@ -77,12 +77,46 @@ extension StudentListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if let student = filteredStudents[safe: indexPath.row] {
-            let vc = StudentDetailViewController()
-            vc.session = session
-            vc.studentId = student.id
-            self.navigationController?.pushViewController(vc, animated: true)
+            let manualCheckInAction = UIAlertAction(title: "Điểm danh thủ công", style: .default) { [weak self] _ in
+                self?.manualCheckIn(student: student)
+            }
+            let viewStudentInfoAction = UIAlertAction(title: "Xem thông tin sinh viên", style: .default) { [weak self] _ in
+                self?.navigateToStudentInfor(student: student)
+            }
+            var actions: [UIAlertAction] = [viewStudentInfoAction]
+            let checkInTime = session?.students.first {
+                $0.studentId == student.id
+            }
+            if checkInTime == nil {
+                actions += [manualCheckInAction]
+            }
+            actions += [
+                .init(title: "Cancel", style: .cancel),
+            ]
+            self.displayAlert(actions: actions, style: .actionSheet, completion: nil)
         }
+    }
+}
+
+extension StudentListViewController {
+    private func manualCheckIn(student: MiniStudent) {
+        guard let session = session else { return }
+        let manualAttendance = ManualAttendance(session: session, name: student.id, fullName: student.name, sessionStartTime: session.date)
+        firebaseManager.uploadManualCheckIn(attendance: manualAttendance) { [weak self] error in
+            if error == nil {
+                self?.showAlertViewController(title: "Điểm danh thủ công thành công", actions: [], cancel: "OK")
+            }
+        }
+        
+    }
+    
+    private func navigateToStudentInfor(student: MiniStudent) {
+        let vc = StudentInformationViewController()
+        vc.session = session
+        vc.studentId = student.id
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
