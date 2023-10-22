@@ -47,8 +47,10 @@ class StudentListViewController: BaseViewController {
     }
     
     private func fetchStudents() {
-        if let sessionId = session?.courseId {
-            firebaseManager.getCourseFromSession(courseId: sessionId) { [weak self] course in
+        guard let session = session else { return }
+        firebaseManager.getSessionById(date: session.date, sessionId: session.id) { [weak self] session in
+            self?.session = session
+            firebaseManager.getCourseFromSession(courseId: session.courseId) { [weak self] course in
                 self?.students = course.students
                 self?.filteredStudents = self?.students ?? []
                 self?.tableView.reloadData()
@@ -89,7 +91,7 @@ extension StudentListViewController: UITableViewDelegate, UITableViewDataSource 
             let checkInTime = session?.students.first {
                 $0.studentId == student.id
             }
-            if checkInTime == nil {
+            if checkInTime?.checkedInTime.isEmpty ?? true && globalUser?.role == .teacher {
                 actions += [manualCheckInAction]
             }
             actions += [
@@ -103,10 +105,12 @@ extension StudentListViewController: UITableViewDelegate, UITableViewDataSource 
 extension StudentListViewController {
     private func manualCheckIn(student: MiniStudent) {
         guard let session = session else { return }
-        let manualAttendance = ManualAttendance(session: session, name: student.id, fullName: student.name, sessionStartTime: session.date)
+        formatter.dateFormat = DATE_FORMAT
+        let manualAttendance = ManualAttendance(session: session, name: student.id, fullName: student.name, time: formatter.string(from: Date()), sessionStartTime: session.date)
         firebaseManager.uploadManualCheckIn(attendance: manualAttendance) { [weak self] error in
             if error == nil {
                 self?.showAlertViewController(title: "Điểm danh thủ công thành công", actions: [], cancel: "OK")
+                self?.fetchStudents()
             }
         }
         

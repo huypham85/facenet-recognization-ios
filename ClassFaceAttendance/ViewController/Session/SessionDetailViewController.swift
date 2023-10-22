@@ -21,6 +21,11 @@ class SessionDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshData))
+        setup()
+    }
+    
+    private func setup() {
         setupView()
         if globalUser?.role == .student {
             checkAttendance()
@@ -28,16 +33,19 @@ class SessionDetailViewController: BaseViewController {
             checkInButton.isHidden = true
             checkedInLabel.isHidden = true
         }
-        // Do any additional setup after loading the view.
     }
 
     private func setupView() {
         guard let session = session else { return }
-        subjectLabel.text = session.courseName
-        sessionTimeLabel.text = "\(session.startTime) - \(session.endTime)"
-        checkInTimeLabel.text = "\(session.startCheckInTime) - \(session.endCheckInTime)"
-        roomLabel.text = session.roomNo
-        teacherNameLabel.text = session.teacherName
+        ProgressHelper.showLoading()
+        firebaseManager.getSessionById(date: session.date, sessionId: session.id) { [weak self] session in
+            self?.subjectLabel.text = session.courseName
+            self?.sessionTimeLabel.text = "\(session.startTime) - \(session.endTime) \(session.date)"
+            self?.checkInTimeLabel.text = "\(session.startCheckInTime.removeDateComponent()) - \(session.endCheckInTime)"
+            self?.roomLabel.text = session.roomNo
+            self?.teacherNameLabel.text = session.teacherName
+            ProgressHelper.hideLoading()
+        }
     }
     
     private func checkAttendance() {
@@ -64,6 +72,10 @@ class SessionDetailViewController: BaseViewController {
             }
             ProgressHelper.hideLoading()
         }
+    }
+    
+    @objc private func refreshData() {
+        setup()
     }
 
     @IBAction func checkInAction(_: Any) {

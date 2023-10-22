@@ -22,10 +22,7 @@ struct ManualAttendance {
     /// student's full name
     var fullName: String
     /// check in time
-    var time: String = {
-        formatter.dateFormat = DATE_FORMAT
-        return formatter.string(from: Date())
-    }()
+    var time: String
     var sessionStartTime: String
 }
 

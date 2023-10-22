@@ -418,10 +418,30 @@ class FirebaseManager {
                         }
                     }
                 }
-            } else {
+            }
+            else {
                 print("No sessions found for the specified date.")
             }
             completion(sessions)
+        }
+    }
+    
+    func getSessionById(date: String, sessionId: String, completion: @escaping (Session) -> Void) {
+        let ref = Database.database().reference()
+
+        let sessionsRef = ref.child(SESSIONS).child(date).child(sessionId)
+        sessionsRef.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.exists() {
+                if let sessionsData = snapshot.value as? [String: Any] {
+                    print("Session Data: \(sessionsData)")
+                    if let newSession = Session(dictionary: sessionsData) {
+                        completion(newSession)
+                    }
+                }
+            }
+            else {
+                print("No sessions found for the specified date and id")
+            }
         }
     }
     
