@@ -14,17 +14,50 @@ class SessionDetailViewController: BaseViewController {
     @IBOutlet private var roomLabel: UILabel!
     @IBOutlet private var checkInTimeLabel: UILabel!
     @IBOutlet private var sessionTimeLabel: UILabel!
-    @IBOutlet private weak var checkInButton: UIButton!
+    @IBOutlet private var checkInButton: UIButton!
     @IBOutlet private var subjectLabel: UILabel!
-    @IBOutlet private weak var checkedInLabel: UILabel!
+    @IBOutlet var textField: UITextField!
+    @IBOutlet private var checkedInLabel: UILabel!
     var session: Session?
+    private var pickerIsShowing = false
+
+    private lazy var dateTimePicker: DateTimePicker = {
+        let picker = DateTimePicker()
+        picker.setup()
+        return picker
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshData))
         setup()
     }
-    
+
+    override func closeKeyboard() {
+        view.endEditing(true)
+        if globalUser?.role == .teacher {
+            if pickerIsShowing {
+                pickerIsShowing = false
+                validateNewCheckInTime(startDate: dateTimePicker.selectedStartDate, endDate: dateTimePicker.selectedEndDate)
+                print("\(dateTimePicker.selectedStartDate) \(dateTimePicker.selectedEndDate)")
+            }
+        }
+    }
+
+    private func validateNewCheckInTime(startDate: Date, endDate: Date) {
+        if endDate < startDate || startDate < Date() {
+            showAlertViewController(title: "Cài đặt thời gian không hợp lệ", actions: [], cancel: "OK")
+        } else {
+            guard let session = session else { return }
+            firebaseManager.updateCheckInTime(startTime: startDate.toCheckInString(),
+                                              endTime: endDate.toCheckInString(),
+                                              session: session) { [weak self] startTime, endTime in
+                self?.checkInTimeLabel.text = "\(startTime.removeDateComponent()) - \(endTime)"
+                self?.showAlertViewController(title: "Cập nhật thời gian điểm danh thành công", actions: [], cancel: "OK")
+            }
+        }
+    }
+
     private func setup() {
         setupView()
         if globalUser?.role == .student {
@@ -46,8 +79,14 @@ class SessionDetailViewController: BaseViewController {
             self?.teacherNameLabel.text = session.teacherName
             ProgressHelper.hideLoading()
         }
+        if globalUser?.role == .teacher {
+            textField.inputView = dateTimePicker.inputView
+            textField.delegate = self
+        } else {
+            textField.isHidden = true
+        }
     }
-    
+
     private func checkAttendance() {
         checkedInLabel.isHidden = true
         guard let session = session else { return }
@@ -73,7 +112,7 @@ class SessionDetailViewController: BaseViewController {
             ProgressHelper.hideLoading()
         }
     }
-    
+
     @objc private func refreshData() {
         setup()
     }
@@ -84,8 +123,8 @@ class SessionDetailViewController: BaseViewController {
                   let session = self.session
             else { return }
             if $0 {
-                if self.isCurrentTimeInRange(startTime: "\(session.startTime) \(session.date)",
-                                             endTime: "\(session.endTime) \(session.date)") {
+                if self.isCurrentTimeInRange(startTime: session.startCheckInTime,
+                                             endTime: session.endCheckInTime) {
                     self.setupCheckIn()
                 } else {
                     self.showAlertViewController(title: "Ngoài thời gian điểm danh",
@@ -164,7 +203,6 @@ class SessionDetailViewController: BaseViewController {
                     }
                     ProgressHUD.dismiss()
                 }
-                
             }
         } else {
             // for local data
@@ -176,5 +214,14 @@ class SessionDetailViewController: BaseViewController {
                 kMeanVectors.append(v)
             }
         }
+    }
+}
+
+extension SessionDetailViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.textField {
+            pickerIsShowing = true
+        }
+        return true // Return true to allow the text field to become first responder.
     }
 }

@@ -19,6 +19,7 @@
                 <outlet property="sessionTimeLabel" destination="YLf-hX-Vzj" id="FSB-gQ-YsQ"/>
                 <outlet property="subjectLabel" destination="SSM-L1-EvG" id="eJJ-yq-UWQ"/>
                 <outlet property="teacherNameLabel" destination="KIe-Xu-m0L" id="nGv-8r-f7Z"/>
+                <outlet property="textField" destination="9Te-Gq-cSB" id="mSK-E4-Bjp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -87,6 +88,13 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjV-Os-b8B">
                                     <rect key="frame" x="0.0" y="116" width="393" height="50"/>
                                     <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Te-Gq-cSB">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thời gian điểm danh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fky-0w-WZY">
                                             <rect key="frame" x="8" y="4" width="154.66666666666666" height="20.333333333333332"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -104,8 +112,12 @@
                                     <constraints>
                                         <constraint firstItem="Fky-0w-WZY" firstAttribute="leading" secondItem="zjV-Os-b8B" secondAttribute="leading" constant="8" id="Kg8-CQ-5wk"/>
                                         <constraint firstItem="PCg-XQ-Qe1" firstAttribute="leading" secondItem="zjV-Os-b8B" secondAttribute="leading" constant="8" id="THA-Pa-1X1"/>
+                                        <constraint firstAttribute="trailing" secondItem="9Te-Gq-cSB" secondAttribute="trailing" id="dNx-PK-nW1"/>
                                         <constraint firstAttribute="height" constant="50" id="f1R-cb-F7w"/>
+                                        <constraint firstItem="9Te-Gq-cSB" firstAttribute="leading" secondItem="zjV-Os-b8B" secondAttribute="leading" id="fNQ-YL-GUr"/>
+                                        <constraint firstAttribute="bottom" secondItem="9Te-Gq-cSB" secondAttribute="bottom" id="iYf-n0-0zl"/>
                                         <constraint firstItem="PCg-XQ-Qe1" firstAttribute="top" secondItem="Fky-0w-WZY" secondAttribute="bottom" constant="4" id="rWN-Mv-R6L"/>
+                                        <constraint firstItem="9Te-Gq-cSB" firstAttribute="top" secondItem="zjV-Os-b8B" secondAttribute="top" id="ryF-Re-vmc"/>
                                         <constraint firstItem="Fky-0w-WZY" firstAttribute="top" secondItem="zjV-Os-b8B" secondAttribute="top" constant="4" id="slu-su-po8"/>
                                     </constraints>
                                 </view>
@@ -254,7 +266,7 @@
     <resources>
         <image name="ic_forward" width="10.666666984558105" height="10.666666984558105"/>
         <namedColor name="background">
-            <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red600">
             <color red="0.92900002002716064" green="0.36500000953674316" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -36,6 +36,7 @@
 		2D87DA302ADB083D001C9A8D /* StudentListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87DA2E2ADB083D001C9A8D /* StudentListTableViewCell.xib */; };
 		2D87DA342ADBB820001C9A8D /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87DA322ADBB820001C9A8D /* StudentDetailViewController.swift */; };
 		2D87DA352ADBB820001C9A8D /* StudentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87DA332ADBB820001C9A8D /* StudentDetailViewController.xib */; };
+		2D8D2BB42AE53B95004EB37F /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8D2BB32AE53B95004EB37F /* DatePicker.swift */; };
 		2D90BFA52AD5AB2400031511 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA42AD5AB2400031511 /* Date+Extension.swift */; };
 		2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */; };
 		2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */; };
@@ -131,6 +132,7 @@
 		2D87DA2E2ADB083D001C9A8D /* StudentListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentListTableViewCell.xib; sourceTree = "<group>"; };
 		2D87DA322ADBB820001C9A8D /* StudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
 		2D87DA332ADBB820001C9A8D /* StudentDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentDetailViewController.xib; sourceTree = "<group>"; };
+		2D8D2BB32AE53B95004EB37F /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		2D90BFA42AD5AB2400031511 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionTableViewCell.xib; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				2D87DA182AD84A26001C9A8D /* Logger.swift */,
 				69F4E4A42AE11DA300E4C21D /* ProgressHelper.swift */,
 				2D619AF22AE44FCA0004AA64 /* Alert.swift */,
+				2D8D2BB32AE53B95004EB37F /* DatePicker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				2D87DA2C2ADB05D8001C9A8D /* KeyboardManager.swift in Sources */,
 				69891E032AD4FC7300FD4161 /* MainTabBarController.swift in Sources */,
 				FBA1B4C92519058B00A31DF7 /* ViewLogViewController.swift in Sources */,
+				2D8D2BB42AE53B95004EB37F /* DatePicker.swift in Sources */,
 				2D0644122AD3125B004A3A65 /* Session.swift in Sources */,
 				FBDD06AC251DDFA0002AF9F9 /* KMean.swift in Sources */,
 				FBA1B48C2519052D00A31DF7 /* DismisKeyboard.swift in Sources */,

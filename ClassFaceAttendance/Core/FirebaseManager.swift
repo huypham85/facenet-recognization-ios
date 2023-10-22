@@ -459,6 +459,16 @@ class FirebaseManager {
         }
     }
     
+    func updateCheckInTime(startTime: String, endTime: String, session: Session, completion: @escaping (String, String) -> Void) {
+        let dict = ["startCheckInTime": startTime, "endCheckInTime": endTime]
+        Database.database().reference().child(SESSIONS).child(session.date).child(session.id).updateChildValues(dict, withCompletionBlock: {
+            error, _ in
+            if error == nil {
+                completion(startTime,endTime)
+            }
+        })
+    }
+    
     // MARK: Student and Teacher
 
     func getStudent(with studentId: String, completion: @escaping (Student) -> Void) {

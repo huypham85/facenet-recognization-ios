@@ -33,4 +33,22 @@ extension String {
             return nil
         }
     }
+    
+    func removeDateComponent() -> String {
+        formatter.dateFormat = "HH:mm yyyy-MM-dd"
+
+        // Parse the input string
+        if let date = formatter.date(from: self) {
+            // Create a new DateFormatter to extract the time component
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
+            
+            // Format the date to extract the time as a string
+            let timeString = timeFormatter.string(from: date)
+            
+            return timeString
+        } else {
+            return self
+        }
+    }
 }
