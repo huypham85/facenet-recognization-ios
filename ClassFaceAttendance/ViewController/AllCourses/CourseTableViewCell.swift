@@ -18,7 +18,7 @@ class CourseTableViewCell: UITableViewCell {
     }
 
     func setData(course: Course) {
-        creditLabel.text = String(course.numberCredits)
+        creditLabel.text = "\(String(course.numberCredits)) tín"
         courseIdLabel.text = course.id
         courseName.text = course.name
     }

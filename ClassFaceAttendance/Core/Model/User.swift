@@ -14,6 +14,7 @@ enum UserRole: String {
 struct User {
     let email: String
     let uid: String
+    /// student or teacher's id
     let id: String
     let role: UserRole
 

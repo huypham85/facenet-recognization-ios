@@ -13,7 +13,7 @@ class MainTabBarController: UITabBarController {
 
         // Create view controllers for each tab
         let homeViewController = BaseNavigationController(rootViewController: CalendarHomeViewController())
-        let viewLogViewController = ViewLogViewController.create()
+        let viewLogViewController = AllCoursesViewController()
         let registerFaceViewController = HomeViewController.create()
         let profileViewController = StudentDetailViewController()
 

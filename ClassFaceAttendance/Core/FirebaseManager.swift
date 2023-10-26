@@ -467,33 +467,36 @@ class FirebaseManager {
                 if let coursesData = snapshot.value as? [String: Any] {
                     for (courseId, courseData) in coursesData {
                         if let course = courseData as? [String: Any] {
-                            print("Session ID: \(courseId)")
-                            print("Session Data: \(course)")
                             if let newCourse = Course(dictionary: course) {
                                 if newCourse.students.map({ $0.id })
-                                    .contains(studentId) || newCourse.teacherId == globalUser?.id
-                                {
+                                    .contains(studentId) {
                                     courses.append(newCourse)
                                 }
                             }
                         }
                     }
                 }
+                completion(courses)
             }
         }
     }
     
-    func getCourseOfTeacher(courseId: String, completion: @escaping (Course) -> Void) {
+    func getCoursesForTeacher(teacherId: String, completion: @escaping ([Course]) -> Void) {
         let ref = Database.database().reference().child(COURSES)
-        let courseRef = ref.child(courseId)
-        courseRef.observeSingleEvent(of: .value) { snapshot in
-            if snapshot.exists() {
-                if let courseData = snapshot.value as? [String: Any] {
+        
+        var courses: [Course] = []
+        
+        // Query the database to find courses with the specified teacherId
+        ref.queryOrdered(byChild: "teacherId").queryEqual(toValue: teacherId).observeSingleEvent(of: .value) { (snapshot) in
+            for case let child as DataSnapshot in snapshot.children {
+                if let courseData = child.value as? [String: Any] {
                     if let course = Course(dictionary: courseData) {
-                        completion(course)
+                        courses.append(course)
                     }
                 }
             }
+            
+            completion(courses)
         }
     }
     
@@ -502,7 +505,7 @@ class FirebaseManager {
         Database.database().reference().child(SESSIONS).child(session.date).child(session.id).updateChildValues(dict, withCompletionBlock: {
             error, _ in
             if error == nil {
-                completion(startTime,endTime)
+                completion(startTime, endTime)
             }
         })
     }
