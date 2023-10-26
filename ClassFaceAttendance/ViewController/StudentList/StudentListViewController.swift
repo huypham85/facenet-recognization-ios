@@ -11,6 +11,8 @@ class StudentListViewController: BaseViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
+    private let refreshControl = UIRefreshControl()
+    
     var session: Session?
     private var students: [MiniStudent] = []
     private var filteredStudents: [MiniStudent] = [] {
@@ -44,16 +46,27 @@ class StudentListViewController: BaseViewController {
         tableView.registerCell(StudentListTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
+        // Setup Refresh Control
+        self.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
+    
+    @objc private func refreshData() {
+        fetchStudents()
+    }
+
     
     private func fetchStudents() {
         guard let session = session else { return }
+        ProgressHelper.showLoading()
         firebaseManager.getSessionById(date: session.date, sessionId: session.id) { [weak self] session in
             self?.session = session
             firebaseManager.getCourseFromSession(courseId: session.courseId) { [weak self] course in
                 self?.students = course.students
                 self?.filteredStudents = self?.students ?? []
                 self?.tableView.reloadData()
+                ProgressHelper.hideLoading()
+                self?.refreshControl.endRefreshing()
             }
         }
     }

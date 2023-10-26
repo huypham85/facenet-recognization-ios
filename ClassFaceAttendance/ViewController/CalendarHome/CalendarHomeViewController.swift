@@ -20,6 +20,8 @@ class CalendarHomeViewController: BaseViewController {
         }
     }
     @IBOutlet var datePicker: UIDatePicker!
+    
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,10 @@ class CalendarHomeViewController: BaseViewController {
         tableView.registerCell(SessionTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
+        // Setup Refresh Control
+        self.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+
     }
 
     @IBAction func previousWeek(_: Any) {
@@ -75,6 +81,10 @@ class CalendarHomeViewController: BaseViewController {
     @objc func onDateChanged() {
         selectedDate = datePicker.date
         setWeekView()
+    }
+    
+    @objc private func refreshData() {
+        getSessionAtDate(date: selectedDate)
     }
 
     func setCellsView() {}
@@ -134,6 +144,7 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedDate = totalSquares[indexPath.item]
         getSessionAtDate(date: selectedDate)
+        collectionView.reloadData()
     }
     
     private func getSessionAtDate(date: Date) {
@@ -143,9 +154,8 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
             sortedSessions.sort(by: { $0.startTimeDate ?? Date() < $1.startTimeDate ?? Date() })
             self?.sessions = sortedSessions
             self?.tableView.reloadData()
+            self?.refreshControl.endRefreshing()
         }
-        collectionView.reloadData()
-        tableView.reloadData()
     }
 }
 

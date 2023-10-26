@@ -35,6 +35,10 @@ extension UIColor {
         return UIColor(hexString: "#ED5D51")
     }
     
+    @nonobjc class var red200: UIColor {
+        return UIColor(hexString: "#F3C5C1")
+    }
+    
     @nonobjc class var primaryBrown: UIColor {
         return UIColor(hexString: "#57423E")
     }
