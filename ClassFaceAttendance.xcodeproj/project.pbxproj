@@ -17,6 +17,8 @@
 		2D0644142AD31BA7004A3A65 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644132AD31BA7004A3A65 /* Teacher.swift */; };
 		2D0644162AD3240C004A3A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644152AD3240C004A3A65 /* User.swift */; };
 		2D619AF32AE44FCA0004AA64 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D619AF22AE44FCA0004AA64 /* Alert.swift */; };
+		2D750A522AEC1EDD000C19DE /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D750A512AEC1EDD000C19DE /* UICollectionView+Extension.swift */; };
+		2D750A542AEC26C1000C19DE /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D750A532AEC26C1000C19DE /* ReusableView.swift */; };
 		2D87501D2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87501B2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift */; };
 		2D87501E2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87501C2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib */; };
 		2D8750212AE3099C001A34D5 /* StudentInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87501F2AE3099C001A34D5 /* StudentInformationViewController.swift */; };
@@ -121,6 +123,8 @@
 		2D0644132AD31BA7004A3A65 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		2D0644152AD3240C004A3A65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2D619AF22AE44FCA0004AA64 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		2D750A512AEC1EDD000C19DE /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		2D750A532AEC26C1000C19DE /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		2D87501B2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAttendanceTableViewCell.swift; sourceTree = "<group>"; };
 		2D87501C2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionAttendanceTableViewCell.xib; sourceTree = "<group>"; };
 		2D87501F2AE3099C001A34D5 /* StudentInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformationViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 				2D87DA1A2AD84ABC001C9A8D /* NSObject+.swift */,
 				2D87DA1C2AD85475001C9A8D /* Collection+.swift */,
 				69F4E4A02ADFF6EC00E4C21D /* String+Extension.swift */,
+				2D750A512AEC1EDD000C19DE /* UICollectionView+Extension.swift */,
+				2D750A532AEC26C1000C19DE /* ReusableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -756,8 +762,10 @@
 				69891E182AD554BB00FD4161 /* UITableView+Extension.swift in Sources */,
 				2D87DA232ADA99CB001C9A8D /* MiniSession.swift in Sources */,
 				FB3D0F9A251DA8AD0059CCB6 /* NetworkChecker.swift in Sources */,
+				2D750A522AEC1EDD000C19DE /* UICollectionView+Extension.swift in Sources */,
 				69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */,
 				FBA1B4CA2519058B00A31DF7 /* AddNameViewController.swift in Sources */,
+				2D750A542AEC26C1000C19DE /* ReusableView.swift in Sources */,
 				2D87DA192AD84A26001C9A8D /* Logger.swift in Sources */,
 				2D87DA2A2ADAFADA001C9A8D /* BaseNavigationController.swift in Sources */,
 				951EB35122B698F100A9533B /* FaceNet.swift in Sources */,

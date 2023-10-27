@@ -61,4 +61,14 @@ extension AllCoursesViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let course = courses[safe: indexPath.row] {
+            if globalUser?.role == .student {
+                let vc = AllSessionsViewController()
+                vc.course = course
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
 }
