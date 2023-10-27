@@ -42,6 +42,10 @@
 		2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */; };
 		6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */; };
 		6912DAA02AD3F49200E41CAF /* modelFacenet.pb in Resources */ = {isa = PBXBuildFile; fileRef = 6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */; };
+		69275F202AEBBD8200423BF1 /* AllSessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69275F1E2AEBBD8200423BF1 /* AllSessionsViewController.swift */; };
+		69275F232AEBBDDB00423BF1 /* AllSessionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69275F222AEBBDDB00423BF1 /* AllSessionsViewController.xib */; };
+		69275F262AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69275F242AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift */; };
+		69275F272AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69275F252AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib */; };
 		69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */; };
 		69891E002AD4F26100FD4161 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891DFE2AD4F26100FD4161 /* MainViewController.swift */; };
 		69891E012AD4F26100FD4161 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69891DFF2AD4F26100FD4161 /* MainViewController.xib */; };
@@ -143,6 +147,10 @@
 		3C092F3F0A9A7B61A5D2C574 /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
+		69275F1E2AEBBD8200423BF1 /* AllSessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllSessionsViewController.swift; sourceTree = "<group>"; };
+		69275F222AEBBDDB00423BF1 /* AllSessionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllSessionsViewController.xib; sourceTree = "<group>"; };
+		69275F242AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionCollectionViewCell.swift; sourceTree = "<group>"; };
+		69275F252AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllSessionCollectionViewCell.xib; sourceTree = "<group>"; };
 		69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		69891DFE2AD4F26100FD4161 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		69891DFF2AD4F26100FD4161 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -288,6 +296,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		69275F182AEBBA5B00423BF1 /* AllSessions */ = {
+			isa = PBXGroup;
+			children = (
+				69275F1D2AEBBD8200423BF1 /* AllSessions */,
+			);
+			path = AllSessions;
+			sourceTree = "<group>";
+		};
+		69275F1D2AEBBD8200423BF1 /* AllSessions */ = {
+			isa = PBXGroup;
+			children = (
+				69275F222AEBBDDB00423BF1 /* AllSessionsViewController.xib */,
+				69275F1E2AEBBD8200423BF1 /* AllSessionsViewController.swift */,
+				69275F242AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift */,
+				69275F252AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib */,
+			);
+			name = AllSessions;
+			sourceTree = "<group>";
+		};
 		69891E122AD5513800FD4161 /* CalendarHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +329,7 @@
 		699A52B12AEA650100216266 /* AllCourses */ = {
 			isa = PBXGroup;
 			children = (
+				69275F182AEBBA5B00423BF1 /* AllSessions */,
 				699A52B22AEA653C00216266 /* AllCoursesViewController.swift */,
 				699A52B32AEA653C00216266 /* AllCoursesViewController.xib */,
 				699A52B62AEA68E700216266 /* CourseTableViewCell.swift */,
@@ -588,11 +616,13 @@
 				69FF2CF22AD6B416008735FD /* SessionDetailViewController.xib in Resources */,
 				2D87DA302ADB083D001C9A8D /* StudentListTableViewCell.xib in Resources */,
 				699A52B92AEA68E700216266 /* CourseTableViewCell.xib in Resources */,
+				69275F232AEBBDDB00423BF1 /* AllSessionsViewController.xib in Resources */,
 				69891E0B2AD4FD5B00FD4161 /* ProfileViewController.xib in Resources */,
 				2D87501E2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib in Resources */,
 				69891E072AD4FCD200FD4161 /* CalendarHomeViewController.xib in Resources */,
 				2D8750222AE3099C001A34D5 /* StudentInformationViewController.xib in Resources */,
 				2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */,
+				69275F272AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib in Resources */,
 				699A52B52AEA653C00216266 /* AllCoursesViewController.xib in Resources */,
 				69891E0F2AD4FD8300FD4161 /* RegisterFaceViewController.xib in Resources */,
 				2D87DA282ADAF4B7001C9A8D /* StudentListViewController.xib in Resources */,
@@ -659,6 +689,7 @@
 				FBA1B4E2251905A100A31DF7 /* CreateUserData.swift in Sources */,
 				2D619AF32AE44FCA0004AA64 /* Alert.swift in Sources */,
 				69891E002AD4F26100FD4161 /* MainViewController.swift in Sources */,
+				69275F262AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift in Sources */,
 				69F4E4A52AE11DA300E4C21D /* ProgressHelper.swift in Sources */,
 				FB7502B825198B7100193FF9 /* VectorHelper.swift in Sources */,
 				FBA1B4C72519058B00A31DF7 /* FrameViewController.swift in Sources */,
@@ -694,6 +725,7 @@
 				2D06440A2AD0769C004A3A65 /* UIStoryboard+Extension.swift in Sources */,
 				699A52B82AEA68E700216266 /* CourseTableViewCell.swift in Sources */,
 				FBA1B48B2519052D00A31DF7 /* CustomButton.swift in Sources */,
+				69275F202AEBBD8200423BF1 /* AllSessionsViewController.swift in Sources */,
 				69891E152AD5516700FD4161 /* CalendarCollectionViewCell.swift in Sources */,
 				2D87DA212ADA9267001C9A8D /* MiniStudent.swift in Sources */,
 				69891E1A2AD554E700FD4161 /* UINib+Extension.swift in Sources */,
