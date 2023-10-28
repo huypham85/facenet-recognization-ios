@@ -12,6 +12,7 @@ struct Teacher {
     var name: String
     var gender: String
     var email: String
+    var photo: String
     var courseIds: [String]
     var deviceId: String?
     
@@ -31,7 +32,11 @@ struct Teacher {
         self.email = email
         self.gender = gender
         self.courseIds = Array(coursesDict.keys)
-        
+        if let photo = dictionary["photo"] as? String {
+            self.photo = photo
+        } else {
+            self.photo = ""
+        }
         let deviceId = dictionary["deviceId"] as? String
         self.deviceId = deviceId
     }

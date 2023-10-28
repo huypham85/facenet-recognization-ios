@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		192C5045682B38FDE5F84D34 /* Pods_ClassFaceAttendance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C092F3F0A9A7B61A5D2C574 /* Pods_ClassFaceAttendance.framework */; };
 		2D0644072AD0754C004A3A65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644062AD0754C004A3A65 /* LoginViewController.swift */; };
 		2D06440A2AD0769C004A3A65 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0644092AD0769C004A3A65 /* UIStoryboard+Extension.swift */; };
 		2D06440C2AD09B0D004A3A65 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D06440B2AD09B0D004A3A65 /* Application.swift */; };
@@ -19,6 +18,10 @@
 		2D619AF32AE44FCA0004AA64 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D619AF22AE44FCA0004AA64 /* Alert.swift */; };
 		2D750A522AEC1EDD000C19DE /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D750A512AEC1EDD000C19DE /* UICollectionView+Extension.swift */; };
 		2D750A542AEC26C1000C19DE /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D750A532AEC26C1000C19DE /* ReusableView.swift */; };
+		2D750A582AECF554000C19DE /* TeacherInforViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D750A562AECF554000C19DE /* TeacherInforViewController.swift */; };
+		2D750A592AECF554000C19DE /* TeacherInforViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D750A572AECF554000C19DE /* TeacherInforViewController.xib */; };
+		2D750A5C2AED0A09000C19DE /* AttendanceInforViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D750A5A2AED0A09000C19DE /* AttendanceInforViewController.swift */; };
+		2D750A5D2AED0A09000C19DE /* AttendanceInforViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D750A5B2AED0A09000C19DE /* AttendanceInforViewController.xib */; };
 		2D87501D2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87501B2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift */; };
 		2D87501E2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87501C2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib */; };
 		2D8750212AE3099C001A34D5 /* StudentInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87501F2AE3099C001A34D5 /* StudentInformationViewController.swift */; };
@@ -111,6 +114,7 @@
 		FBB893732525CE3800F11E32 /* kNN-2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB893722525CE3800F11E32 /* kNN-2.swift */; };
 		FBC5AC0B251AEE6D0016995C /* UIViewController+ShowDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5AC0A251AEE6D0016995C /* UIViewController+ShowDialog.swift */; };
 		FBDD06AC251DDFA0002AF9F9 /* KMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD06AB251DDFA0002AF9F9 /* KMean.swift */; };
+		FFCBEE2192C79CA5B6703A8B /* Pods_ClassFaceAttendance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B93D0D89E58F2EAF9A78FE /* Pods_ClassFaceAttendance.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +129,10 @@
 		2D619AF22AE44FCA0004AA64 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		2D750A512AEC1EDD000C19DE /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		2D750A532AEC26C1000C19DE /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		2D750A562AECF554000C19DE /* TeacherInforViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherInforViewController.swift; sourceTree = "<group>"; };
+		2D750A572AECF554000C19DE /* TeacherInforViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeacherInforViewController.xib; sourceTree = "<group>"; };
+		2D750A5A2AED0A09000C19DE /* AttendanceInforViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceInforViewController.swift; sourceTree = "<group>"; };
+		2D750A5B2AED0A09000C19DE /* AttendanceInforViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttendanceInforViewController.xib; sourceTree = "<group>"; };
 		2D87501B2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAttendanceTableViewCell.swift; sourceTree = "<group>"; };
 		2D87501C2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionAttendanceTableViewCell.xib; sourceTree = "<group>"; };
 		2D87501F2AE3099C001A34D5 /* StudentInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformationViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +156,8 @@
 		2D90BFA42AD5AB2400031511 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionTableViewCell.xib; sourceTree = "<group>"; };
-		3C092F3F0A9A7B61A5D2C574 /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		546DDDC3B5B5F6A86CBCCDEF /* Pods-ClassFaceAttendance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassFaceAttendance.debug.xcconfig"; path = "Target Support Files/Pods-ClassFaceAttendance/Pods-ClassFaceAttendance.debug.xcconfig"; sourceTree = "<group>"; };
+		57B93D0D89E58F2EAF9A78FE /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
 		69275F1E2AEBBD8200423BF1 /* AllSessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllSessionsViewController.swift; sourceTree = "<group>"; };
@@ -190,8 +199,7 @@
 		951EB34F22B698F100A9533B /* tfWrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tfWrap.h; sourceTree = "<group>"; };
 		951EB35022B698F100A9533B /* tfWrap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = tfWrap.mm; sourceTree = "<group>"; };
 		951EB35822B6994100A9533B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		AAF201D796FD662289B0CF50 /* Pods-ClassFaceAttendance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassFaceAttendance.debug.xcconfig"; path = "Target Support Files/Pods-ClassFaceAttendance/Pods-ClassFaceAttendance.debug.xcconfig"; sourceTree = "<group>"; };
-		CD7EA01AE7B39E3A96A01FEB /* Pods-ClassFaceAttendance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassFaceAttendance.release.xcconfig"; path = "Target Support Files/Pods-ClassFaceAttendance/Pods-ClassFaceAttendance.release.xcconfig"; sourceTree = "<group>"; };
+		E7B36073D91193CF665E5DAB /* Pods-ClassFaceAttendance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassFaceAttendance.release.xcconfig"; path = "Target Support Files/Pods-ClassFaceAttendance/Pods-ClassFaceAttendance.release.xcconfig"; sourceTree = "<group>"; };
 		FB16D9A72521F0B3003C8AB5 /* KNN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNN.swift; sourceTree = "<group>"; };
 		FB3B2E1B2529AE7B00117249 /* K-dTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "K-dTree.swift"; sourceTree = "<group>"; };
 		FB3D0F96251DA5CA0059CCB6 /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
@@ -232,7 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				192C5045682B38FDE5F84D34 /* Pods_ClassFaceAttendance.framework in Frameworks */,
+				FFCBEE2192C79CA5B6703A8B /* Pods_ClassFaceAttendance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +278,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2D750A552AECF540000C19DE /* Teacher */ = {
+			isa = PBXGroup;
+			children = (
+				2D750A562AECF554000C19DE /* TeacherInforViewController.swift */,
+				2D750A572AECF554000C19DE /* TeacherInforViewController.xib */,
+			);
+			path = Teacher;
+			sourceTree = "<group>";
+		};
 		2D87DA242ADAF497001C9A8D /* StudentList */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,14 +311,6 @@
 			path = StudentDetail;
 			sourceTree = "<group>";
 		};
-		6262BEC28674587099DBE000 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3C092F3F0A9A7B61A5D2C574 /* Pods_ClassFaceAttendance.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		69275F182AEBBA5B00423BF1 /* AllSessions */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +326,8 @@
 				69275F1E2AEBBD8200423BF1 /* AllSessionsViewController.swift */,
 				69275F242AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift */,
 				69275F252AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib */,
+				2D750A5A2AED0A09000C19DE /* AttendanceInforViewController.swift */,
+				2D750A5B2AED0A09000C19DE /* AttendanceInforViewController.xib */,
 			);
 			name = AllSessions;
 			sourceTree = "<group>";
@@ -355,13 +366,21 @@
 			path = Session;
 			sourceTree = "<group>";
 		};
+		6AA5ECB72F148B6567BE0157 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57B93D0D89E58F2EAF9A78FE /* Pods_ClassFaceAttendance.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		951EB32B22B6985D00A9533B = {
 			isa = PBXGroup;
 			children = (
 				951EB33622B6985E00A9533B /* ClassFaceAttendance */,
 				951EB33522B6985E00A9533B /* Products */,
 				DE9185908FC6CE7D4B410D89 /* Pods */,
-				6262BEC28674587099DBE000 /* Frameworks */,
+				6AA5ECB72F148B6567BE0157 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -415,8 +434,8 @@
 		DE9185908FC6CE7D4B410D89 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AAF201D796FD662289B0CF50 /* Pods-ClassFaceAttendance.debug.xcconfig */,
-				CD7EA01AE7B39E3A96A01FEB /* Pods-ClassFaceAttendance.release.xcconfig */,
+				546DDDC3B5B5F6A86CBCCDEF /* Pods-ClassFaceAttendance.debug.xcconfig */,
+				E7B36073D91193CF665E5DAB /* Pods-ClassFaceAttendance.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -438,6 +457,7 @@
 		FBA1B4B42519058B00A31DF7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2D750A552AECF540000C19DE /* Teacher */,
 				699A52B12AEA650100216266 /* AllCourses */,
 				2D87DA312ADBB471001C9A8D /* StudentDetail */,
 				2D87DA242ADAF497001C9A8D /* StudentList */,
@@ -563,11 +583,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 951EB34622B6986200A9533B /* Build configuration list for PBXNativeTarget "ClassFaceAttendance" */;
 			buildPhases = (
-				435253291A2A8DFE65CE6FB0 /* [CP] Check Pods Manifest.lock */,
+				B27AC3BF9E24C411B7D229FF /* [CP] Check Pods Manifest.lock */,
 				951EB33022B6985E00A9533B /* Sources */,
 				951EB33122B6985E00A9533B /* Frameworks */,
 				951EB33222B6985E00A9533B /* Resources */,
-				8BC87380C8A05F1EAA4A20F3 /* [CP] Embed Pods Frameworks */,
+				DB99D3CA1523678C6806E63C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -617,6 +637,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D750A592AECF554000C19DE /* TeacherInforViewController.xib in Resources */,
 				951EB34222B6986200A9533B /* LaunchScreen.storyboard in Resources */,
 				69891E012AD4F26100FD4161 /* MainViewController.xib in Resources */,
 				69FF2CF22AD6B416008735FD /* SessionDetailViewController.xib in Resources */,
@@ -629,6 +650,7 @@
 				2D8750222AE3099C001A34D5 /* StudentInformationViewController.xib in Resources */,
 				2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */,
 				69275F272AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib in Resources */,
+				2D750A5D2AED0A09000C19DE /* AttendanceInforViewController.xib in Resources */,
 				699A52B52AEA653C00216266 /* AllCoursesViewController.xib in Resources */,
 				69891E0F2AD4FD8300FD4161 /* RegisterFaceViewController.xib in Resources */,
 				2D87DA282ADAF4B7001C9A8D /* StudentListViewController.xib in Resources */,
@@ -644,7 +666,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		435253291A2A8DFE65CE6FB0 /* [CP] Check Pods Manifest.lock */ = {
+		B27AC3BF9E24C411B7D229FF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -666,7 +688,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8BC87380C8A05F1EAA4A20F3 /* [CP] Embed Pods Frameworks */ = {
+		DB99D3CA1523678C6806E63C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -696,6 +718,7 @@
 				2D619AF32AE44FCA0004AA64 /* Alert.swift in Sources */,
 				69891E002AD4F26100FD4161 /* MainViewController.swift in Sources */,
 				69275F262AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift in Sources */,
+				2D750A5C2AED0A09000C19DE /* AttendanceInforViewController.swift in Sources */,
 				69F4E4A52AE11DA300E4C21D /* ProgressHelper.swift in Sources */,
 				FB7502B825198B7100193FF9 /* VectorHelper.swift in Sources */,
 				FBA1B4C72519058B00A31DF7 /* FrameViewController.swift in Sources */,
@@ -721,6 +744,7 @@
 				FBA1B4C92519058B00A31DF7 /* ViewLogViewController.swift in Sources */,
 				2D8D2BB42AE53B95004EB37F /* DatePicker.swift in Sources */,
 				2D0644122AD3125B004A3A65 /* Session.swift in Sources */,
+				2D750A582AECF554000C19DE /* TeacherInforViewController.swift in Sources */,
 				FBDD06AC251DDFA0002AF9F9 /* KMean.swift in Sources */,
 				FBA1B48C2519052D00A31DF7 /* DismisKeyboard.swift in Sources */,
 				2D87DA1B2AD84ABC001C9A8D /* NSObject+.swift in Sources */,
@@ -917,7 +941,7 @@
 		};
 		951EB34722B6986200A9533B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAF201D796FD662289B0CF50 /* Pods-ClassFaceAttendance.debug.xcconfig */;
+			baseConfigurationReference = 546DDDC3B5B5F6A86CBCCDEF /* Pods-ClassFaceAttendance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -943,7 +967,7 @@
 		};
 		951EB34822B6986200A9533B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD7EA01AE7B39E3A96A01FEB /* Pods-ClassFaceAttendance.release.xcconfig */;
+			baseConfigurationReference = E7B36073D91193CF665E5DAB /* Pods-ClassFaceAttendance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				CODE_SIGN_ENTITLEMENTS = "";

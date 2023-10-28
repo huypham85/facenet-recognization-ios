@@ -76,6 +76,7 @@ class StudentDetailViewController: BaseViewController {
             idLabel.text = "ID: \(teacher.id)"
             emailLabel.text = teacher.email
             genderLabel.text = teacher.gender
+            profileImageView.sd_setImage(with: URL(string: teacher.photo))
             classLabel.isHidden = true
             dobView.isHidden = true
         }

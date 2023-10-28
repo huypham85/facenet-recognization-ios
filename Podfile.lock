@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.8.0)
+  - Alamofire (5.8.1)
   - FaceCropper (1.0.0)
   - FirebaseAppCheckInterop (10.16.0)
   - FirebaseAuth (10.16.0):
@@ -44,16 +44,17 @@ PODS:
   - GoogleUtilities/Reachability (7.11.5):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (3.1.1)
-  - IQKeyboardManagerSwift (6.5.13)
+  - IQKeyboardManagerSwift (6.5.16)
   - leveldb-library (1.22.2)
   - MBProgressHUD (1.2.0)
+  - PanModal (1.2.7)
   - ProgressHUD (13.7.3)
   - PromisesObjC (2.3.1)
-  - Realm (10.43.0):
-    - Realm/Headers (= 10.43.0)
-  - Realm/Headers (10.43.0)
-  - RealmSwift (10.43.0):
-    - Realm (= 10.43.0)
+  - Realm (10.43.1):
+    - Realm/Headers (= 10.43.1)
+  - Realm/Headers (10.43.1)
+  - RealmSwift (10.43.1):
+    - Realm (= 10.43.1)
   - RecaptchaInterop (100.0.0)
   - RxCocoa (6.6.0):
     - RxRelay (= 6.6.0)
@@ -61,9 +62,9 @@ PODS:
   - RxRelay (6.6.0):
     - RxSwift (= 6.6.0)
   - RxSwift (6.6.0)
-  - SDWebImage (5.18.2):
-    - SDWebImage/Core (= 5.18.2)
-  - SDWebImage/Core (5.18.2)
+  - SDWebImage (5.18.3):
+    - SDWebImage/Core (= 5.18.3)
+  - SDWebImage/Core (5.18.3)
   - SkyFloatingLabelTextField (3.8.0)
   - SnapKit (5.6.0)
   - TensorFlow-experimental (1.1.1)
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - FirebaseStorage
   - IQKeyboardManagerSwift
   - MBProgressHUD (~> 1.2.0)
+  - PanModal
   - ProgressHUD (~> 13.7.2)
   - RealmSwift
   - RxCocoa
@@ -103,6 +105,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - leveldb-library
     - MBProgressHUD
+    - PanModal
     - ProgressHUD
     - PromisesObjC
     - Realm
@@ -117,7 +120,7 @@ SPEC REPOS:
     - TensorFlow-experimental
 
 SPEC CHECKSUMS:
-  Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
   FaceCropper: 5037221c279db6ae3cea68e76ac4165c85c7c291
   FirebaseAppCheckInterop: 82358cff9f33452dd44259e88eea5e562500b1cb
   FirebaseAuth: 3862d87d4d58deff08f705d471896a2f66e8bbf0
@@ -129,22 +132,23 @@ SPEC CHECKSUMS:
   FirebaseStorage: d664834746c0274d267072c6bfa100960f90654a
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
-  IQKeyboardManagerSwift: 69b5fb9960edff37263d45c44fd97427e1f8c22b
+  IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   ProgressHUD: 642c2b959606955dd717e936f474cd8f7aa2a8d8
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
-  Realm: fc65bea3f5c3da2ecdc76324f180e054e7cf4eb0
-  RealmSwift: a7d48361c585769690c175428cc2bf15e1074444
+  Realm: d97b438de77459e443bd2c8ad5ca0f95107aee4b
+  RealmSwift: 6be3f27a7fd3f5cc8f99f4b187cc4e7150299e32
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
-  SDWebImage: c0de394d7cf7f9838aed1fd6bb6037654a4572e4
+  SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   TensorFlow-experimental: c38ed2a43acaa2d42ce4174ac076efaa76e26a12
 
-PODFILE CHECKSUM: 170f86b5ce662aa1f0647a2a91626698ecace519
+PODFILE CHECKSUM: 9518379cca913d469108d45fea5c60412729d202
 
 COCOAPODS: 1.12.0

@@ -14,6 +14,7 @@ class AllSessionsViewController: UIViewController {
     @IBOutlet private var courseNameLabel: UILabel!
     var course: Course?
     var student: Student?
+    private var teacher: Teacher?
     private var studentAttendances: [StudentAttendance] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,19 @@ class AllSessionsViewController: UIViewController {
         courseIdLabel.text = course?.id
         ProgressHelper.showLoading()
         firebaseManager.getTeacher(with: course?.teacherId ?? "") { [weak self] teacher in
-            self?.teacherNameLabel.text = teacher.name
+            self?.teacher = teacher
+            self?.teacherNameLabel.text = "Giảng viên: \(teacher.name)"
             ProgressHelper.hideLoading()
         }
+        teacherNameLabel.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+        teacherNameLabel.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func labelTapped() {
+        let vc = TeacherInforViewController()
+        vc.teacher = teacher
+        self.presentPanModal(vc)
     }
 
     private func setupCollectionView() {
@@ -93,6 +104,14 @@ extension AllSessionsViewController: UICollectionViewDelegate, UICollectionViewD
         cell.setData(attendance: attendance)
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let attendance = studentAttendances[safe: indexPath.item] {
+            let vc = AttendanceInforViewController()
+            vc.attendance = attendance
+            presentPanModal(vc)
+        }
     }
 }
 

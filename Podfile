@@ -23,6 +23,7 @@ target 'ClassFaceAttendance' do
   pod 'SDWebImage'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'PanModal'
 end
 
 

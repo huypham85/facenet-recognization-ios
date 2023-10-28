@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,17 +27,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0ti-QU-NgX">
-                                <rect key="frame" x="30.666666666666671" y="29" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Qdl-xu-5ef"/>
-                                    <constraint firstAttribute="width" constant="50" id="kxV-OB-bqF"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zW2-hh-WlS">
-                                <rect key="frame" x="30.333333333333332" y="83" width="50.333333333333343" height="21.666666666666671"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <color key="textColor" systemColor="systemYellowColor"/>
+                                <rect key="frame" x="28.000000000000004" y="47.666666666666664" width="55.333333333333343" height="23.999999999999993"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -46,11 +38,23 @@
                         <constraints>
                             <constraint firstItem="13a-Mt-YU6" firstAttribute="top" secondItem="WY3-py-exk" secondAttribute="top" constant="8" id="IMA-jw-kc7"/>
                             <constraint firstItem="13a-Mt-YU6" firstAttribute="centerX" secondItem="WY3-py-exk" secondAttribute="centerX" id="YOT-Ig-E8f"/>
-                            <constraint firstItem="zW2-hh-WlS" firstAttribute="top" secondItem="0ti-QU-NgX" secondAttribute="bottom" constant="4" id="dGy-kJ-8OH"/>
-                            <constraint firstItem="0ti-QU-NgX" firstAttribute="centerX" secondItem="WY3-py-exk" secondAttribute="centerX" id="hyw-Uo-mzP"/>
                             <constraint firstItem="zW2-hh-WlS" firstAttribute="centerX" secondItem="WY3-py-exk" secondAttribute="centerX" id="qpV-1t-0nf"/>
-                            <constraint firstItem="0ti-QU-NgX" firstAttribute="top" secondItem="13a-Mt-YU6" secondAttribute="bottom" constant="4" id="r4x-Te-R3i"/>
+                            <constraint firstItem="zW2-hh-WlS" firstAttribute="centerY" secondItem="WY3-py-exk" secondAttribute="centerY" id="taM-3J-1iH"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadow_radius">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadow_opacity">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadow_offset">
+                                <size key="value" width="0.0" height="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -62,9 +66,25 @@
                 <constraint firstAttribute="bottom" secondItem="WY3-py-exk" secondAttribute="bottom" id="vDk-FR-tcs"/>
             </constraints>
             <size key="customSize" width="111" height="119"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadow_radius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadow_opacity">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="size" keyPath="shadow_offset">
+                    <size key="value" width="5" height="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="shadow_color">
+                    <color key="value" systemColor="opaqueSeparatorColor"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="bgView" destination="WY3-py-exk" id="UM8-fi-Z4d"/>
-                <outlet property="checkInImageView" destination="0ti-QU-NgX" id="hOd-TZ-gmz"/>
                 <outlet property="dateLabel" destination="13a-Mt-YU6" id="BZl-AN-ORT"/>
                 <outlet property="timeLabel" destination="zW2-hh-WlS" id="sSC-hZ-n04"/>
             </connections>
@@ -75,8 +95,8 @@
         <namedColor name="lightGray">
             <color red="0.58823529411764708" green="0.67450980392156867" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

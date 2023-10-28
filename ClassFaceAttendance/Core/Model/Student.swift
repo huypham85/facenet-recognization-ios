@@ -24,7 +24,6 @@ struct Student {
             let email = dictionary["email"] as? String,
             let gender = dictionary["gender"] as? String,
             let dob = dictionary["dob"] as? String,
-            let photo = dictionary["photo"] as? String,
             let mainClass = dictionary["mainClass"] as? String,
             let coursesDict = dictionary["courses"] as? [String: Bool]
         else {
@@ -36,7 +35,11 @@ struct Student {
         self.email = email
         self.gender = gender
         self.dob = dob
-        self.photo = photo
+        if let photo = dictionary["photo"] as? String {
+            self.photo = photo
+        } else {
+            self.photo = ""
+        }
         self.mainClass = mainClass
         self.courseIds = Array(coursesDict.keys)
     }

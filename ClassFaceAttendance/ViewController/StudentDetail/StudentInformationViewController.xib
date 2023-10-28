@@ -202,11 +202,13 @@
                                 <constraint firstItem="L6t-TO-KHN" firstAttribute="top" secondItem="U7N-eR-7zh" secondAttribute="bottom" id="2XD-YL-79u"/>
                                 <constraint firstItem="y2D-U1-wrA" firstAttribute="bottom" secondItem="hsH-Tx-Ahc" secondAttribute="bottom" constant="45" id="4Ad-UI-qYE"/>
                                 <constraint firstItem="hsH-Tx-Ahc" firstAttribute="leading" secondItem="VFs-px-VEQ" secondAttribute="leading" id="4ru-04-dPs"/>
+                                <constraint firstItem="pw7-9H-SX1" firstAttribute="top" secondItem="tgU-9h-j9B" secondAttribute="bottom" constant="8" id="4wP-6C-mDw"/>
                                 <constraint firstAttribute="trailing" secondItem="L6t-TO-KHN" secondAttribute="trailing" constant="16" id="7eV-tf-vfG"/>
                                 <constraint firstItem="pw7-9H-SX1" firstAttribute="top" secondItem="tgU-9h-j9B" secondAttribute="bottom" constant="16" id="Akv-ZR-hAd"/>
                                 <constraint firstItem="y2D-U1-wrA" firstAttribute="centerX" secondItem="VFs-px-VEQ" secondAttribute="centerX" id="JQw-Fu-ipw"/>
                                 <constraint firstItem="pw7-9H-SX1" firstAttribute="leading" secondItem="VFs-px-VEQ" secondAttribute="leading" constant="16" id="JeY-ai-Q76"/>
                                 <constraint firstItem="U7N-eR-7zh" firstAttribute="top" secondItem="pw7-9H-SX1" secondAttribute="bottom" constant="16" id="LiY-eB-zDz"/>
+                                <constraint firstAttribute="trailing" secondItem="pw7-9H-SX1" secondAttribute="trailing" constant="16" id="SZ7-gG-ks8"/>
                                 <constraint firstAttribute="height" constant="900" id="TGf-3g-LdK"/>
                                 <constraint firstAttribute="bottom" secondItem="L6t-TO-KHN" secondAttribute="bottom" constant="24" id="VoJ-uu-rG0"/>
                                 <constraint firstItem="tgU-9h-j9B" firstAttribute="leading" secondItem="VFs-px-VEQ" secondAttribute="leading" id="Vue-T0-GYb"/>
@@ -215,6 +217,7 @@
                                 <constraint firstAttribute="trailing" secondItem="tgU-9h-j9B" secondAttribute="trailing" id="jJ8-et-cIV"/>
                                 <constraint firstItem="L6t-TO-KHN" firstAttribute="leading" secondItem="VFs-px-VEQ" secondAttribute="leading" constant="16" id="kk6-gK-JPc"/>
                                 <constraint firstItem="tgU-9h-j9B" firstAttribute="top" secondItem="hsH-Tx-Ahc" secondAttribute="bottom" id="sk1-24-U02"/>
+                                <constraint firstItem="pw7-9H-SX1" firstAttribute="leading" secondItem="VFs-px-VEQ" secondAttribute="leading" constant="16" id="zJK-Wr-hes"/>
                                 <constraint firstAttribute="trailing" secondItem="hsH-Tx-Ahc" secondAttribute="trailing" id="zz5-Ir-Tfi"/>
                             </constraints>
                         </view>
