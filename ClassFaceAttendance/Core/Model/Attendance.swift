@@ -44,8 +44,7 @@ struct StudentAttendance {
         self.name = name
         self.checkInTime = checkInTime
         self.sessionStartTime = sessionStartTime
-        formatter.dateFormat = "yyyy-MM-dd"
-        self.sessionStartDate = formatter.date(from: sessionStartTime) ?? Date()
+        self.sessionStartDate = sessionStartTime.convertStringToDate()
     }
 
     init?(dictionary: [String: Any], sessionId: String) {
@@ -57,21 +56,19 @@ struct StudentAttendance {
         else {
             return nil
         }
-        
+
         if let photo = dictionary["photo"] as? String {
             self.photo = photo
         } else {
             self.photo = ""
         }
 
-
         self.name = name
         self.id = id
         self.checkInTime = checkInTime
         self.sessionId = sessionId
         self.sessionStartTime = sessionStartTime
-        formatter.dateFormat = "HH:mm yyyy-MM-dd"
-        self.sessionStartDate = formatter.date(from: sessionStartTime)
+        self.sessionStartDate = sessionStartTime.convertStringToDate()
     }
 }
 

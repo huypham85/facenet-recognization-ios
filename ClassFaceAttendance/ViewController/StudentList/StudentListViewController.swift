@@ -88,6 +88,11 @@ extension StudentListViewController: UITableViewDelegate, UITableViewDataSource 
         if let session = session {
             cell.setData(student: filteredStudents[safe: indexPath.row], session: session)
         }
+        cell.showAttendanceInfo = { [weak self] attendance in
+            let vc = AttendanceInforViewController()
+            vc.attendance = attendance
+            self?.presentPanModal(vc)
+        }
         return cell
     }
     

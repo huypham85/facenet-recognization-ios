@@ -255,7 +255,7 @@ class FirebaseManager {
         }
     }
     
-    func getAttendanceOfSession(sessionId: String,
+    func getSessionAttendanceOfStudent(sessionId: String,
                                 studentId: String = globalUser?.id ?? "",
                                 completion: @escaping (StudentAttendance?) -> Void) {
         let ref = Database.database().reference().child(ATTENDANCES).child(sessionId).child(studentId)
@@ -273,6 +273,26 @@ class FirebaseManager {
             else {
                 completion(nil)
             }
+        }
+    }
+    
+    func getAttendancesOfSession(sessionId: String,
+                                completion: @escaping ([StudentAttendance]) -> Void) {
+        let ref = Database.database().reference().child(ATTENDANCES).child(sessionId)
+        var attendances: [StudentAttendance] = []
+        ref.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.exists() {
+                if let attendancesData = snapshot.value as? [String: Any] {
+                    for (attendanceName, attendanceData) in attendancesData {
+                        if let attendance = attendanceData as? [String: Any],
+                        let studentAttendance = StudentAttendance(dictionary: attendance, sessionId: sessionId) {
+                            print("Attendance of \(attendanceName)")
+                            attendances.append(studentAttendance)
+                        }
+                    }
+                }
+            }
+            completion(attendances)
         }
     }
     

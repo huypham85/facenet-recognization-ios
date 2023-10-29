@@ -91,7 +91,7 @@ class SessionDetailViewController: BaseViewController {
         checkedInLabel.isHidden = true
         guard let session = session else { return }
         ProgressHelper.showLoading()
-        firebaseManager.getAttendanceOfSession(sessionId: session.id) { [weak self] attendance in
+        firebaseManager.getSessionAttendanceOfStudent(sessionId: session.id) { [weak self] attendance in
             if let attendance = attendance {
                 if let dateString = attendance.checkInTime.convertIsoStringToDateHour() {
                     self?.checkedInLabel.isHidden = false

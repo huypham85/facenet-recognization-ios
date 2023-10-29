@@ -31,9 +31,10 @@ class TeacherInforViewController: UIViewController, PanModalPresentable {
     }
 
     private func setupView() {
-        teacherNameLabel.text = "Giảng viên: \(teacher?.name)"
-        teacherMailLabel.text = teacher?.email
-        teacherGenderLabel.text = teacher?.gender
-        profileImageView.sd_setImage(with: URL(string: teacher?.photo ?? ""))
+        guard let teacher = teacher else { return }
+        teacherNameLabel.text = "Giảng viên: \(teacher.name)"
+        teacherMailLabel.text = teacher.email
+        teacherGenderLabel.text = teacher.gender
+        profileImageView.sd_setImage(with: URL(string: teacher.photo ))
     }
 }

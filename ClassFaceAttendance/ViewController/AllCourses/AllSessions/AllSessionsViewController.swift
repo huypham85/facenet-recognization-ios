@@ -16,11 +16,14 @@ class AllSessionsViewController: UIViewController {
     var student: Student?
     private var teacher: Teacher?
     private var studentAttendances: [StudentAttendance] = []
+    private var sessions: [Session] = []
+    private let refreshControl = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupCollectionView()
-        fetchAllSessions()
+        fetchData()
     }
 
     private func setupView() {
@@ -40,7 +43,7 @@ class AllSessionsViewController: UIViewController {
     @objc func labelTapped() {
         let vc = TeacherInforViewController()
         vc.teacher = teacher
-        self.presentPanModal(vc)
+        presentPanModal(vc)
     }
 
     private func setupCollectionView() {
@@ -48,16 +51,53 @@ class AllSessionsViewController: UIViewController {
         collectionView.register(cell, forCellWithReuseIdentifier: AllSessionCollectionViewCell.cellId)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.refreshControl = refreshControl
+        self.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    @objc private func refreshData() {
+        fetchData()
+    }
+
+    private func fetchData() {
+        ProgressHelper.showLoading()
+        if globalUser?.role == .student {
+            fetchAttendanceOfSessions()
+        } else {
+            fetchAllSessions()
+        }
     }
 
     private func fetchAllSessions() {
+        guard let course = course else { return }
+        let dispatchGroup = DispatchGroup()
+        sessions.removeAll()
+        for miniSession in course.sessions {
+            dispatchGroup.enter()
+            firebaseManager.getSessionById(date: miniSession.date, sessionId: miniSession.sessionId) { [weak self] session in
+                self?.sessions.append(session)
+                dispatchGroup.leave()
+            }
+        }
+
+        dispatchGroup.notify(queue: .main) {
+            self.sessions.sort {
+                $0.date.convertStringToDate() ?? Date() < $1.date.convertStringToDate() ?? Date()
+            }
+            self.collectionView.reloadData()
+            ProgressHelper.hideLoading()
+            self.refreshControl.endRefreshing()
+        }
+    }
+
+    private func fetchAttendanceOfSessions() {
         guard let course = course, let globalUser = globalUser else { return }
         let dispatchGroup = DispatchGroup()
+        studentAttendances.removeAll()
         for miniSession in course.sessions {
             dispatchGroup.enter()
             firebaseManager
-                .getAttendanceOfSession(sessionId: miniSession.sessionId,
-                                        studentId: student?.id ?? globalUser.id) { [weak self] attendance in
+                .getSessionAttendanceOfStudent(sessionId: miniSession.sessionId, studentId: student?.id ?? globalUser.id) { [weak self] attendance in
                     guard let self else { return }
                     if let attendance = attendance {
                         self.studentAttendances.append(attendance)
@@ -83,13 +123,19 @@ class AllSessionsViewController: UIViewController {
                 $0.sessionStartDate ?? Date() < $1.sessionStartDate ?? Date()
             }
             self.collectionView.reloadData()
+            ProgressHelper.hideLoading()
+            self.refreshControl.endRefreshing()
         }
     }
 }
 
 extension AllSessionsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        studentAttendances.count
+        if globalUser?.role == .student {
+            return studentAttendances.count
+        } else {
+            return sessions.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -99,18 +145,29 @@ extension AllSessionsViewController: UICollectionViewDelegate, UICollectionViewD
         ) as? AllSessionCollectionViewCell else {
             return UICollectionViewCell()
         }
-
-        let attendance = studentAttendances[indexPath.item]
-        cell.setData(attendance: attendance)
-
+        if globalUser?.role == .student {
+            let attendance = studentAttendances[indexPath.item]
+            cell.setAttendance(attendance: attendance)
+        } else {
+            let session = sessions[indexPath.item]
+            cell.setAttendanceSession(session: session)
+        }
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let attendance = studentAttendances[safe: indexPath.item] {
-            let vc = AttendanceInforViewController()
-            vc.attendance = attendance
-            presentPanModal(vc)
+
+    func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if globalUser?.role == .student {
+            if let attendance = studentAttendances[safe: indexPath.item] {
+                let vc = AttendanceInforViewController()
+                vc.attendance = attendance
+                presentPanModal(vc)
+            }
+        } else {
+            if let session = sessions[safe: indexPath.item] {
+                let vc = StudentListViewController()
+                vc.session = session
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }

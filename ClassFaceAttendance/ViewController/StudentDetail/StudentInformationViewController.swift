@@ -78,7 +78,7 @@ class StudentInformationViewController: BaseViewController {
                     dispatchGroup.enter()
 
                     firebaseManager
-                        .getAttendanceOfSession(sessionId: miniSession.sessionId,
+                        .getSessionAttendanceOfStudent(sessionId: miniSession.sessionId,
                                                 studentId: student.id) { attendance in
 
                             if let attendance = attendance {

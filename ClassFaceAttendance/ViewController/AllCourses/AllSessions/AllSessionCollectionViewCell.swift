@@ -17,12 +17,26 @@ class AllSessionCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func setData(attendance: StudentAttendance) {
+    func setAttendance(attendance: StudentAttendance) {
         dateLabel.text = attendance.sessionStartTime
         timeLabel.text = attendance.checkInTime.convertIsoStringToHour()
         if attendance.sessionStartDate ?? Date() < Date() && attendance.checkInTime.isEmpty {
             bgView.backgroundColor = .red400
         } else if !attendance.checkInTime.isEmpty {
+            bgView.backgroundColor = .lightGreen
+        } else {
+            bgView.backgroundColor = .lightGray
+        }
+    }
+    
+    func setAttendanceSession(session: Session) {
+        dateLabel.text = session.date
+        let studentCount = session.students.count
+        let studentAttended = session.students.filter { !$0.checkedInTime.isEmpty }.count
+        timeLabel.text = "\(studentAttended)/\(studentCount)"
+        if session.date.convertStringToDate() ?? Date() < Date() && studentAttended < studentCount {
+            bgView.backgroundColor = .red400
+        } else if studentAttended == studentCount {
             bgView.backgroundColor = .lightGreen
         } else {
             bgView.backgroundColor = .lightGray
