@@ -7,23 +7,45 @@
 
 import UIKit
 
-class RegisterFaceViewController: UIViewController {
+class RegisterFaceViewController: BaseViewController {
 
+    @IBOutlet weak var registerLabel: UILabel!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var viewFaceButton: UIButton!
+    @IBOutlet weak var registerImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupView()
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupView() {
+        if let globalUser = globalUser, globalUser.role == .student {
+            ProgressHelper.showLoading()
+            firebaseManager.hasCurrentFace(studentId: globalUser.id) { [weak self] face in
+                if face != nil {
+                    self?.registerImageView.image = UIImage(named: "ic_face_registered")
+                    self?.registerLabel.text = "Bạn đã đăng ký gương mặt"
+                    self?.registerLabel.textColor = .lightGreen
+                    self?.registerButton.isHidden = true
+                    self?.viewFaceButton.isHidden = false
+                    ProgressHelper.hideLoading()
+                } else {
+                    self?.registerImageView.image = UIImage(named: "ic_face_unregistered")
+                    self?.registerButton.isHidden = false
+                    self?.viewFaceButton.isHidden = true
+                    self?.registerLabel.text = "Bạn chưa đăng ký gương mặt"
+                    self?.registerLabel.textColor = .black
+                    ProgressHelper.hideLoading()
+                }
+            }
+        }
+        
     }
-    */
 
+    @IBAction func registerFaceAction(_ sender: Any) {
+        let vc = RecordVideoViewController.create()
+        self.present(vc, animated: true)
+    }
 }

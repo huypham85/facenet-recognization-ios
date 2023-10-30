@@ -329,6 +329,24 @@ class FirebaseManager {
             })
         }
     }
+    
+    func hasCurrentFace(studentId: String, completion: @escaping (String?) -> Void) {
+        let ref = Database.database().reference().child(STUDENT_CHILD).child(studentId)
+
+        ref.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.exists() {
+                if let studentData = snapshot.value as? [String: Any],
+                   let currentFace = studentData["currentFace"] as? String, !currentFace.isEmpty
+                {
+                    completion(currentFace)
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
+            }
+        }
+    }
 
     func loadUsers(completionHandler: @escaping ([String: Int]) -> Void) {
         var userList: [String: Int] = [:]

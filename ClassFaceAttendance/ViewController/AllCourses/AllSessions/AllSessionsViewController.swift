@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllSessionsViewController: UIViewController {
+class AllSessionsViewController: BaseViewController {
     @IBOutlet private var teacherNameLabel: UILabel!
     @IBOutlet private var courseIdLabel: UILabel!
     @IBOutlet private var collectionView: UICollectionView!
@@ -107,7 +107,7 @@ class AllSessionsViewController: UIViewController {
                             sessionId: miniSession.sessionId,
                             id: self.student?.id ?? globalUser.id,
                             photo: "",
-                            name: (student?.name ?? userFullName) ?? "",
+                            name: (self.student?.name ?? userFullName) ?? "",
                             checkInTime: "",
                             sessionStartTime: "\(miniSession.date)"
                         )

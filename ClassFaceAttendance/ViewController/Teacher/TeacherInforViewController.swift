@@ -9,7 +9,7 @@ import PanModal
 import SDWebImage
 import UIKit
 
-class TeacherInforViewController: UIViewController, PanModalPresentable {
+class TeacherInforViewController: BaseViewController, PanModalPresentable {
     var panScrollable: UIScrollView?
 
     var shortFormHeight: PanModalHeight {

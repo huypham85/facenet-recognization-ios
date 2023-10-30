@@ -9,7 +9,7 @@ import PanModal
 import SDWebImage
 import UIKit
 
-class AttendanceInforViewController: UIViewController, PanModalPresentable {
+class AttendanceInforViewController: BaseViewController, PanModalPresentable {
     var panScrollable: UIScrollView?
 
     var shortFormHeight: PanModalHeight {

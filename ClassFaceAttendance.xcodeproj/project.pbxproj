@@ -81,6 +81,7 @@
 		951EB35122B698F100A9533B /* FaceNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951EB34A22B698F100A9533B /* FaceNet.swift */; };
 		951EB35322B698F100A9533B /* tensorflow_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 951EB34E22B698F100A9533B /* tensorflow_utils.mm */; };
 		951EB35422B698F100A9533B /* tfWrap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 951EB35022B698F100A9533B /* tfWrap.mm */; };
+		D9E7576E7B6787C87F5A27DF /* Pods_ClassFaceAttendance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C8B636F5BDE8CB19973ADEB /* Pods_ClassFaceAttendance.framework */; };
 		FB16D9A82521F0B3003C8AB5 /* KNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB16D9A72521F0B3003C8AB5 /* KNN.swift */; };
 		FB3B2E1C2529AE7B00117249 /* K-dTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B2E1B2529AE7B00117249 /* K-dTree.swift */; };
 		FB3D0F97251DA5CA0059CCB6 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D0F96251DA5CA0059CCB6 /* Define.swift */; };
@@ -114,7 +115,6 @@
 		FBB893732525CE3800F11E32 /* kNN-2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB893722525CE3800F11E32 /* kNN-2.swift */; };
 		FBC5AC0B251AEE6D0016995C /* UIViewController+ShowDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5AC0A251AEE6D0016995C /* UIViewController+ShowDialog.swift */; };
 		FBDD06AC251DDFA0002AF9F9 /* KMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD06AB251DDFA0002AF9F9 /* KMean.swift */; };
-		FFCBEE2192C79CA5B6703A8B /* Pods_ClassFaceAttendance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B93D0D89E58F2EAF9A78FE /* Pods_ClassFaceAttendance.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,8 +156,6 @@
 		2D90BFA42AD5AB2400031511 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2D90BFA62AD5B66C00031511 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		2D90BFA72AD5B66C00031511 /* SessionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionTableViewCell.xib; sourceTree = "<group>"; };
-		546DDDC3B5B5F6A86CBCCDEF /* Pods-ClassFaceAttendance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassFaceAttendance.debug.xcconfig"; path = "Target Support Files/Pods-ClassFaceAttendance/Pods-ClassFaceAttendance.debug.xcconfig"; sourceTree = "<group>"; };
-		57B93D0D89E58F2EAF9A78FE /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6912DA9B2AD0190B00E41CAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6912DA9F2AD3F49200E41CAF /* modelFacenet.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = modelFacenet.pb; sourceTree = "<group>"; };
 		69275F1E2AEBBD8200423BF1 /* AllSessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllSessionsViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +186,8 @@
 		69FF2CEF2AD6B416008735FD /* SessionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		69FF2CF02AD6B416008735FD /* SessionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionDetailViewController.xib; sourceTree = "<group>"; };
 		69FF2CF32AD6BDD4008735FD /* UIView+Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
+		6C8B636F5BDE8CB19973ADEB /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FD0D0591DFE917855419002 /* Pods-ClassFaceAttendance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassFaceAttendance.release.xcconfig"; path = "Target Support Files/Pods-ClassFaceAttendance/Pods-ClassFaceAttendance.release.xcconfig"; sourceTree = "<group>"; };
 		951EB33422B6985E00A9533B /* P-Class Attendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "P-Class Attendance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		951EB33722B6985E00A9533B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		951EB33E22B6986200A9533B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 		951EB34F22B698F100A9533B /* tfWrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tfWrap.h; sourceTree = "<group>"; };
 		951EB35022B698F100A9533B /* tfWrap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = tfWrap.mm; sourceTree = "<group>"; };
 		951EB35822B6994100A9533B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		E7B36073D91193CF665E5DAB /* Pods-ClassFaceAttendance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassFaceAttendance.release.xcconfig"; path = "Target Support Files/Pods-ClassFaceAttendance/Pods-ClassFaceAttendance.release.xcconfig"; sourceTree = "<group>"; };
+		9F173534E798A7DE20FF6C4F /* Pods-ClassFaceAttendance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClassFaceAttendance.debug.xcconfig"; path = "Target Support Files/Pods-ClassFaceAttendance/Pods-ClassFaceAttendance.debug.xcconfig"; sourceTree = "<group>"; };
 		FB16D9A72521F0B3003C8AB5 /* KNN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNN.swift; sourceTree = "<group>"; };
 		FB3B2E1B2529AE7B00117249 /* K-dTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "K-dTree.swift"; sourceTree = "<group>"; };
 		FB3D0F96251DA5CA0059CCB6 /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
@@ -240,13 +240,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFCBEE2192C79CA5B6703A8B /* Pods_ClassFaceAttendance.framework in Frameworks */,
+				D9E7576E7B6787C87F5A27DF /* Pods_ClassFaceAttendance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		094D190EB50A832B07843527 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C8B636F5BDE8CB19973ADEB /* Pods_ClassFaceAttendance.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2D0644052AD07535004A3A65 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,21 +374,13 @@
 			path = Session;
 			sourceTree = "<group>";
 		};
-		6AA5ECB72F148B6567BE0157 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				57B93D0D89E58F2EAF9A78FE /* Pods_ClassFaceAttendance.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		951EB32B22B6985D00A9533B = {
 			isa = PBXGroup;
 			children = (
 				951EB33622B6985E00A9533B /* ClassFaceAttendance */,
 				951EB33522B6985E00A9533B /* Products */,
 				DE9185908FC6CE7D4B410D89 /* Pods */,
-				6AA5ECB72F148B6567BE0157 /* Frameworks */,
+				094D190EB50A832B07843527 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -434,8 +434,8 @@
 		DE9185908FC6CE7D4B410D89 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				546DDDC3B5B5F6A86CBCCDEF /* Pods-ClassFaceAttendance.debug.xcconfig */,
-				E7B36073D91193CF665E5DAB /* Pods-ClassFaceAttendance.release.xcconfig */,
+				9F173534E798A7DE20FF6C4F /* Pods-ClassFaceAttendance.debug.xcconfig */,
+				8FD0D0591DFE917855419002 /* Pods-ClassFaceAttendance.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -583,11 +583,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 951EB34622B6986200A9533B /* Build configuration list for PBXNativeTarget "ClassFaceAttendance" */;
 			buildPhases = (
-				B27AC3BF9E24C411B7D229FF /* [CP] Check Pods Manifest.lock */,
+				0A9D8ED48AA2A5AC1827DE29 /* [CP] Check Pods Manifest.lock */,
 				951EB33022B6985E00A9533B /* Sources */,
 				951EB33122B6985E00A9533B /* Frameworks */,
 				951EB33222B6985E00A9533B /* Resources */,
-				DB99D3CA1523678C6806E63C /* [CP] Embed Pods Frameworks */,
+				6B7BF87976D660BAA45E34DB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -666,7 +666,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B27AC3BF9E24C411B7D229FF /* [CP] Check Pods Manifest.lock */ = {
+		0A9D8ED48AA2A5AC1827DE29 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -688,7 +688,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DB99D3CA1523678C6806E63C /* [CP] Embed Pods Frameworks */ = {
+		6B7BF87976D660BAA45E34DB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -941,7 +941,7 @@
 		};
 		951EB34722B6986200A9533B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 546DDDC3B5B5F6A86CBCCDEF /* Pods-ClassFaceAttendance.debug.xcconfig */;
+			baseConfigurationReference = 9F173534E798A7DE20FF6C4F /* Pods-ClassFaceAttendance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -967,7 +967,7 @@
 		};
 		951EB34822B6986200A9533B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7B36073D91193CF665E5DAB /* Pods-ClassFaceAttendance.release.xcconfig */;
+			baseConfigurationReference = 8FD0D0591DFE917855419002 /* Pods-ClassFaceAttendance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				CODE_SIGN_ENTITLEMENTS = "";
