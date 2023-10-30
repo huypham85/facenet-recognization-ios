@@ -3,15 +3,19 @@
 import Foundation
 
 //define in Firebase DB
+// Table
 let LOG_TIME = "LogTimes"
-let ALL_VECTOR = "allVectors"
-let KMEAN_VECTOR = "kMeanVectors"
 let STUDENT_CHILD = "Students"
 let TEACHER_CHILD = "Teachers"
 let USERS = "Users"
 let SESSIONS = "Sessions"
 let COURSES = "Courses"
 let ATTENDANCES = "Attendance"
+let FACE_REQUESTS = "FaceRequests"
+
+// Node
+let ALL_VECTOR = "allVectors"
+let KMEAN_VECTOR = "kMeanVectors"
 
 
 let STORAGE_URL = "gs://face-attendance-470c2.appspot.com"
