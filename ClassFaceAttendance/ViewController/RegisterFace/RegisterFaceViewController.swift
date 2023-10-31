@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 
 class RegisterFaceViewController: BaseViewController {
 
@@ -53,7 +54,11 @@ class RegisterFaceViewController: BaseViewController {
         }
         
     }
-
+    @IBAction func viewFaceAction(_ sender: Any) {
+        let vc = ViewCurrentFaceViewController()
+        self.presentPanModal(vc)
+    }
+    
     @IBAction func registerFaceAction(_ sender: Any) {
         let vc = RecordVideoViewController.create()
         self.present(vc, animated: true)

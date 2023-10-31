@@ -23,11 +23,14 @@ class LoginViewController: BaseViewController {
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
               let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         else { return }
+        ProgressHelper.showLoading()
         firebaseManager.login(email: email, password: password) { [weak self] result in
             guard let self = self, result != nil else {
                 self?.showDialog(message: "Invalid email or password!")
+                ProgressHelper.hideLoading()
                 return
             }
+            ProgressHelper.hideLoading()
             self.navigateToHome()
         }
     }
@@ -41,11 +44,15 @@ class LoginViewController: BaseViewController {
     }
 
     private func navigateToHome() {
+        ProgressHelper.showLoading()
         firebaseManager.checkUserRole { [weak self] _ in
             if globalUser.isNotNil {
                 let vc = MainViewController()
-                Application.shared.changeRootViewMainWindow(viewController: vc, animated: true)
+                Application.shared.changeRootViewMainWindow(viewController: vc, animated: true) {
+                    ProgressHelper.hideLoading()
+                }
             } else {
+                ProgressHelper.hideLoading()
                 self?.showAlertViewController(title: "Tài khoản đã bị vô hiệu hoá hoặc đã có lỗi xảy ra",
                                         actions: [],
                                         cancel: "OK",

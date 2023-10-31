@@ -52,6 +52,8 @@
 		69275F262AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69275F242AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift */; };
 		69275F272AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69275F252AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib */; };
 		6957207B2AF0B31B00CFDBFE /* CurrentFaceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957207A2AF0B31B00CFDBFE /* CurrentFaceStatus.swift */; };
+		6957207E2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957207C2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift */; };
+		6957207F2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6957207D2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.xib */; };
 		69891DFD2AD41A4200FD4161 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */; };
 		69891E002AD4F26100FD4161 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891DFE2AD4F26100FD4161 /* MainViewController.swift */; };
 		69891E012AD4F26100FD4161 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69891DFF2AD4F26100FD4161 /* MainViewController.xib */; };
@@ -164,6 +166,8 @@
 		69275F242AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionCollectionViewCell.swift; sourceTree = "<group>"; };
 		69275F252AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllSessionCollectionViewCell.xib; sourceTree = "<group>"; };
 		6957207A2AF0B31B00CFDBFE /* CurrentFaceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentFaceStatus.swift; sourceTree = "<group>"; };
+		6957207C2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCurrentFaceViewController.swift; sourceTree = "<group>"; };
+		6957207D2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewCurrentFaceViewController.xib; sourceTree = "<group>"; };
 		69891DFC2AD41A4200FD4161 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		69891DFE2AD4F26100FD4161 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		69891DFF2AD4F26100FD4161 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 				69891E0C2AD4FD8300FD4161 /* RegisterFaceViewController.swift */,
 				69891E0D2AD4FD8300FD4161 /* RegisterFaceViewController.xib */,
 				6957207A2AF0B31B00CFDBFE /* CurrentFaceStatus.swift */,
+				6957207C2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift */,
+				6957207D2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.xib */,
 			);
 			path = RegisterFace;
 			sourceTree = "<group>";
@@ -666,6 +672,7 @@
 				69891E0F2AD4FD8300FD4161 /* RegisterFaceViewController.xib in Resources */,
 				2D87DA282ADAF4B7001C9A8D /* StudentListViewController.xib in Resources */,
 				FBA1B4E8251905A800A31DF7 /* Main.storyboard in Resources */,
+				6957207F2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.xib in Resources */,
 				6912DA9C2AD0190B00E41CAF /* GoogleService-Info.plist in Resources */,
 				6912DAA02AD3F49200E41CAF /* modelFacenet.pb in Resources */,
 				2D87DA352ADBB820001C9A8D /* StudentDetailViewController.xib in Resources */,
@@ -781,6 +788,7 @@
 				FB57AA76251CCA4E00B2CCF9 /* FirebaseManager.swift in Sources */,
 				2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */,
 				69891E0A2AD4FD5B00FD4161 /* ProfileViewController.swift in Sources */,
+				6957207E2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift in Sources */,
 				2D0644072AD0754C004A3A65 /* LoginViewController.swift in Sources */,
 				2D0644102AD310B0004A3A65 /* Course.swift in Sources */,
 				2D87DA172AD849E0001C9A8D /* BaseViewController.swift in Sources */,

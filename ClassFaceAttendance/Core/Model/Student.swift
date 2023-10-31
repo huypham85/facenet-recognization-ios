@@ -16,6 +16,8 @@ struct Student {
     var dob: String
     var photo: String
     var courseIds: [String?]
+    // face vectors
+    var currentFace: String?
 
     init?(dictionary: [String: Any]) {
         guard
@@ -42,5 +44,9 @@ struct Student {
         }
         self.mainClass = mainClass
         self.courseIds = Array(coursesDict.keys)
+        
+        if let currentFace = dictionary["currentFace"] as? String {
+            self.currentFace = currentFace
+        }
     }
 }
