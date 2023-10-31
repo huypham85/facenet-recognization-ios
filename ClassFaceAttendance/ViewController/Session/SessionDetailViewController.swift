@@ -29,7 +29,12 @@ class SessionDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshData))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "ic_reload"),
+            style: .plain,
+            target: self,
+            action: #selector(refreshData)
+        )
         setup()
     }
 
@@ -38,7 +43,10 @@ class SessionDetailViewController: BaseViewController {
         if globalUser?.role == .teacher {
             if pickerIsShowing {
                 pickerIsShowing = false
-                validateNewCheckInTime(startDate: dateTimePicker.selectedStartDate, endDate: dateTimePicker.selectedEndDate)
+                validateNewCheckInTime(
+                    startDate: dateTimePicker.selectedStartDate,
+                    endDate: dateTimePicker.selectedEndDate
+                )
                 print("\(dateTimePicker.selectedStartDate) \(dateTimePicker.selectedEndDate)")
             }
         }
@@ -51,33 +59,40 @@ class SessionDetailViewController: BaseViewController {
             guard let session = session else { return }
             firebaseManager.updateCheckInTime(startTime: startDate.toCheckInString(),
                                               endTime: endDate.toCheckInString(),
-                                              session: session) { [weak self] startTime, endTime in
+                                              session: session)
+            { [weak self] startTime, endTime in
                 self?.checkInTimeLabel.text = "\(startTime.removeDateComponent()) - \(endTime)"
-                self?.showAlertViewController(title: "Cập nhật thời gian điểm danh thành công", actions: [], cancel: "OK")
+                self?.showAlertViewController(
+                    title: "Cập nhật thời gian điểm danh thành công",
+                    actions: [],
+                    cancel: "OK"
+                )
             }
         }
     }
 
     private func setup() {
         setupView()
-        if globalUser?.role == .student {
-            checkAttendance()
-        } else {
-            checkInButton.isHidden = true
-            checkedInLabel.isHidden = true
-        }
     }
 
     private func setupView() {
         guard let session = session else { return }
         ProgressHelper.showLoading()
         firebaseManager.getSessionById(date: session.date, sessionId: session.id) { [weak self] session in
+            self?.session = session
             self?.subjectLabel.text = session.courseName
             self?.sessionTimeLabel.text = "\(session.startTime) - \(session.endTime) \(session.date)"
-            self?.checkInTimeLabel.text = "\(session.startCheckInTime.removeDateComponent()) - \(session.endCheckInTime)"
+            self?.checkInTimeLabel
+                .text = "\(session.startCheckInTime.removeDateComponent()) - \(session.endCheckInTime)"
             self?.roomLabel.text = session.roomNo
             self?.teacherNameLabel.text = session.teacherName
             ProgressHelper.hideLoading()
+            if globalUser?.role == .student {
+                self?.checkAttendance()
+            } else {
+                self?.checkInButton.isHidden = true
+                self?.checkedInLabel.isHidden = true
+            }
         }
         if globalUser?.role == .teacher {
             textField.inputView = dateTimePicker.inputView
@@ -92,21 +107,27 @@ class SessionDetailViewController: BaseViewController {
         guard let session = session else { return }
         ProgressHelper.showLoading()
         firebaseManager.getSessionAttendanceOfStudent(sessionId: session.id) { [weak self] attendance in
+            guard let self else { return }
             if let attendance = attendance {
                 if let dateString = attendance.checkInTime.convertIsoStringToDateHour() {
-                    self?.checkedInLabel.isHidden = false
-                    self?.checkedInLabel.text = "Bạn đã điểm danh lúc \(dateString)"
-                    self?.checkInButton.isHidden = true
+                    self.checkedInLabel.isHidden = false
+                    self.checkedInLabel.text = "Bạn đã điểm danh lúc \(dateString)"
+                    self.checkInButton.isHidden = true
                 }
             } else {
-                if Date().isOverSessionTime(dateString: "\(session.endTime) \(session.date)") {
-                    self?.checkInButton.isHidden = true
-                    self?.checkedInLabel.isHidden = false
-                    self?.checkedInLabel.text = "Vắng mặt"
-                    self?.checkedInLabel.textColor = .systemRed
+                // in check-in time
+                if self.isCurrentTimeInRange(startTime: session.startCheckInTime, endTime: session.endCheckInTime) {
+                    self.checkInButton.isHidden = false
+                    self.checkedInLabel.isHidden = true
+                } else if Date().isOverSessionTime(dateString: "\(session.endTime) \(session.date)") {
+                    // over session time
+                    self.checkInButton.isHidden = true
+                    self.checkedInLabel.isHidden = false
+                    self.checkedInLabel.text = "Vắng mặt"
+                    self.checkedInLabel.textColor = .systemRed
                 } else {
-                    self?.checkInButton.isHidden = false
-                    self?.checkedInLabel.isHidden = true
+                    self.checkInButton.isHidden = false
+                    self.checkedInLabel.isHidden = true
                 }
             }
             ProgressHelper.hideLoading()
@@ -124,7 +145,8 @@ class SessionDetailViewController: BaseViewController {
             else { return }
             if $0 {
                 if self.isCurrentTimeInRange(startTime: session.startCheckInTime,
-                                             endTime: session.endCheckInTime) {
+                                             endTime: session.endCheckInTime)
+                {
                     self.setupCheckIn()
                 } else {
                     self.showAlertViewController(title: "Ngoài thời gian điểm danh",
@@ -150,7 +172,8 @@ class SessionDetailViewController: BaseViewController {
         showAlertViewController(title: "Bạn chưa đăng ký gương mặt",
                                 message: "Đăng ký ngay bây giờ?",
                                 actions: ["OK"],
-                                cancel: "Để lúc khác") { [weak self] index in
+                                cancel: "Để lúc khác")
+        { [weak self] index in
             if index == 0 {
                 let vc = RecordVideoViewController.create()
                 self?.present(vc, animated: true)
@@ -161,12 +184,12 @@ class SessionDetailViewController: BaseViewController {
     }
 
     func isCurrentTimeInRange(startTime: String, endTime: String) -> Bool {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "vi_VN")
+        formatter.dateFormat = "HH:mm yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "vi_VN")
 
-        if let startDate = dateFormatter.date(from: startTime),
-           let endDate = dateFormatter.date(from: endTime) {
+        if let startDate = formatter.date(from: startTime),
+           let endDate = formatter.date(from: endTime)
+        {
             let currentTime = Date()
 
             return currentTime >= startDate && currentTime <= endDate
@@ -199,7 +222,11 @@ class SessionDetailViewController: BaseViewController {
                         let vc = FrameViewController.create(session: self.session, teacherDeviceId: teacherDeviceId)
                         self.present(vc, animated: true)
                     } else {
-                        self.showAlertViewController(title: "Giảng viên môn học này chưa đăng nhập vào app. Vui lòng đợi!", actions: [], cancel: "OK")
+                        self.showAlertViewController(
+                            title: "Giảng viên môn học này chưa đăng nhập vào app. Vui lòng đợi!",
+                            actions: [],
+                            cancel: "OK"
+                        )
                     }
                     ProgressHUD.dismiss()
                 }
@@ -210,7 +237,11 @@ class SessionDetailViewController: BaseViewController {
             print(result.count)
             kMeanVectors = []
             for vector in result {
-                let v = Vector(name: vector.name, vector: stringToArray(string: vector.vector), distance: vector.distance)
+                let v = Vector(
+                    name: vector.name,
+                    vector: stringToArray(string: vector.vector),
+                    distance: vector.distance
+                )
                 kMeanVectors.append(v)
             }
         }

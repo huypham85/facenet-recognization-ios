@@ -18,12 +18,20 @@ class MainTabBarController: UITabBarController {
         let profileViewController = BaseNavigationController(rootViewController: StudentDetailViewController())
 
         // Create an array of view controllers
-        let viewControllers = [
+        let studentTabbar = [
             homeViewController,
             viewLogViewController,
             registerFaceViewController,
             profileViewController,
         ]
+        
+        let teacherTabbar = [
+            homeViewController,
+            viewLogViewController,
+            profileViewController,
+        ]
+        
+        let viewControllers = (globalUser?.role == .student) ? studentTabbar : teacherTabbar
 
         // Set the view controllers for the tab bar
         self.viewControllers = viewControllers

@@ -363,7 +363,7 @@ extension FrameViewController {
                     localUserList.append(detectedUser)
                     
                     //upload to firebase db
-                    firebaseManager.uploadLogTimes(attendance: detectedUser)  {
+                    firebaseManager.uploadStudentAttendance(attendance: detectedUser)  {
                         error in
                         if error != nil {
                             self.showDiaglog3s(name: label, false)
@@ -388,7 +388,7 @@ extension FrameViewController {
                                     
                                     
                                     //upload to firebase db
-                                    firebaseManager.uploadLogTimes(attendance: detectedUser)  {
+                                    firebaseManager.uploadStudentAttendance(attendance: detectedUser)  {
                                         error in
                                         if error != nil {
                                             self.showDiaglog3s(name: label, false)
@@ -409,7 +409,7 @@ extension FrameViewController {
                         speak(name: label)
                         trainingDataset.saveImage(detectedUser.image, for: detectedUser.name)
                         //upload to firebase db
-                        firebaseManager.uploadLogTimes(attendance: detectedUser) { error in
+                        firebaseManager.uploadStudentAttendance(attendance: detectedUser) { error in
                             if error != nil {
                                 self.showDiaglog3s(name: label, false)
                             }

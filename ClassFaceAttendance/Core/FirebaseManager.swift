@@ -11,6 +11,8 @@ class FirebaseManager {
         FirebaseApp.configure()
     }
     
+    // MARK: Face Vector
+    
     func uploadAllVectors(vectors: [Vector], completionHandler: @escaping () -> Void) {
         for i in 0..<vectors.count {
             let vector = vectors[i]
@@ -20,7 +22,7 @@ class FirebaseManager {
                 "distance": vector.distance
             ]
             let childString = "\(vector.name) - \(i)"
-            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "").child(ALL_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
+            Database.database().reference().child(FACE_REQUESTS).child(globalUser?.id ?? "").child(ALL_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
                     print("uploaded vector")
@@ -39,7 +41,7 @@ class FirebaseManager {
                 "distance": vector.distance
             ]
             let childString = "\(vector.name) - \(i)"
-            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "").child(KMEAN_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
+            Database.database().reference().child(FACE_REQUESTS).child(globalUser?.id ?? "").child(KMEAN_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
                     print("uploaded vector")
@@ -47,6 +49,40 @@ class FirebaseManager {
             })
         }
         completionHandler()
+    }
+    
+    func uploadCurrentFace(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
+
+        let metadata = StorageMetadata()
+
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            metadata.contentType = "image/jpg"
+            storageRef.putData(imageData, metadata: metadata, completion: {
+                _, error in
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                    completionHandler(error)
+                    return
+                }
+                else {
+                    storageRef.downloadURL(completion: {
+                        url, error in
+                        if let metaImageUrl = url?.absoluteString {
+                            let dict: [String: Any] = ["currentFace": metaImageUrl]
+                            Database.database().reference().child(FACE_REQUESTS).child(globalUser?.id ?? "")
+                                .updateChildValues(dict, withCompletionBlock: {
+                                    error, _ in
+                                    if error == nil {
+                                        print("Updated current face")
+                                        completionHandler(nil)
+                                    }
+                                })
+                        }
+                    })
+                }
+            })
+        }
     }
     
     func loadLogTimes(completionHandler: @escaping ([Attendances]) -> Void) {
@@ -144,7 +180,7 @@ class FirebaseManager {
     
     // MARK: Attendances
 
-    func uploadLogTimes(attendance: Attendance, completionHandler: @escaping (Error?) -> Void) {
+    func uploadStudentAttendance(attendance: Attendance, completionHandler: @escaping (Error?) -> Void) {
         let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(attendance.name) - \(attendance.time.dropLast(10))")
         
         let metadata = StorageMetadata()
@@ -296,41 +332,7 @@ class FirebaseManager {
         }
     }
     
-    func uploadCurrentFace(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
-
-        let metadata = StorageMetadata()
-
-        if let imageData = image.jpegData(compressionQuality: 1.0) {
-            metadata.contentType = "image/jpg"
-            storageRef.putData(imageData, metadata: metadata, completion: {
-                _, error in
-                if error != nil {
-                    print(error?.localizedDescription as Any)
-                    completionHandler(error)
-                    return
-                }
-                else {
-                    storageRef.downloadURL(completion: {
-                        url, error in
-                        if let metaImageUrl = url?.absoluteString {
-                            let dict: [String: Any] = ["currentFace": metaImageUrl]
-                            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "")
-                                .updateChildValues(dict, withCompletionBlock: {
-                                    error, _ in
-                                    if error == nil {
-                                        print("Updated current face")
-                                        completionHandler(nil)
-                                    }
-                                })
-                        }
-                    })
-                }
-            })
-        }
-    }
-    
-    func hasCurrentFace(studentId: String, completion: @escaping (String?) -> Void) {
+    func hasCurrentFace(studentId: String, completion: @escaping (CurrentFaceStatus) -> Void) {
         let ref = Database.database().reference().child(STUDENT_CHILD).child(studentId)
 
         ref.observeSingleEvent(of: .value) { snapshot in
@@ -338,15 +340,60 @@ class FirebaseManager {
                 if let studentData = snapshot.value as? [String: Any],
                    let currentFace = studentData["currentFace"] as? String, !currentFace.isEmpty
                 {
-                    completion(currentFace)
+                    completion(.hadFace(currentFace))
                 } else {
-                    completion(nil)
+                    completion(.notRegister)
                 }
             } else {
-                completion(nil)
+                completion(.notRegister)
             }
         }
     }
+    
+    func isRequestingFace(studentId: String, completion: @escaping (CurrentFaceStatus) -> Void) {
+        let ref = Database.database().reference().child(FACE_REQUESTS).child(studentId)
+
+        ref.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.exists() {
+                if let studentData = snapshot.value as? [String: Any],
+                   let currentFace = studentData["currentFace"] as? String, !currentFace.isEmpty
+                {
+                    completion(.requesting)
+                } else {
+                    completion(.notRegister)
+                }
+            } else {
+                completion(.notRegister)
+            }
+        }
+    }
+    
+    func checkStudentFaceStatus(studentId: String, completion: @escaping (CurrentFaceStatus) -> Void) {
+        hasCurrentFace(studentId: studentId) { [weak self] (faceStatus) in
+            switch faceStatus {
+            case .hadFace(let currentFace):
+                // The student has a face
+                completion(.hadFace(currentFace))
+            case .notRegister:
+                // The student does not have a face, check for requests
+                self?.isRequestingFace(studentId: studentId) { (requestStatus) in
+                    switch requestStatus {
+                    case .requesting:
+                        // The student is requesting a face
+                        completion(.requesting)
+                    case .notRegister:
+                        // The student is neither requesting nor has a face
+                        completion(.notRegister)
+                    case .hadFace:
+                        break
+                    }
+                }
+            case .requesting:
+                break
+            }
+        }
+    }
+
 
     func loadUsers(completionHandler: @escaping ([String: Int]) -> Void) {
         var userList: [String: Int] = [:]
