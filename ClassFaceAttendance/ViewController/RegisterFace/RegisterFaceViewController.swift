@@ -56,6 +56,7 @@ class RegisterFaceViewController: BaseViewController {
     }
     @IBAction func viewFaceAction(_ sender: Any) {
         let vc = ViewCurrentFaceViewController()
+        vc.studentId = globalUser?.id
         self.presentPanModal(vc)
     }
     

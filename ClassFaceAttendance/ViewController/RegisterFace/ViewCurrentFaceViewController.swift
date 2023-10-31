@@ -23,16 +23,18 @@ class ViewCurrentFaceViewController: BaseViewController, PanModalPresentable {
 
     @IBOutlet weak var changeFaceButton: UIButton!
     @IBOutlet weak var faceImageView: UIImageView!
+    var studentId: String?
+    var isChangeFaceButtonHidden: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        // Do any additional setup after loading the view.
+        changeFaceButton.isHidden = isChangeFaceButtonHidden
     }
     
     private func fetchData() {
-        guard let globalUser = globalUser else { return }
+        guard let studentId = studentId else { return }
         ProgressHelper.showLoading()
-        firebaseManager.getStudent(with: globalUser.id) { [weak self] student in
+        firebaseManager.getStudent(with: studentId) { [weak self] student in
             self?.faceImageView.sd_setImage(with: URL(string: student.currentFace ?? ""))
             ProgressHelper.hideLoading()
         }

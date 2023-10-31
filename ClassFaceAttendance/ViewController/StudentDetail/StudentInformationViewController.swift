@@ -15,7 +15,9 @@ class StudentInformationViewController: BaseViewController {
     @IBOutlet var genderLabel: UILabel!
     @IBOutlet var currentCourseLabel: UILabel!
     @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet weak var currentFaceView: UIView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var currentFaceButton: UIButton!
     @IBOutlet var nameLabel: UILabel!
     var studentId: String?
     var session: Session?
@@ -39,6 +41,12 @@ class StudentInformationViewController: BaseViewController {
         }
     }
 
+    @IBAction func showFaceAction(_ sender: Any) {
+        let vc = ViewCurrentFaceViewController()
+        vc.studentId = studentId
+        vc.isChangeFaceButtonHidden = true
+        self.presentPanModal(vc)
+    }
     private func setupView() {
         guard let student = student else { return }
         nameLabel.text = student.name
@@ -53,6 +61,7 @@ class StudentInformationViewController: BaseViewController {
         } else {
             currentCourseLabel.isHidden = true
             tableView.isHidden = true
+            currentFaceView.isHidden = true
         }
     }
 
