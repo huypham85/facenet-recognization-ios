@@ -35,6 +35,10 @@ class LoginViewController: BaseViewController {
         }
     }
 
+    @IBAction func forgotPasswordAction(_ sender: Any) {
+        let vc = ForgotPasswordViewController()
+        present(vc, animated: true)
+    }
     private func checkHasLoggedIn() {
         firebaseManager.hasLogInSession { [weak self] in
             if $0 {

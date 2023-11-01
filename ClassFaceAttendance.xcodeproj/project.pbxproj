@@ -51,6 +51,8 @@
 		69275F232AEBBDDB00423BF1 /* AllSessionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69275F222AEBBDDB00423BF1 /* AllSessionsViewController.xib */; };
 		69275F262AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69275F242AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift */; };
 		69275F272AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69275F252AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib */; };
+		692D29642AF25F3F003457F7 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692D29622AF25F3F003457F7 /* ForgotPasswordViewController.swift */; };
+		692D29652AF25F3F003457F7 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692D29632AF25F3F003457F7 /* ForgotPasswordViewController.xib */; };
 		6957207B2AF0B31B00CFDBFE /* CurrentFaceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957207A2AF0B31B00CFDBFE /* CurrentFaceStatus.swift */; };
 		6957207E2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957207C2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift */; };
 		6957207F2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6957207D2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.xib */; };
@@ -165,6 +167,8 @@
 		69275F222AEBBDDB00423BF1 /* AllSessionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllSessionsViewController.xib; sourceTree = "<group>"; };
 		69275F242AEBBE1D00423BF1 /* AllSessionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSessionCollectionViewCell.swift; sourceTree = "<group>"; };
 		69275F252AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllSessionCollectionViewCell.xib; sourceTree = "<group>"; };
+		692D29622AF25F3F003457F7 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		692D29632AF25F3F003457F7 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
 		6957207A2AF0B31B00CFDBFE /* CurrentFaceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentFaceStatus.swift; sourceTree = "<group>"; };
 		6957207C2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCurrentFaceViewController.swift; sourceTree = "<group>"; };
 		6957207D2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewCurrentFaceViewController.xib; sourceTree = "<group>"; };
@@ -346,6 +350,15 @@
 			name = AllSessions;
 			sourceTree = "<group>";
 		};
+		692D29612AF25EC8003457F7 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				692D29622AF25F3F003457F7 /* ForgotPasswordViewController.swift */,
+				692D29632AF25F3F003457F7 /* ForgotPasswordViewController.xib */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
 		695720792AF0B2BA00CFDBFE /* RegisterFace */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +488,7 @@
 		FBA1B4B42519058B00A31DF7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				692D29612AF25EC8003457F7 /* ForgotPassword */,
 				695720792AF0B2BA00CFDBFE /* RegisterFace */,
 				2D750A552AECF540000C19DE /* Teacher */,
 				699A52B12AEA650100216266 /* AllCourses */,
@@ -668,6 +682,7 @@
 				2D90BFA92AD5B66C00031511 /* SessionTableViewCell.xib in Resources */,
 				69275F272AEBBE1D00423BF1 /* AllSessionCollectionViewCell.xib in Resources */,
 				2D750A5D2AED0A09000C19DE /* AttendanceInforViewController.xib in Resources */,
+				692D29652AF25F3F003457F7 /* ForgotPasswordViewController.xib in Resources */,
 				699A52B52AEA653C00216266 /* AllCoursesViewController.xib in Resources */,
 				69891E0F2AD4FD8300FD4161 /* RegisterFaceViewController.xib in Resources */,
 				2D87DA282ADAF4B7001C9A8D /* StudentListViewController.xib in Resources */,
@@ -786,6 +801,7 @@
 				2D8750212AE3099C001A34D5 /* StudentInformationViewController.swift in Sources */,
 				2D06440C2AD09B0D004A3A65 /* Application.swift in Sources */,
 				FB57AA76251CCA4E00B2CCF9 /* FirebaseManager.swift in Sources */,
+				692D29642AF25F3F003457F7 /* ForgotPasswordViewController.swift in Sources */,
 				2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */,
 				69891E0A2AD4FD5B00FD4161 /* ProfileViewController.swift in Sources */,
 				6957207E2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift in Sources */,
