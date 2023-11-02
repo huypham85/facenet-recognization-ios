@@ -38,7 +38,11 @@ class StudentDetailViewController: BaseViewController {
             }
         }
     }
-
+    @IBAction func changePasswordAction(_ sender: Any) {
+        let vc = ReAuthenticateViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func getInformation() {
         if let globalUser = globalUser {
             switch globalUser.role {
