@@ -41,6 +41,7 @@ class ViewCurrentFaceViewController: BaseViewController, PanModalPresentable {
     }
 
     @IBAction func changeFaceAction(_ sender: Any) {
-        
+        let vc = RecordVideoViewController.create()
+        self.present(vc, animated: true)
     }
 }

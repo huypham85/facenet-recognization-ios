@@ -56,11 +56,11 @@ extension UIColor {
     }
     
     @nonobjc class var appPurple: UIColor {
-        return UIColor(hexString: "#a58cee")
+        return UIColor(hexString: "#cabcf5")
     }
     
     @nonobjc class var lightGray: UIColor {
-        return UIColor(hexString: "#96acb4")
+        return UIColor(hexString: "#b4c4ca")
     }
     
     
