@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -304,11 +304,21 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9U4-T1-wMt">
+                                    <rect key="frame" x="232" y="80" width="24.5" height="22"/>
+                                    <color key="tintColor" name="background"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="camera.fill" catalog="system"/>
+                                    <connections>
+                                        <action selector="openPhotoLibrary:" destination="-1" eventType="touchUpInside" id="8kZ-SS-JAf"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" name="background"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="i5C-X8-KdO" secondAttribute="trailing" id="072-qk-E1G"/>
                                 <constraint firstItem="i5C-X8-KdO" firstAttribute="leading" secondItem="kly-BZ-GY8" secondAttribute="leading" id="9GU-a1-n3i"/>
+                                <constraint firstItem="9U4-T1-wMt" firstAttribute="top" secondItem="2G8-sw-RNH" secondAttribute="top" constant="5" id="BGo-kg-5OA"/>
                                 <constraint firstItem="2G8-sw-RNH" firstAttribute="bottom" secondItem="i5C-X8-KdO" secondAttribute="bottom" constant="45" id="GkM-IY-6a1"/>
                                 <constraint firstItem="2G8-sw-RNH" firstAttribute="centerX" secondItem="kly-BZ-GY8" secondAttribute="centerX" id="Jju-ye-mtP"/>
                                 <constraint firstAttribute="height" constant="1000" id="LVx-QW-f4h"/>
@@ -317,6 +327,7 @@
                                 <constraint firstItem="i5C-X8-KdO" firstAttribute="top" secondItem="kly-BZ-GY8" secondAttribute="top" id="VHu-a6-cyv"/>
                                 <constraint firstAttribute="trailing" secondItem="4w1-N2-EAb" secondAttribute="trailing" constant="16" id="Z1x-ox-aT7"/>
                                 <constraint firstItem="hgz-ju-66D" firstAttribute="leading" secondItem="kly-BZ-GY8" secondAttribute="leading" id="hGR-Ff-yES"/>
+                                <constraint firstItem="9U4-T1-wMt" firstAttribute="leading" secondItem="2G8-sw-RNH" secondAttribute="trailing" constant="-20" id="nPl-I3-SUW"/>
                                 <constraint firstItem="hgz-ju-66D" firstAttribute="top" secondItem="i5C-X8-KdO" secondAttribute="bottom" id="qHM-uh-EY1"/>
                                 <constraint firstItem="4w1-N2-EAb" firstAttribute="top" secondItem="hgz-ju-66D" secondAttribute="bottom" constant="16" id="rAa-mR-rFp"/>
                             </constraints>
@@ -341,10 +352,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="CGH-zO-Amk" secondAttribute="bottom" id="nB4-BM-CP1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CGH-zO-Amk" secondAttribute="trailing" id="uhI-eb-PBU"/>
             </constraints>
-            <point key="canvasLocation" x="22" y="-11"/>
+            <point key="canvasLocation" x="21.739130434782609" y="-11.383928571428571"/>
         </view>
     </objects>
     <resources>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="door.left.hand.open" catalog="system" width="108" height="128"/>
         <image name="lock.circle" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>

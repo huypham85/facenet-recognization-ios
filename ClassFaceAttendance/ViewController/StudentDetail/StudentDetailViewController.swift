@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Photos
+import PhotosUI
 
 class StudentDetailViewController: BaseViewController {
     @IBOutlet var idLabel: UILabel!
@@ -24,6 +26,11 @@ class StudentDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_reload"), style: .plain, target: self, action: #selector(refreshData))
+        getInformation()
+    }
+    
+    @objc private func refreshData() {
         getInformation()
     }
 
@@ -41,6 +48,37 @@ class StudentDetailViewController: BaseViewController {
     @IBAction func changePasswordAction(_ sender: Any) {
         let vc = ReAuthenticateViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func openPhotoLibrary(_ sender: Any) {
+        let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        
+        switch status {
+        case .authorized, .limited:
+            DispatchQueue.main.async { [weak self] in
+                self?.presentImagePicker()
+            }
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+                guard let self = self else { return }
+                if status == .authorized {
+                    DispatchQueue.main.async {
+                        self.presentImagePicker()
+                    }
+                }
+            }
+        case .denied, .restricted:
+            break
+        @unknown default:
+            break
+        }
+    }
+    
+    private func presentImagePicker() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
     private func getInformation() {
@@ -84,5 +122,23 @@ class StudentDetailViewController: BaseViewController {
             classLabel.isHidden = true
             dobView.isHidden = true
         }
+    }
+}
+
+extension StudentDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage,
+              let user = globalUser
+        else { return }
+        ProgressHelper.showLoading(text: "Đang cập nhật ảnh đại điện")
+        firebaseManager.updateProfilePicture(name: user.id, image: image) { [weak self] error in
+            if error != nil {
+                self?.showAlertViewController(title: error?.localizedDescription, actions: [], cancel: "OK")
+            } else {
+                self?.profileImageView.image = image
+            }
+            ProgressHelper.hideLoading()
+        }
+        dismiss(animated: true)
     }
 }

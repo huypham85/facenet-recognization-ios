@@ -596,6 +596,42 @@ class FirebaseManager {
     }
     
     // MARK: Student and Teacher
+    
+    func updateProfilePicture(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
+
+        let metadata = StorageMetadata()
+
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            metadata.contentType = "image/jpg"
+            storageRef.putData(imageData, metadata: metadata, completion: {
+                _, error in
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                    completionHandler(error)
+                    return
+                }
+                else {
+                    storageRef.downloadURL(completion: {
+                        url, error in
+                        if let metaImageUrl = url?.absoluteString {
+                            let dict: [String: Any] = ["photo": metaImageUrl]
+                            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "")
+                                .updateChildValues(dict, withCompletionBlock: {
+                                    error, _ in
+                                    if error == nil {
+                                        print("Updated profile picture")
+                                        completionHandler(nil)
+                                    } else {
+                                        completionHandler(error)
+                                    }
+                                })
+                        }
+                    })
+                }
+            })
+        }
+    }
 
     func getStudent(with studentId: String, completion: @escaping (Student) -> Void) {
         let ref = Database.database().reference().child(STUDENT_CHILD)
