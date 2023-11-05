@@ -53,15 +53,17 @@ class SessionDetailViewController: BaseViewController {
     }
 
     private func validateNewCheckInTime(startDate: Date, endDate: Date) {
-        if endDate < startDate || startDate < Date() {
+        if endDate < startDate || endDate < Date() {
             showAlertViewController(title: "Cài đặt thời gian không hợp lệ", actions: [], cancel: "OK")
         } else {
             guard let session = session else { return }
+            ProgressHelper.showLoading()
             firebaseManager.updateCheckInTime(startTime: startDate.toCheckInString(),
                                               endTime: endDate.toCheckInString(),
                                               session: session)
             { [weak self] startTime, endTime in
                 self?.checkInTimeLabel.text = "\(startTime.removeDateComponent()) - \(endTime)"
+                ProgressHelper.hideLoading()
                 self?.showAlertViewController(
                     title: "Cập nhật thời gian điểm danh thành công",
                     actions: [],
@@ -185,7 +187,8 @@ class SessionDetailViewController: BaseViewController {
 
     func isCurrentTimeInRange(startTime: String, endTime: String) -> Bool {
         formatter.dateFormat = "HH:mm yyyy-MM-dd"
-        formatter.locale = Locale(identifier: "vi_VN")
+//        formatter.locale = Locale(identifier: "vi_VN")
+        formatter.timeZone = TimeZone(identifier: "Asia/Ho_Chi_Minh")
 
         if let startDate = formatter.date(from: startTime),
            let endDate = formatter.date(from: endTime)

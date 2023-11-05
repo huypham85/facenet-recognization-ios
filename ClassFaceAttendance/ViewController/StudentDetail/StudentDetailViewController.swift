@@ -109,7 +109,8 @@ class StudentDetailViewController: BaseViewController {
             idLabel.text = "ID: \(student.id)"
             emailLabel.text = student.email
             genderLabel.text = student.gender
-            profileImageView.sd_setImage(with: URL(string: student.photo))
+            profileImageView.sd_setImage(with: URL(string: student.photo),
+                                         placeholderImage: UIImage(systemName: "person.crop.circle.fill"))
             classLabel.text = "Lớp: \(student.mainClass)"
             dobLabel.text = student.dob
         } else {
@@ -118,7 +119,8 @@ class StudentDetailViewController: BaseViewController {
             idLabel.text = "ID: \(teacher.id)"
             emailLabel.text = teacher.email
             genderLabel.text = teacher.gender
-            profileImageView.sd_setImage(with: URL(string: teacher.photo))
+            profileImageView.sd_setImage(with: URL(string: teacher.photo),
+                                         placeholderImage: UIImage(systemName: "person.crop.circle.fill"))
             classLabel.isHidden = true
             dobView.isHidden = true
         }

@@ -113,9 +113,10 @@ class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
               startTimes.indices.contains(startTimeIndex),
               endTimes.indices.contains(endTimeIndex) else { return }
 
-        let startTime = startTimes[startTimeIndex]
-        let endTime = endTimes[endTimeIndex]
-        
+        var startTime = startTimes[startTimeIndex]
+        var endTime = endTimes[endTimeIndex]
+        startTime = startTime.setDate(from: days[dayIndex])
+        endTime = endTime.setDate(from: days[dayIndex])
         selectedStartDate = startTime
         selectedEndDate = endTime
         didSelectDates?(startTime, endTime)

@@ -149,12 +149,14 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
     
     private func getSessionAtDate(date: Date) {
         print("Select date: \(date.toDateString())")
+        ProgressHelper.showLoading()
         firebaseManager.getSessionsAtDate(date: date.toDateString()) { [weak self] sessions in
             var sortedSessions =  sessions
             sortedSessions.sort(by: { $0.startTimeDate ?? Date() < $1.startTimeDate ?? Date() })
             self?.sessions = sortedSessions
             self?.tableView.reloadData()
             self?.refreshControl.endRefreshing()
+            ProgressHelper.hideLoading()
         }
     }
 }

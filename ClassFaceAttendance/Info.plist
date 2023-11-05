@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>...</string>
+	<string>Cho phép truy cập bluetooth?</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
