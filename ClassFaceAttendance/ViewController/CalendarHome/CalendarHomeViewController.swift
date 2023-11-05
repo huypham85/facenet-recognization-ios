@@ -9,7 +9,7 @@ import UIKit
 
 class CalendarHomeViewController: BaseViewController {
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet weak var helloLabel: UILabel!
+    @IBOutlet var helloLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     var totalSquares = [Date]()
     var sessions: [Session] = []
@@ -19,9 +19,11 @@ class CalendarHomeViewController: BaseViewController {
             getSessionAtDate(date: selectedDate)
         }
     }
+
     @IBOutlet var datePicker: UIDatePicker!
-    
+
     private let refreshControl = UIRefreshControl()
+    var previousContentOffsetX: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,6 @@ class CalendarHomeViewController: BaseViewController {
         setupDatePicker()
     }
 
-    
     private func setupDatePicker() {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .compact
@@ -44,7 +45,7 @@ class CalendarHomeViewController: BaseViewController {
         }
         datePicker.addTarget(self, action: #selector(onDateChanged), for: .valueChanged)
     }
-    
+
     private func setupView() {
         if let id = globalUser?.id {
             helloLabel.text = "Hello \(id)"
@@ -64,8 +65,7 @@ class CalendarHomeViewController: BaseViewController {
         tableView.dataSource = self
         tableView.refreshControl = refreshControl
         // Setup Refresh Control
-        self.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
 
     @IBAction func previousWeek(_: Any) {
@@ -77,12 +77,12 @@ class CalendarHomeViewController: BaseViewController {
         selectedDate = CalendarHelper().addDays(date: selectedDate, days: 7)
         setWeekView()
     }
-    
+
     @objc func onDateChanged() {
         selectedDate = datePicker.date
         setWeekView()
     }
-    
+
     @objc private func refreshData() {
         getSessionAtDate(date: selectedDate)
     }
@@ -110,7 +110,7 @@ class CalendarHomeViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setWeekView()
+//        setWeekView()
     }
 }
 
@@ -120,8 +120,7 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: CalendarCollectionViewCell.cellId,
             for: indexPath
@@ -146,21 +145,41 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
         getSessionAtDate(date: selectedDate)
         collectionView.reloadData()
     }
-    
+
     private func getSessionAtDate(date: Date) {
         print("Select date: \(date.toDateString())")
         firebaseManager.getSessionsAtDate(date: date.toDateString()) { [weak self] sessions in
-            var sortedSessions =  sessions
+            var sortedSessions = sessions
             sortedSessions.sort(by: { $0.startTimeDate ?? Date() < $1.startTimeDate ?? Date() })
             self?.sessions = sortedSessions
             self?.tableView.reloadData()
             self?.refreshControl.endRefreshing()
         }
     }
+
+    // Implement the scrollViewDidScroll method.
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == collectionView {
+            // Get the current content offset.
+            let contentOffsetX = scrollView.contentOffset.x
+
+            // Calculate the difference in content offset since the last scroll.
+            let scrollDiff = contentOffsetX - previousContentOffsetX
+            previousContentOffsetX = contentOffsetX
+
+            if scrollDiff > 0 {
+                // Scrolling right
+                print("Scrolling right")
+            } else if scrollDiff < 0 {
+                // Scrolling left
+                print("Scrolling left")
+            }
+        }
+    }
 }
 
 extension CalendarHomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return sessions.count
     }
 
@@ -171,12 +190,12 @@ extension CalendarHomeViewController: UITableViewDelegate, UITableViewDataSource
         cell.setData(session: sessions[indexPath.row])
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 90
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let session = sessions[safe: indexPath.row]
         let vc = SessionDetailViewController()
         vc.session = session
@@ -186,8 +205,7 @@ extension CalendarHomeViewController: UITableViewDelegate, UITableViewDataSource
 
 extension CalendarHomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout,
-                        sizeForItemAt _: IndexPath) -> CGSize
-    {
+                        sizeForItemAt _: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width / 8 - 2
         let height = (collectionView.frame.size.height - 2)
         return
