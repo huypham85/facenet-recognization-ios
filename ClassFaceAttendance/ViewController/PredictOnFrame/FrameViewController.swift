@@ -122,6 +122,7 @@ class FrameViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         fnet.clean()
+        centralManager.stopScan()
         super.viewDidDisappear(animated)
         sessionQueue.async {[weak self]()  -> Void in
             guard let self = self else { return }
