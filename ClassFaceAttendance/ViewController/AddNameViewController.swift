@@ -13,7 +13,10 @@ class AddNameViewController: BaseViewController {
     @IBOutlet weak var faceImageView: UIImageView!
     @IBOutlet weak var textField: SkyFloatingLabelTextField!
     var videoURL: URL?
-
+    
+    deinit {
+        videoURL = nil
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         fnet.load()

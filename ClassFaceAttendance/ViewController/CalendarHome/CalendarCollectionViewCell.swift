@@ -9,14 +9,19 @@ import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var dayOfWeek: UILabel!
     @IBOutlet weak var dayOfMonth: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func config(dateString: String) {
-        dayOfMonth.text = dateString
+    func config(date: Date) {
+        dayOfMonth.text = String(CalendarHelper().dayOfMonth(date: date))
+        formatter.dateFormat = "EEE"
+        formatter.timeZone = timeZone
+        let day = formatter.string(from: date)
+        dayOfWeek.text = day
     }
 
 }

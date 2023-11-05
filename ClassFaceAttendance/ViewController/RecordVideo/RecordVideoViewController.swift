@@ -3,7 +3,7 @@ import UIKit
 import AVFoundation
 import MBProgressHUD
 
-class RecordVideoViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+class RecordVideoViewController: BaseViewController, AVCaptureFileOutputRecordingDelegate {
     
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -17,6 +17,11 @@ class RecordVideoViewController: UIViewController, AVCaptureFileOutputRecordingD
     var timer = Timer()
     
     var outputVideoUrl: URL?
+    
+    deinit {
+        outputVideoUrl = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,7 +103,8 @@ class RecordVideoViewController: UIViewController, AVCaptureFileOutputRecordingD
         
         videoPreviewLayer.connection?.videoOrientation = .portrait
         videoView.layer.insertSublayer(videoPreviewLayer, at: 0)
-        DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self else { return }
             self.captureSession.startRunning()
             DispatchQueue.main.async {
                 self.videoPreviewLayer.frame = self.videoView.bounds

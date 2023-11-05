@@ -33,29 +33,31 @@
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Trz-h8-bMr">
-                            <rect key="frame" x="89.666666666666671" y="61.666666666666671" width="213.66666666666663" height="34.333333333333329"/>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Trz-h8-bMr">
+                            <rect key="frame" x="13" y="61.666666666666671" width="367" height="34.333333333333329"/>
                             <color key="backgroundColor" name="background"/>
                             <color key="tintColor" name="red600"/>
                         </datePicker>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P02-7N-C8O">
-                            <rect key="frame" x="0.0" y="61.333333333333329" width="89.666666666666671" height="35"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Previous"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P02-7N-C8O">
+                            <rect key="frame" x="0.0" y="112" width="36" height="80"/>
+                            <color key="tintColor" name="red600"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="chevron.left" catalog="system"/>
                             <connections>
                                 <action selector="previousWeek:" destination="-1" eventType="touchUpInside" id="1T1-In-pIE"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdH-vk-7bI">
-                            <rect key="frame" x="303.33333333333331" y="61.333333333333329" width="89.666666666666686" height="35"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Next"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdH-vk-7bI">
+                            <rect key="frame" x="357" y="112" width="36" height="80"/>
+                            <color key="tintColor" name="red600"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="chevron.right" catalog="system"/>
                             <connections>
                                 <action selector="nextWeek:" destination="-1" eventType="touchUpInside" id="2Pr-qz-iNC"/>
                             </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-LD-Wyc">
-                            <rect key="frame" x="0.0" y="112" width="393" height="80"/>
+                            <rect key="frame" x="36" y="112" width="321" height="80"/>
                             <color key="backgroundColor" name="background"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="dTa-aG-qYn"/>
@@ -72,25 +74,28 @@
                             <color key="backgroundColor" name="background"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" name="background"/>
                     <constraints>
-                        <constraint firstItem="Trz-h8-bMr" firstAttribute="centerX" secondItem="tUF-qv-dGv" secondAttribute="centerX" id="01f-OH-Ex5"/>
-                        <constraint firstItem="Trz-h8-bMr" firstAttribute="trailing" secondItem="QdH-vk-7bI" secondAttribute="leading" id="15v-vd-8CY"/>
+                        <constraint firstItem="Elb-LD-Wyc" firstAttribute="leading" secondItem="P02-7N-C8O" secondAttribute="trailing" id="7YC-yQ-I7t"/>
                         <constraint firstItem="Nrc-Ba-7Ve" firstAttribute="top" secondItem="tUF-qv-dGv" secondAttribute="top" constant="16" id="BRA-9M-GOW"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="13" id="Few-lg-PoW"/>
+                        <constraint firstItem="P02-7N-C8O" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" id="HBk-yG-8ng"/>
+                        <constraint firstItem="P02-7N-C8O" firstAttribute="centerY" secondItem="Elb-LD-Wyc" secondAttribute="centerY" id="Io2-fQ-omd"/>
                         <constraint firstItem="Nrc-Ba-7Ve" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="24" id="JRQ-sJ-9ik"/>
                         <constraint firstItem="Elb-LD-Wyc" firstAttribute="top" secondItem="Trz-h8-bMr" secondAttribute="bottom" constant="16" id="Mo8-oS-8Yu"/>
                         <constraint firstItem="575-F7-hKb" firstAttribute="top" secondItem="Elb-LD-Wyc" secondAttribute="bottom" constant="8" id="Rtw-Th-wgS"/>
                         <constraint firstItem="Trz-h8-bMr" firstAttribute="top" secondItem="Nrc-Ba-7Ve" secondAttribute="bottom" constant="24" id="UIU-Xa-qJj"/>
-                        <constraint firstItem="Trz-h8-bMr" firstAttribute="leading" secondItem="P02-7N-C8O" secondAttribute="trailing" id="UMa-sN-vBh"/>
-                        <constraint firstAttribute="trailing" secondItem="Elb-LD-Wyc" secondAttribute="trailing" id="WmL-Yy-TnK"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="centerX" secondItem="Elb-LD-Wyc" secondAttribute="centerX" id="VyS-xf-AWU"/>
+                        <constraint firstAttribute="trailing" secondItem="Elb-LD-Wyc" secondAttribute="trailing" constant="36" id="WmL-Yy-TnK"/>
+                        <constraint firstAttribute="trailing" secondItem="QdH-vk-7bI" secondAttribute="trailing" id="XCq-AI-qMa"/>
+                        <constraint firstItem="QdH-vk-7bI" firstAttribute="height" secondItem="Elb-LD-Wyc" secondAttribute="height" id="bYc-FW-X95"/>
                         <constraint firstItem="575-F7-hKb" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="8" id="cc7-6h-Ego"/>
-                        <constraint firstItem="Trz-h8-bMr" firstAttribute="centerY" secondItem="P02-7N-C8O" secondAttribute="centerY" id="e7E-aX-WGY"/>
-                        <constraint firstItem="Elb-LD-Wyc" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" id="o4a-BW-mj6"/>
+                        <constraint firstItem="Elb-LD-Wyc" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="36" id="o4a-BW-mj6"/>
                         <constraint firstAttribute="trailing" secondItem="575-F7-hKb" secondAttribute="trailing" constant="8" id="pCj-hU-bY4"/>
-                        <constraint firstItem="P02-7N-C8O" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" id="q5s-XJ-iWw"/>
+                        <constraint firstItem="QdH-vk-7bI" firstAttribute="centerY" secondItem="Elb-LD-Wyc" secondAttribute="centerY" id="pOQ-y9-BZx"/>
                         <constraint firstAttribute="bottom" secondItem="575-F7-hKb" secondAttribute="bottom" id="r1Q-hk-hOH"/>
-                        <constraint firstAttribute="trailing" secondItem="QdH-vk-7bI" secondAttribute="trailing" id="s9Z-ME-g2V"/>
-                        <constraint firstItem="Trz-h8-bMr" firstAttribute="centerY" secondItem="QdH-vk-7bI" secondAttribute="centerY" id="vlx-jL-maw"/>
+                        <constraint firstItem="QdH-vk-7bI" firstAttribute="leading" secondItem="Elb-LD-Wyc" secondAttribute="trailing" id="s1j-Kq-hhP"/>
+                        <constraint firstItem="P02-7N-C8O" firstAttribute="height" secondItem="Elb-LD-Wyc" secondAttribute="height" id="zJS-Er-dKt"/>
                     </constraints>
                 </view>
             </subviews>
@@ -106,8 +111,10 @@
         </view>
     </objects>
     <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <namedColor name="background">
-            <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red600">
             <color red="0.92900002002716064" green="0.36500000953674316" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

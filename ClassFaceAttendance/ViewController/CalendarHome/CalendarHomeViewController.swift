@@ -22,6 +22,7 @@ class CalendarHomeViewController: BaseViewController {
     @IBOutlet var datePicker: UIDatePicker!
     
     private let refreshControl = UIRefreshControl()
+    private var itemSpacing = 4
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,15 +131,23 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
         }
 
         let date = totalSquares[indexPath.item]
-        cell.config(dateString: String(CalendarHelper().dayOfMonth(date: date)))
+        cell.config(date: date)
 
         if date == selectedDate {
-            cell.backgroundColor = UIColor.systemGreen
+            cell.backgroundColor = UIColor.red200
         } else {
             cell.backgroundColor = UIColor.white
         }
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(itemSpacing)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(itemSpacing)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -158,6 +167,17 @@ extension CalendarHomeViewController: UICollectionViewDelegate, UICollectionView
             self?.refreshControl.endRefreshing()
             ProgressHelper.hideLoading()
         }
+    }
+}
+
+extension CalendarHomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout,
+                        sizeForItemAt _: IndexPath) -> CGSize
+    {
+        let width = collectionView.frame.size.width / 7 - CGFloat(itemSpacing)
+        let height = collectionView.frame.size.height
+        return
+            CGSize(width: width, height: height)
     }
 }
 
@@ -186,13 +206,3 @@ extension CalendarHomeViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension CalendarHomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout,
-                        sizeForItemAt _: IndexPath) -> CGSize
-    {
-        let width = collectionView.frame.size.width / 8 - 2
-        let height = (collectionView.frame.size.height - 2)
-        return
-            CGSize(width: width, height: height)
-    }
-}
