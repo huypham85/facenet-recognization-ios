@@ -8,7 +8,7 @@ import CoreBluetooth
 import RxSwift
 import RxCocoa
 
-class FrameViewController: UIViewController {
+class FrameViewController: BaseViewController {
     
     
     //let api = API()
@@ -18,6 +18,7 @@ class FrameViewController: UIViewController {
     private var devicePosition: AVCaptureDevice.Position = .front
     private var currentSession: Session?
     private var teacherDeviceId: String?
+    private var timeoutTimer: Timer?
     private var detectedTeacherDevice = false {
         didSet {
             if detectedTeacherDevice {
@@ -47,7 +48,9 @@ class FrameViewController: UIViewController {
     private var requests = [VNRequest]()
     
     private var centralManager: CBCentralManager!
-    
+    deinit {
+        timeoutTimer?.invalidate()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) 
@@ -123,6 +126,7 @@ class FrameViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         fnet.clean()
         centralManager.stopScan()
+        timeoutTimer?.invalidate()
         super.viewDidDisappear(animated)
         sessionQueue.async {[weak self]()  -> Void in
             guard let self = self else { return }
@@ -531,16 +535,34 @@ extension FrameViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     
 }
 
+extension FrameViewController {
+    func startTimeoutTimer() {
+        timeoutTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(handleTimeout), userInfo: nil, repeats: false)
+    }
+    
+    @objc func handleTimeout() {
+        print("Timeout: Teacher device not found")
+        showAlertViewController(title: "Không thể tìm thấy thiết bị của giảng viên, vui lòng thử lại!", actions: ["OK"], cancel: nil) { [weak self] index in
+            if index == 0 {
+                self?.dismiss(animated: true)
+            }
+        }
+    }
+}
+
 extension FrameViewController: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             central.scanForPeripherals(withServices: nil, options: nil)
+            startTimeoutTimer()
         }
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("Periferal \(peripheral.name) - \(peripheral.identifier.uuidString)")
         if peripheral.name == teacherDeviceId {
+            timeoutTimer?.invalidate()
+            central.stopScan()
             detectedTeacherDevice = true
         }
     }

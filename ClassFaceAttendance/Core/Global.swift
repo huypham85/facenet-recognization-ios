@@ -18,7 +18,7 @@ let testingDataset = ImageDataset(split: .test)
 var currentLabel = UNKNOWN
 
 var numberOfFramesDeteced = 0 //number frames detected
-let validFrames = 5 //after getting 5 frames, users have been verified
+let validFrames = 3 //after getting 5 frames, users have been verified
 
 var attendList: [Attendances] = [] //load from firebase
 var localUserList: [Attendance] = [] //copy of attenList, use it to ignore appended users

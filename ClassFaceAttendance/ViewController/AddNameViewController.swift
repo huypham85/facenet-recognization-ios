@@ -5,7 +5,7 @@ import SkyFloatingLabelTextField
 import MBProgressHUD
 import ProgressHUD
 
-class AddNameViewController: UIViewController {
+class AddNameViewController: BaseViewController {
     
     private var generator:AVAssetImageGenerator!
     
