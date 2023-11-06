@@ -23,7 +23,7 @@ class ForgotPasswordViewController: BaseViewController {
                     return
                 }
                 self?.showAlertViewController(
-                    title: "Email reset password has been sent",
+                    title: "Đã gửi email đặt lại mật khẩu",
                     actions: ["OK"],
                     cancel: nil,
                     actionHandler: { [weak self] index in
