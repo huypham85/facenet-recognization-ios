@@ -31,7 +31,7 @@ class AddNameViewController: BaseViewController {
     }
     
     @IBAction func tapDoneButoon(_ sender: UIButton) {
-        ProgressHUD.show("Adding...")
+        ProgressHUD.show("Đang xử lý...")
         let getFrames = GetFrames()
         if let videoURL,
            let studentId = globalUser?.id,

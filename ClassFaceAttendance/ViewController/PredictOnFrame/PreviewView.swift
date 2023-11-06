@@ -7,7 +7,6 @@ import AVFoundation
 
 class PreviewView: UIView {
     
-//    let api = API()
     private var maskLayer = [CAShapeLayer]()
     private var textLayer = [CATextLayer]()
     
@@ -86,7 +85,7 @@ class PreviewView: UIView {
     
     
     func showDiaglog3s(name: String,_ success: Bool) {
-        let title = success == false ?  "Can't join!" : "Joining..."
+        let title = success == false ?  "Không thể nhận diện" : "Đang điểm danh ..."
         let alert = UIAlertController(title: title, message: "\(name)", preferredStyle: .alert)
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
         let when = DispatchTime.now() + 1

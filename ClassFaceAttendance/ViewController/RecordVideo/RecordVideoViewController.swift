@@ -63,8 +63,8 @@ class RecordVideoViewController: BaseViewController, AVCaptureFileOutputRecordin
             showDialog(message: "Not supported in simulator!")
             return
         }
-        if startButton.titleLabel?.text == "Start" {
-            desLabel.text = "Move your head slowly!"
+        if startButton.titleLabel?.text == "Bắt đầu" {
+            desLabel.text = "Di chuyển đầu nhẹ nhàng!"
             startButton.isEnabled = false
             captureSession.addOutput(movieOutput)
             let paths = documentDirectory.appendingPathComponent("output.mov")
@@ -87,7 +87,7 @@ class RecordVideoViewController: BaseViewController, AVCaptureFileOutputRecordin
             timer.invalidate()
             startButton.isEnabled = true
             timeRecord = 5
-            startButton.setTitle("Done", for: .normal)
+            startButton.setTitle("Hoàn thành", for: .normal)
         }
     }
     

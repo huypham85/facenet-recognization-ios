@@ -155,30 +155,6 @@ class FrameViewController: BaseViewController {
     
     //MARK: - User interaction
     
-    @IBAction func tapTakePhoto(_ sender: UIButton) {
-        guard let frame = currentFrame else {
-            print("nil frame")
-            return
-        }
-        let today = Date()
-        formatter.dateFormat = DATE_FORMAT
-        let timestamp = formatter.string(from: today)
-//        let user = Attendance(session: currentSession, name: TAKE_PHOTO_NAME, image: frame, time: timestamp)
-//        showDiaglog3s(name: TAKE_PHOTO_NAME, true)
-//
-//        //        api.uploadLogs(user: user) { error in
-//        //            if error != nil {
-//        //                self.showDiaglog3s(name: TAKE_PHOTO_NAME, false)
-//        //            }
-//        //        }
-//        firebaseManager.uploadLogTimes(attendance: user) { error in
-//            if error != nil {
-//                self.showDiaglog3s(name: TAKE_PHOTO_NAME, false)
-//            }
-//        }
-        
-    }
-    
     @IBAction func changeCamera(_ sender: UIBarButtonItem) {
         //Remove existing input
         guard let currentCameraInput: AVCaptureInput = session.inputs.first else {
