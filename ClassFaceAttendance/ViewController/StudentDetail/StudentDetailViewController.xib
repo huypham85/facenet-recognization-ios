@@ -37,18 +37,18 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5C-X8-KdO" userLabel="TopView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
-                                    <color key="backgroundColor" name="red600"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <color key="backgroundColor" name="background"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="120" id="XaN-lK-nK6"/>
+                                        <constraint firstAttribute="height" constant="90" id="XaN-lK-nK6"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgz-ju-66D" userLabel="MidView">
-                                    <rect key="frame" x="0.0" y="120" width="414" height="120"/>
+                                    <rect key="frame" x="0.0" y="90" width="414" height="120"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nguyen Van A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ski-TM-C8y">
-                                            <rect key="frame" x="148.5" y="54" width="117.5" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <rect key="frame" x="118" y="54" width="178" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -77,7 +77,7 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4w1-N2-EAb">
-                                    <rect key="frame" x="16" y="256" width="382" height="282"/>
+                                    <rect key="frame" x="16" y="226" width="382" height="282"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ube-vX-C6j">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
@@ -291,22 +291,22 @@
                                     </subviews>
                                     <color key="backgroundColor" name="background"/>
                                 </stackView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2G8-sw-RNH">
-                                    <rect key="frame" x="162" y="75.5" width="90" height="89"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2G8-sw-RNH">
+                                    <rect key="frame" x="152" y="25.5" width="110" height="109"/>
                                     <color key="tintColor" systemColor="systemGrayColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="90" id="Tf5-zL-00P"/>
-                                        <constraint firstAttribute="height" constant="90" id="XuO-Fp-9wh"/>
+                                        <constraint firstAttribute="width" constant="110" id="Tf5-zL-00P"/>
+                                        <constraint firstAttribute="height" constant="110" id="XuO-Fp-9wh"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="45"/>
+                                            <real key="value" value="55"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9U4-T1-wMt">
-                                    <rect key="frame" x="232" y="80" width="24.5" height="22"/>
-                                    <color key="tintColor" name="background"/>
+                                    <rect key="frame" x="242" y="30" width="24.5" height="22"/>
+                                    <color key="tintColor" name="red600"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="camera.fill" catalog="system"/>
                                     <connections>
@@ -361,7 +361,7 @@
         <image name="lock.circle" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="background">
-            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red200">
             <color red="0.95294117647058818" green="0.77254901960784317" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

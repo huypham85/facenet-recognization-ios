@@ -9,7 +9,6 @@ import UIKit
 
 class CalendarHomeViewController: BaseViewController {
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     var totalSquares = [Date]()
     var sessions: [Session] = []
@@ -26,7 +25,6 @@ class CalendarHomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = .red600
         title = TabBarItemTitle.classCalendar
         navigationController?.navigationBar.prefersLargeTitles = true
         setupView()
@@ -49,9 +47,6 @@ class CalendarHomeViewController: BaseViewController {
     }
     
     private func setupView() {
-        if let id = globalUser?.id {
-            helloLabel.text = "Hello \(id)"
-        }
     }
 
     private func setupCollectionView() {

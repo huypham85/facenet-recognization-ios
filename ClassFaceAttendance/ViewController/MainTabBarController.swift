@@ -52,8 +52,8 @@ class MainTabBarController: UITabBarController {
         )
         viewLogViewController.tabBarItem = UITabBarItem(
             title: TabBarItemTitle.course,
-            image: UIImage(systemName: "clock"),
-            selectedImage: UIImage(systemName: "clock.bounce")
+            image: UIImage(systemName: "books.vertical"),
+            selectedImage: UIImage(systemName: "books.vertical")
         )
         
         registerFaceViewController.tabBarItem = UITabBarItem(
@@ -67,7 +67,8 @@ class MainTabBarController: UITabBarController {
             selectedImage: UIImage(systemName: "person.crop.circle.fill")
         )
         
-        tabBar.backgroundColor = .white
+        tabBar.backgroundColor = .backgroundColor
+        tabBar.tintColor = .red600
         // Optionally, set the default selected tab
         selectedIndex = 0
     }

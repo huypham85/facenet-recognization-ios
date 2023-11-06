@@ -24,6 +24,7 @@ class AllSessionsViewController: BaseViewController {
         setupView()
         setupCollectionView()
         fetchData()
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     private func setupView() {

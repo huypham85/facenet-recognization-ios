@@ -66,7 +66,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="T3W-Fk-PSt" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-50" id="J0U-l1-79P"/>
                 <constraint firstItem="5a9-7T-h07" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Jgg-Bz-68a"/>
@@ -83,7 +83,7 @@
     <resources>
         <image name="ic_face_unregistered" width="85.333335876464844" height="85.333335876464844"/>
         <namedColor name="background">
-            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lightGreen">
             <color red="0.5490196078431373" green="0.89803921568627454" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

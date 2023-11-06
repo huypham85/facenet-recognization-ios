@@ -30,6 +30,10 @@ extension UIColor {
     @nonobjc class var red400: UIColor {
         return UIColor(hexString: "#F6928A")
     }
+
+    @nonobjc class var backgroundColor: UIColor {
+        return UIColor(hexString: "#F7F7F8")
+    }
     
     @nonobjc class var red600: UIColor {
         return UIColor(hexString: "#ED5D51")

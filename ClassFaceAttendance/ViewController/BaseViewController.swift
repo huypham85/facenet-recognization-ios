@@ -33,8 +33,8 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         Log.info(NSStringFromClass(classForCoder) + "." + #function)
         super.viewWillAppear(animated)
-        setNavigationBackBarButtonEmptyTitle()
-        setNavigationItemsColor(color: .white)
+//        setNavigationBackBarButtonEmptyTitle()
+        setNavigationItemsColor(color: .red600)
     }
 
     @objc func closeKeyboard() {

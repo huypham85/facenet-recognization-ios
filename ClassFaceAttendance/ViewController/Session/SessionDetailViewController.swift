@@ -35,12 +35,8 @@ class SessionDetailViewController: BaseViewController {
             target: self,
             action: #selector(refreshData)
         )
-//        setup()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         setup()
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     override func closeKeyboard() {

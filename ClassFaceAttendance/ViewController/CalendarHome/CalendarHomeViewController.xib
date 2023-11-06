@@ -14,7 +14,6 @@
             <connections>
                 <outlet property="collectionView" destination="Elb-LD-Wyc" id="m4T-G2-ouh"/>
                 <outlet property="datePicker" destination="Trz-h8-bMr" id="Ggm-1R-fHI"/>
-                <outlet property="helloLabel" destination="Nrc-Ba-7Ve" id="wJS-7v-DyW"/>
                 <outlet property="tableView" destination="575-F7-hKb" id="Iy7-A0-I3f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,19 +26,16 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUF-qv-dGv">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello B19DCCN317" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrc-Ba-7Ve">
-                            <rect key="frame" x="24" y="16" width="160.66666666666666" height="21.666666666666671"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Trz-h8-bMr">
-                            <rect key="frame" x="13" y="61.666666666666671" width="367" height="34.333333333333329"/>
+                            <rect key="frame" x="8" y="16.000000000000004" width="180" height="34.333333333333343"/>
                             <color key="backgroundColor" name="background"/>
                             <color key="tintColor" name="red600"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="180" id="1xS-mk-4tq"/>
+                            </constraints>
                         </datePicker>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P02-7N-C8O">
-                            <rect key="frame" x="0.0" y="112" width="36" height="80"/>
+                            <rect key="frame" x="0.0" y="66.333333333333329" width="36" height="79.999999999999986"/>
                             <color key="tintColor" name="red600"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="chevron.left" catalog="system"/>
@@ -48,7 +44,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdH-vk-7bI">
-                            <rect key="frame" x="357" y="112" width="36" height="80"/>
+                            <rect key="frame" x="357" y="66.333333333333329" width="36" height="79.999999999999986"/>
                             <color key="tintColor" name="red600"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="chevron.right" catalog="system"/>
@@ -57,7 +53,7 @@
                             </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Elb-LD-Wyc">
-                            <rect key="frame" x="36" y="112" width="321" height="80"/>
+                            <rect key="frame" x="36" y="66.333333333333329" width="321" height="79.999999999999986"/>
                             <color key="backgroundColor" name="background"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="dTa-aG-qYn"/>
@@ -70,22 +66,19 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="575-F7-hKb">
-                            <rect key="frame" x="8" y="200" width="377" height="559"/>
+                            <rect key="frame" x="8" y="154.33333333333331" width="377" height="604.66666666666674"/>
                             <color key="backgroundColor" name="background"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" name="background"/>
                     <constraints>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="top" secondItem="tUF-qv-dGv" secondAttribute="top" constant="16" id="22F-Jy-Cnc"/>
                         <constraint firstItem="Elb-LD-Wyc" firstAttribute="leading" secondItem="P02-7N-C8O" secondAttribute="trailing" id="7YC-yQ-I7t"/>
-                        <constraint firstItem="Nrc-Ba-7Ve" firstAttribute="top" secondItem="tUF-qv-dGv" secondAttribute="top" constant="16" id="BRA-9M-GOW"/>
-                        <constraint firstItem="Trz-h8-bMr" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="13" id="Few-lg-PoW"/>
+                        <constraint firstItem="Trz-h8-bMr" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="8" id="Few-lg-PoW"/>
                         <constraint firstItem="P02-7N-C8O" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" id="HBk-yG-8ng"/>
                         <constraint firstItem="P02-7N-C8O" firstAttribute="centerY" secondItem="Elb-LD-Wyc" secondAttribute="centerY" id="Io2-fQ-omd"/>
-                        <constraint firstItem="Nrc-Ba-7Ve" firstAttribute="leading" secondItem="tUF-qv-dGv" secondAttribute="leading" constant="24" id="JRQ-sJ-9ik"/>
                         <constraint firstItem="Elb-LD-Wyc" firstAttribute="top" secondItem="Trz-h8-bMr" secondAttribute="bottom" constant="16" id="Mo8-oS-8Yu"/>
                         <constraint firstItem="575-F7-hKb" firstAttribute="top" secondItem="Elb-LD-Wyc" secondAttribute="bottom" constant="8" id="Rtw-Th-wgS"/>
-                        <constraint firstItem="Trz-h8-bMr" firstAttribute="top" secondItem="Nrc-Ba-7Ve" secondAttribute="bottom" constant="24" id="UIU-Xa-qJj"/>
-                        <constraint firstItem="Trz-h8-bMr" firstAttribute="centerX" secondItem="Elb-LD-Wyc" secondAttribute="centerX" id="VyS-xf-AWU"/>
                         <constraint firstAttribute="trailing" secondItem="Elb-LD-Wyc" secondAttribute="trailing" constant="36" id="WmL-Yy-TnK"/>
                         <constraint firstAttribute="trailing" secondItem="QdH-vk-7bI" secondAttribute="trailing" id="XCq-AI-qMa"/>
                         <constraint firstItem="QdH-vk-7bI" firstAttribute="height" secondItem="Elb-LD-Wyc" secondAttribute="height" id="bYc-FW-X95"/>
@@ -114,7 +107,7 @@
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <namedColor name="background">
-            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red600">
             <color red="0.92900002002716064" green="0.36500000953674316" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

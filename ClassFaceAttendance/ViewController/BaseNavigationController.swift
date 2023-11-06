@@ -23,10 +23,10 @@ class BaseNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.tintColor = .white
+        navigationBar.tintColor = .red600
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
 
-        changeColor(.red600, isHideBorderShadow: true)
+        changeColor(.backgroundColor, isHideBorderShadow: true)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
