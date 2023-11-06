@@ -27,6 +27,8 @@ class CalendarHomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = .red600
+        title = TabBarItemTitle.classCalendar
+        navigationController?.navigationBar.prefersLargeTitles = true
         setupView()
         setupCollectionView()
         setupTableView()

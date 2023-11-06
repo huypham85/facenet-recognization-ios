@@ -7,6 +7,13 @@
 
 import UIKit
 
+struct TabBarItemTitle {
+    static let classCalendar = "Lịch học"
+    static let course = "Lớp tín chỉ"
+    static let faceRegister = "Đăng ký"
+    static let profile = "Cá nhân"
+}
+
 class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,23 +46,23 @@ class MainTabBarController: UITabBarController {
         // Optionally, customize the tab bar appearance
         // You can set titles, images, and more for each tabBarItem.
         homeViewController.tabBarItem = UITabBarItem(
-            title: "Hôm nay",
+            title: TabBarItemTitle.classCalendar,
             image: UIImage(systemName: "calendar"),
             selectedImage: UIImage(systemName: "calendar.bounce")
         )
         viewLogViewController.tabBarItem = UITabBarItem(
-            title: "Lịch sử",
+            title: TabBarItemTitle.course,
             image: UIImage(systemName: "clock"),
             selectedImage: UIImage(systemName: "clock.bounce")
         )
         
         registerFaceViewController.tabBarItem = UITabBarItem(
-            title: "Đăng ký",
+            title: TabBarItemTitle.faceRegister,
             image: UIImage(systemName: "faceid"),
             selectedImage: UIImage(systemName: "faceid")
         )
         profileViewController.tabBarItem = UITabBarItem(
-            title: "Cá nhân",
+            title: TabBarItemTitle.profile,
             image: UIImage(systemName: "person.crop.circle"),
             selectedImage: UIImage(systemName: "person.crop.circle.fill")
         )

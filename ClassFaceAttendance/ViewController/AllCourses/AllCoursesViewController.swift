@@ -14,6 +14,8 @@ class AllCoursesViewController: BaseViewController {
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = TabBarItemTitle.course
+        navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
         fetchCourse()
     }
