@@ -449,20 +449,26 @@ class FirebaseManager {
         }
     }
     
-    func checkUserRole(completion: @escaping (UserRole) -> Void) {
+    func checkUserRole(completion: @escaping (UserRole?) -> Void) {
         if let userId = Auth.auth().currentUser?.uid {
             let userRef = Database.database().reference().child(USERS).child(userId)
             userRef.observeSingleEvent(of: .value) { snapshot, _ in
-                if let userData = snapshot.value as? [String: Any],
-                   let user = User(dict: userData) {
-                    globalUser = user
-                    switch user.role {
-                    case .student:
-                        print("Student logged in")
-                    case .teacher:
-                        print("Teacher logged in")
+                if snapshot.exists() {
+                    if let userData = snapshot.value as? [String: Any],
+                       let user = User(dict: userData) {
+                        globalUser = user
+                        switch user.role {
+                        case .student:
+                            print("Student logged in")
+                        case .teacher:
+                            print("Teacher logged in")
+                        }
+                        completion(user.role)
+                    } else {
+                        completion(nil)
                     }
-                    completion(user.role)
+                } else {
+                    completion(nil)
                 }
             }
         }
@@ -633,25 +639,39 @@ class FirebaseManager {
         }
     }
 
-    func getStudent(with studentId: String, completion: @escaping (Student) -> Void) {
+    func getStudent(with studentId: String, completion: @escaping (Student?) -> Void) {
         let ref = Database.database().reference().child(STUDENT_CHILD)
         
         ref.child(studentId).observeSingleEvent(of: .value) { snapshot in
-            if let studentData = snapshot.value as? [String: Any],
-               let student = Student(dictionary: studentData) {
-                completion(student)
+            if snapshot.exists() {
+                if let studentData = snapshot.value as? [String: Any],
+                   let student = Student(dictionary: studentData) {
+                    completion(student)
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
             }
+            
         }
     }
     
-    func getTeacher(with teacherId: String, completion: @escaping (Teacher) -> Void) {
+    func getTeacher(with teacherId: String, completion: @escaping (Teacher?) -> Void) {
         let ref = Database.database().reference().child(TEACHER_CHILD)
         
         ref.child(teacherId).observeSingleEvent(of: .value) { snapshot in
-            if let teacherData = snapshot.value as? [String: Any],
-               let teacher = Teacher(dictionary: teacherData) {
-                completion(teacher)
+            if snapshot.exists() {
+                if let teacherData = snapshot.value as? [String: Any],
+                   let teacher = Teacher(dictionary: teacherData) {
+                    completion(teacher)
+                } else {
+                    completion(nil)
+                }
+            } else {
+                completion(nil)
             }
+            
         }
     }
     

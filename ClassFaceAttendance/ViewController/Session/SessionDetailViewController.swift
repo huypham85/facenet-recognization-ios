@@ -222,7 +222,7 @@ class SessionDetailViewController: BaseViewController {
                     vectorHelper.saveVector(vector)
                 }
                 firebaseManager.getTeacher(with: self.session?.teacherId ?? "") { teacher in
-                    if let teacherDeviceId = teacher.deviceId {
+                    if let teacherDeviceId = teacher?.deviceId {
                         let vc = FrameViewController.create(session: self.session, teacherDeviceId: teacherDeviceId)
                         self.present(vc, animated: true)
                     } else {

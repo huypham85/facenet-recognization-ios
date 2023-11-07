@@ -32,8 +32,10 @@ class AllSessionsViewController: BaseViewController {
         courseIdLabel.text = course?.id
         ProgressHelper.showLoading()
         firebaseManager.getTeacher(with: course?.teacherId ?? "") { [weak self] teacher in
-            self?.teacher = teacher
-            self?.teacherNameLabel.text = "Giảng viên: \(teacher.name)"
+            if let teacher = teacher {
+                self?.teacher = teacher
+                self?.teacherNameLabel.text = "Giảng viên: \(teacher.name)"
+            }
             ProgressHelper.hideLoading()
         }
         teacherNameLabel.isUserInteractionEnabled = true

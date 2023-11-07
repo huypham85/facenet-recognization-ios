@@ -94,8 +94,10 @@ class StudentDetailViewController: BaseViewController {
             case .student:
                 ProgressHelper.showLoading()
                 firebaseManager.getStudent(with: globalUser.id) { [weak self] student in
-                    self?.student = student
-                    self?.setupView()
+                    if let student = student {
+                        self?.student = student
+                        self?.setupView()
+                    }
                     ProgressHelper.hideLoading()
                 }
             }

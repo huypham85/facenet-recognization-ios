@@ -34,10 +34,21 @@ class MainViewController: BaseViewController {
             return
         }
         firebaseManager.checkUserRole { [weak self] role in
+            guard let role = role else {
+                self?.showAlertViewController(title: "Tài khoản đã bị vô hiệu hoá hoặc đã có lỗi xảy ra",
+                                        actions: [],
+                                        cancel: "OK",
+                                        cancelHandler: { [weak self] in
+                                            self?.dismiss(animated: true)
+                                        })
+                return
+            }
             switch role {
             case .student:
                 firebaseManager.getStudent(with: globalUser.id) { student in
-                    userFullName = student.name
+                    if let student = student {
+                        userFullName = student.name
+                    }
                 }
             case .teacher:
                 self?.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)

@@ -61,7 +61,7 @@ class GetFrames {
         generator = nil
         queue.addBarrierBlock {
             print("Complete")
-            ProgressHUD.show("Generating...")
+            ProgressHelper.showLoading(text: "Generating...")
             vectorHelper.addVector(name: label) { result in
                 print("All vectors for \(label): \(result.count)")
                 if result.count > 0 {
@@ -77,14 +77,14 @@ class GetFrames {
                                         if error != nil {
                                             print("upload current face error!")
                                         }
-                                        ProgressHUD.dismiss()
+                                        ProgressHelper.hideLoading()
                                     }
                                 }
                             }
                         }
                     }
                 } else {
-                    ProgressHUD.dismiss()
+                    ProgressHelper.hideLoading()
                 }
             }
         }

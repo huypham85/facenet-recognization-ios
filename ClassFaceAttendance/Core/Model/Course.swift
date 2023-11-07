@@ -21,8 +21,7 @@ struct Course {
             let name = dictionary["name"] as? String,
             let numberCredits = dictionary["numberCredits"] as? Int,
             let teacherId = dictionary["teacherId"] as? String,
-            let studentsDict = dictionary["students"] as? [String: [String: Any]],
-            let sessionsDict = dictionary["sessions"] as? [String: [String: Int]]
+            let studentsDict = dictionary["students"] as? [String: [String: Any]]
         else {
             return nil
         }
@@ -42,11 +41,13 @@ struct Course {
         self.students = students
 
         // Parse sessions
-        var sessions = [MiniSession]()
-        for (sessionDate, sessionData) in sessionsDict {
-            for (sessionId, _) in sessionData {
-                if let session = MiniSession(sessionId: sessionId, date: sessionDate) {
-                    sessions.append(session)
+        var sessions: [MiniSession] = []
+        if let sessionsDict = dictionary["sessions"] as? [String: [String: Int]] {
+            for (sessionDate, sessionData) in sessionsDict {
+                for (sessionId, _) in sessionData {
+                    if let session = MiniSession(sessionId: sessionId, date: sessionDate) {
+                        sessions.append(session)
+                    }
                 }
             }
         }

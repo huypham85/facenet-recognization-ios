@@ -19,7 +19,7 @@ class LoginViewController: BaseViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func onLoginAction(_ sender: Any) {
+    @IBAction func onLoginAction(_: Any) {
         guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
               let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         else { return }
@@ -35,10 +35,11 @@ class LoginViewController: BaseViewController {
         }
     }
 
-    @IBAction func forgotPasswordAction(_ sender: Any) {
+    @IBAction func forgotPasswordAction(_: Any) {
         let vc = ForgotPasswordViewController()
         present(vc, animated: true)
     }
+
     private func checkHasLoggedIn() {
         firebaseManager.hasLogInSession { [weak self] in
             if $0 {
@@ -49,7 +50,26 @@ class LoginViewController: BaseViewController {
 
     private func navigateToHome() {
         ProgressHelper.showLoading()
-        firebaseManager.checkUserRole { [weak self] _ in
+        firebaseManager.checkUserRole { [weak self] role in
+            guard role != nil else {
+                self?.showAlertViewController(title: "Tài khoản đã bị vô hiệu hoá hoặc đã có lỗi xảy ra",
+                                              actions: [],
+                                              cancel: "OK",
+                                              cancelHandler: { [weak self] in
+                                                  self?.dismiss(animated: true)
+                                              })
+                ProgressHelper.hideLoading()
+                firebaseManager.logOut()
+                firebaseManager.hasLogInSession {
+                    if !$0 {
+                        Application.shared.changeRootViewMainWindow(
+                            viewController: LoginViewController.create(),
+                            animated: false
+                        )
+                    }
+                }
+                return
+            }
             if globalUser.isNotNil {
                 let vc = MainViewController()
                 Application.shared.changeRootViewMainWindow(viewController: vc, animated: true) {
@@ -58,11 +78,11 @@ class LoginViewController: BaseViewController {
             } else {
                 ProgressHelper.hideLoading()
                 self?.showAlertViewController(title: "Tài khoản đã bị vô hiệu hoá hoặc đã có lỗi xảy ra",
-                                        actions: [],
-                                        cancel: "OK",
-                                        cancelHandler: { [weak self] in
-                                            self?.dismiss(animated: true)
-                                        })
+                                              actions: [],
+                                              cancel: "OK",
+                                              cancelHandler: { [weak self] in
+                                                  self?.dismiss(animated: true)
+                                              })
             }
         }
     }

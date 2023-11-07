@@ -34,8 +34,19 @@ class StudentInformationViewController: BaseViewController {
         if let id = studentId {
             ProgressHelper.showLoading()
             firebaseManager.getStudent(with: id) { [weak self] student in
-                self?.student = student
-                self?.setupView()
+                guard let self else { return }
+                if let student = student {
+                    self.student = student
+                    self.setupView()
+                } else {
+                    self.showAlertViewController(title: "Sinh viên không tồn tại",
+                                                  actions: ["Quay lại"],
+                                                  cancel: nil, actionHandler: { index in
+                        if index == 0 {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    })
+                }
                 ProgressHelper.hideLoading()
             }
         }
@@ -53,7 +64,9 @@ class StudentInformationViewController: BaseViewController {
         idLabel.text = "ID: \(student.id)"
         emailLabel.text = student.email
         genderLabel.text = student.gender
-        profileImageView.sd_setImage(with: URL(string: student.photo))
+        if let imageURL = URL(string: student.photo) {
+            profileImageView.sd_setImage(with: imageURL)
+        }
         classLabel.text = "Lớp: \(student.mainClass)"
         dobLabel.text = student.dob
         if globalUser?.role == .teacher {

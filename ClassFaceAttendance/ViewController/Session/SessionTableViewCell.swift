@@ -47,7 +47,7 @@ class SessionTableViewCell: UITableViewCell {
         if globalUser?.role == .student {
             if let attendance = session?.students.first(where: {
                 $0.studentId == globalUser?.id
-            }), attendance.checkedInTime != "" {
+            }), !attendance.checkedInTime.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 backgroundSessionView.backgroundColor = .lightGreen
             } else {
                 if let session = session,

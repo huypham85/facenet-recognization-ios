@@ -37,6 +37,10 @@ class StudentListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        studentImageView.image = UIImage(systemName: "person.circle.fill")
+    }
+    
     func setData(student: MiniStudent?, session: Session) {
         self.session = session
         self.miniStudent = student
