@@ -142,27 +142,59 @@ class SessionDetailViewController: BaseViewController {
     }
 
     @IBAction func checkInAction(_: Any) {
-        firebaseManager.isStudentRegisteredFace(completion: { [weak self] in
-            guard let self,
-                  let session = self.session
-            else { return }
-            if $0 {
-                if self.isCurrentTimeInRange(startTime: session.startCheckInTime,
-                                             endTime: session.endCheckInTime)
-                {
-                    self.setupCheckIn()
-                } else {
-                    self.showAlertViewController(title: "Ngoài thời gian điểm danh",
+        if let globalUser = globalUser, globalUser.role == .student {
+            ProgressHelper.showLoading()
+            firebaseManager.checkStudentFaceStatus(studentId: globalUser.id) { [weak self] status in
+                guard let self, let session = self.session else { return }
+                switch status {
+                case let .hadFace(faceURL):
+                    if self.isCurrentTimeInRange(startTime: session.startCheckInTime,
+                                                 endTime: session.endCheckInTime)
+                    {
+                        self.setupCheckIn()
+                    } else {
+                        self.showAlertViewController(title: "Ngoài thời gian điểm danh",
+                                                     actions: [],
+                                                     cancel: "OK",
+                                                     cancelHandler: {
+                                                         self.dismiss(animated: true)
+                                                     })
+                    }
+                case .notRegister:
+                    self.showAlertRegisterFace()
+                case .requesting:
+                    self.showAlertViewController(title: "Gương mặt của bạn chưa được duyệt",
                                                  actions: [],
                                                  cancel: "OK",
                                                  cancelHandler: {
                                                      self.dismiss(animated: true)
                                                  })
                 }
-            } else {
-                self.showAlertRegisterFace()
+                ProgressHelper.hideLoading()
             }
-        })
+        }
+        
+//        firebaseManager.isStudentRegisteredFace(completion: { [weak self] in
+//            guard let self,
+//                  let session = self.session
+//            else { return }
+//            if $0 {
+//                if self.isCurrentTimeInRange(startTime: session.startCheckInTime,
+//                                             endTime: session.endCheckInTime)
+//                {
+//                    self.setupCheckIn()
+//                } else {
+//                    self.showAlertViewController(title: "Ngoài thời gian điểm danh",
+//                                                 actions: [],
+//                                                 cancel: "OK",
+//                                                 cancelHandler: {
+//                                                     self.dismiss(animated: true)
+//                                                 })
+//                }
+//            } else {
+//                self.showAlertRegisterFace()
+//            }
+//        })
     }
 
     @IBAction func studentsAction(_: Any) {
@@ -204,7 +236,17 @@ class SessionDetailViewController: BaseViewController {
     }
 
     private func setupCheckIn() {
-        loadVectorFromDB()
+        showAlertViewController(title: "Điểm danh",
+                                message: "Điểm danh ngay bây giờ?",
+                                actions: ["OK"],
+                                cancel: "Để lúc khác")
+        { [weak self] index in
+            if index == 0 {
+                self?.loadVectorFromDB()
+            }
+        } cancelHandler: { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
 
     private func loadVectorFromDB() {

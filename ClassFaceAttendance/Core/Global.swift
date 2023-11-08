@@ -35,6 +35,7 @@ let firebaseManager  = FirebaseManager()
 
 //KMeans to reduce number  of vectors
 let KMeans = KMeansSwift.sharedInstance
+// TODO: change to local variable
 var kMeanVectors = [Vector]()
 
 //date time formatter

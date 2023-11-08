@@ -14,6 +14,7 @@ class FirebaseManager {
     // MARK: Face Vector
     
     func uploadAllVectors(vectors: [Vector], completionHandler: @escaping () -> Void) {
+        guard let globalUser = globalUser else { return }
         for i in 0..<vectors.count {
             let vector = vectors[i]
             let dict: [String: Any] = [
@@ -22,7 +23,7 @@ class FirebaseManager {
                 "distance": vector.distance
             ]
             let childString = "\(vector.name) - \(i)"
-            Database.database().reference().child(FACE_REQUESTS).child(globalUser?.id ?? "").child(ALL_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
+            Database.database().reference().child(FACE_REQUESTS).child(globalUser.id).child(ALL_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
                     print("uploaded vector")
@@ -33,6 +34,7 @@ class FirebaseManager {
     }
 
     func uploadKMeanVectors(vectors: [Vector], completionHandler: @escaping () -> Void) {
+        guard let globalUser = globalUser else { return }
         for i in 0..<vectors.count {
             let vector = vectors[i]
             let dict: [String: Any] = [
@@ -41,7 +43,7 @@ class FirebaseManager {
                 "distance": vector.distance
             ]
             let childString = "\(vector.name) - \(i)"
-            Database.database().reference().child(FACE_REQUESTS).child(globalUser?.id ?? "").child(KMEAN_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
+            Database.database().reference().child(FACE_REQUESTS).child(globalUser.id).child(KMEAN_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
                     print("uploaded vector")
@@ -116,8 +118,10 @@ class FirebaseManager {
     }
     
     func loadAllKMeansVector(completionHandler: @escaping ([Vector]) -> Void) {
+        guard let globalUser = globalUser else { return }
         var vectors = [Vector]()
-        Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "").child(KMEAN_VECTOR).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
+        let ref = Database.database().reference().child(STUDENT_CHILD).child(globalUser.id).child(KMEAN_VECTOR)
+        ref.queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             
             if let data = snapshot.value as? [String: Any] {
                 let dataArray = Array(data)
@@ -149,8 +153,10 @@ class FirebaseManager {
     }
     
     func loadAllVector(name _: String, completionHandler: @escaping ([Vector]) -> Void) {
+        guard let globalUser = globalUser else { return }
         var vectors = [Vector]()
-        Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "").child(ALL_VECTOR).queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
+        let ref = Database.database().reference().child(STUDENT_CHILD).child(globalUser.id).child(ALL_VECTOR)
+        ref.queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             
             if let data = snapshot.value as? [String: Any] {
                 let dataArray = Array(data)
@@ -294,6 +300,10 @@ class FirebaseManager {
     func getSessionAttendanceOfStudent(sessionId: String,
                                 studentId: String = globalUser?.id ?? "",
                                 completion: @escaping (StudentAttendance?) -> Void) {
+        guard !studentId.isEmpty else {
+            completion(nil)
+            return
+        }
         let ref = Database.database().reference().child(ATTENDANCES).child(sessionId).child(studentId)
         ref.observeSingleEvent(of: .value) { snapshot in
             if snapshot.exists() {
@@ -333,12 +343,15 @@ class FirebaseManager {
     }
     
     func hasCurrentFace(studentId: String, completion: @escaping (CurrentFaceStatus) -> Void) {
-        let ref = Database.database().reference().child(STUDENT_CHILD).child(studentId)
+        guard !studentId.isEmpty else {
+            completion(.notRegister)
+            return
+        }
+        let ref = Database.database().reference().child(STUDENT_CHILD).child(studentId).child("currentFace")
 
-        ref.observeSingleEvent(of: .value) { snapshot in
+        ref.observe(.value) { snapshot in
             if snapshot.exists() {
-                if let studentData = snapshot.value as? [String: Any],
-                   let currentFace = studentData["currentFace"] as? String, !currentFace.isEmpty
+                if let currentFace = snapshot.value as? String, !currentFace.isEmpty
                 {
                     completion(.hadFace(currentFace))
                 } else {
@@ -351,12 +364,15 @@ class FirebaseManager {
     }
     
     func isRequestingFace(studentId: String, completion: @escaping (CurrentFaceStatus) -> Void) {
-        let ref = Database.database().reference().child(FACE_REQUESTS).child(studentId)
+        guard !studentId.isEmpty else {
+            completion(.notRegister)
+            return
+        }
+        let ref = Database.database().reference().child(FACE_REQUESTS).child(studentId).child("currentFace")
 
-        ref.observeSingleEvent(of: .value) { snapshot in
+        ref.observe(.value) { snapshot in
             if snapshot.exists() {
-                if let studentData = snapshot.value as? [String: Any],
-                   let currentFace = studentData["currentFace"] as? String, !currentFace.isEmpty
+                if let currentFace = snapshot.value as? String, !currentFace.isEmpty
                 {
                     completion(.requesting)
                 } else {
@@ -369,6 +385,10 @@ class FirebaseManager {
     }
     
     func checkStudentFaceStatus(studentId: String, completion: @escaping (CurrentFaceStatus) -> Void) {
+        guard !studentId.isEmpty else {
+            completion(.notRegister)
+            return
+        }
         hasCurrentFace(studentId: studentId) { [weak self] (faceStatus) in
             switch faceStatus {
             case .hadFace(let currentFace):
@@ -490,9 +510,10 @@ class FirebaseManager {
 
         let sessionsRef = ref.child(SESSIONS).child(date)
         var sessions: [Session] = []
-        sessionsRef.observeSingleEvent(of: .value) { snapshot in
+        sessionsRef.observe(.value) { snapshot in
             if snapshot.exists() {
                 if let sessionsData = snapshot.value as? [String: Any] {
+                    var existedSessions: [Session] = []
                     // Now you have a dictionary of sessions on the specified date
                     // You can iterate through this dictionary to access individual sessions
                     for (sessionId, sessionData) in sessionsData {
@@ -503,11 +524,12 @@ class FirebaseManager {
                                 if newSession.students.map({ $0.studentId })
                                     .contains(globalUser?.id ?? "") || newSession.teacherId == globalUser?.id
                                 {
-                                    sessions.append(newSession)
+                                    existedSessions.append(newSession)
                                 }
                             }
                         }
                     }
+                    sessions = existedSessions
                 }
             }
             else {
@@ -551,6 +573,10 @@ class FirebaseManager {
     }
     
     func getCourseOfStudent(studentId: String, completion: @escaping ([Course]) -> Void) {
+        guard !studentId.isEmpty else {
+            completion([])
+            return
+        }
         let ref = Database.database().reference().child(COURSES)
         ref.observeSingleEvent(of: .value) { snapshot in
             if snapshot.exists() {
@@ -573,6 +599,10 @@ class FirebaseManager {
     }
     
     func getCoursesForTeacher(teacherId: String, completion: @escaping ([Course]) -> Void) {
+        guard !teacherId.isEmpty else {
+            completion([])
+            return
+        }
         let ref = Database.database().reference().child(COURSES)
         
         var courses: [Course] = []
@@ -640,9 +670,13 @@ class FirebaseManager {
     }
 
     func getStudent(with studentId: String, completion: @escaping (Student?) -> Void) {
+        guard !studentId.isEmpty else {
+            completion(nil)
+            return
+        }
         let ref = Database.database().reference().child(STUDENT_CHILD)
         
-        ref.child(studentId).observeSingleEvent(of: .value) { snapshot in
+        ref.child(studentId).observe(.value) { snapshot in
             if snapshot.exists() {
                 if let studentData = snapshot.value as? [String: Any],
                    let student = Student(dictionary: studentData) {
@@ -658,9 +692,13 @@ class FirebaseManager {
     }
     
     func getTeacher(with teacherId: String, completion: @escaping (Teacher?) -> Void) {
+        guard !teacherId.isEmpty else {
+            completion(nil)
+            return
+        }
         let ref = Database.database().reference().child(TEACHER_CHILD)
         
-        ref.child(teacherId).observeSingleEvent(of: .value) { snapshot in
+        ref.child(teacherId).observe(.value) { snapshot in
             if snapshot.exists() {
                 if let teacherData = snapshot.value as? [String: Any],
                    let teacher = Teacher(dictionary: teacherData) {
@@ -676,6 +714,7 @@ class FirebaseManager {
     }
     
     func uploadTeacherDeviceName(deviceName: String, teacherId: String) {
+        guard !teacherId.isEmpty else { return }
         let dict = ["deviceId": deviceName]
         Database.database().reference().child(TEACHER_CHILD).child(teacherId).updateChildValues(dict, withCompletionBlock: {
             error, _ in
@@ -685,20 +724,20 @@ class FirebaseManager {
         })
     }
     
-    func isStudentRegisteredFace(completion: @escaping (Bool) -> Void) {
-        let ref = Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "")
-
-        ref.observeSingleEvent(of: .value) { snapshot in
-            if let studentData = snapshot.value as? [String: Any],
-               let currentFace = studentData["currentFace"] as? String,
-               !currentFace.isEmpty {
-                // The student's "currentFace" field exists and has a value
-                completion(true)
-            }
-            else {
-                // The student's "currentFace" field does not exist or is empty
-                completion(false)
-            }
-        }
-    }
+//    func isStudentRegisteredFace(completion: @escaping (Bool) -> Void) {
+//        let ref = Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "")
+//
+//        ref.observeSingleEvent(of: .value) { snapshot in
+//            if let studentData = snapshot.value as? [String: Any],
+//               let currentFace = studentData["currentFace"] as? String,
+//               !currentFace.isEmpty {
+//                // The student's "currentFace" field exists and has a value
+//                completion(true)
+//            }
+//            else {
+//                // The student's "currentFace" field does not exist or is empty
+//                completion(false)
+//            }
+//        }
+//    }
 }
