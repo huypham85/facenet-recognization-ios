@@ -259,6 +259,45 @@ class FirebaseManager {
         })
     }
     
+    func deleteCheckIn(attendance: ManualAttendance, completionHandler: @escaping (Error?) -> Void) {
+        guard let session = attendance.session else { return }
+        let ref = Database.database().reference().child(ATTENDANCES).child(session.id).child(attendance.name)
+        ref.removeValue { [weak self] error, _ in
+            if error == nil {
+                self?.deleteAttendanceSession(attendance: attendance) { error in
+                    if error == nil {
+                        completionHandler(nil)
+                    }
+                    else {
+                        completionHandler(error)
+                    }
+                }
+            }
+            else {
+                completionHandler(error)
+            }
+        }
+    }
+    
+    func deleteAttendanceSession(attendance: ManualAttendance, completion: @escaping (Error?) -> Void) {
+        guard let session = attendance.session
+        else {
+            return
+        }
+        let ref = Database.database().reference().child(SESSIONS).child(session.date)
+            .child(session.id).child("students")
+        let dict = [attendance.name: ""]
+        ref.updateChildValues(dict) { error, _ in
+            if error == nil {
+                print("Deleted log time.")
+                completion(nil)
+            }
+            else {
+                completion(error)
+            }
+        }
+    }
+    
     func updateAttendanceSession(attendance: Attendance, completion: @escaping (Error?) -> Void) {
         guard let session = attendance.session
         else {

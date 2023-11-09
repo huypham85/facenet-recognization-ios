@@ -102,15 +102,24 @@ extension StudentListViewController: UITableViewDelegate, UITableViewDataSource 
             let manualCheckInAction = UIAlertAction(title: "Điểm danh thủ công", style: .default) { [weak self] _ in
                 self?.manualCheckIn(student: student)
             }
+            
+            let deleteCheckInAction = UIAlertAction(title: "Xoá điểm danh", style: .default) { [weak self] _ in
+                self?.deleteCheckIn(student: student)
+            }
+            
             let viewStudentInfoAction = UIAlertAction(title: "Xem thông tin sinh viên", style: .default) { [weak self] _ in
                 self?.navigateToStudentInfor(student: student)
             }
             var actions: [UIAlertAction] = [viewStudentInfoAction]
-            let checkInTime = session?.students.first {
+            if let checkInTime = session?.students.first (where: {
                 $0.studentId == student.id
-            }
-            if checkInTime?.checkedInTime.isEmpty ?? true && globalUser?.role == .teacher {
-                actions += [manualCheckInAction]
+            }) {
+                if checkInTime.checkedInTime.isEmpty && globalUser?.role == .teacher {
+                    actions += [manualCheckInAction]
+                }
+                if !checkInTime.checkedInTime.isEmpty && globalUser?.role == .teacher {
+                    actions += [deleteCheckInAction]
+                }
             }
             actions += [
                 .init(title: "Cancel", style: .cancel),
@@ -132,6 +141,19 @@ extension StudentListViewController {
             }
         }
         
+    }
+    
+    private func deleteCheckIn(student: MiniStudent) {
+        guard let session = session else { return }
+        let manualAttendance = ManualAttendance(session: session, name: student.id, fullName: student.name, time: formatter.string(from: Date()), sessionStartTime: session.date)
+        ProgressHelper.showLoading()
+        firebaseManager.deleteCheckIn(attendance: manualAttendance) { [weak self] error in
+            if error == nil {
+                self?.showAlertViewController(title: "Xoá điểm danh của sinh viên \(student.id) thành công", actions: [], cancel: "OK")
+                self?.fetchStudents()
+            }
+            ProgressHelper.hideLoading()
+        }
     }
     
     private func navigateToStudentInfor(student: MiniStudent) {
