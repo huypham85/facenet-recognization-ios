@@ -252,7 +252,8 @@ class SessionDetailViewController: BaseViewController {
     private func loadVectorFromDB() {
         if NetworkChecker.isConnectedToInternet {
             ProgressHUD.show()
-            firebaseManager.loadAllKMeansVector { [weak self] result in
+            kMeanVectors.removeAll()
+            firebaseManager.loadAllKMeansVector(session: session) { [weak self] result in
                 guard let self else { return }
                 kMeanVectors = result
                 print("Number of k-Means vectors: \(kMeanVectors.count)")

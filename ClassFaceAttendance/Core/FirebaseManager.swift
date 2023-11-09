@@ -117,10 +117,9 @@ class FirebaseManager {
         }
     }
     
-    func loadAllKMeansVector(completionHandler: @escaping ([Vector]) -> Void) {
-        guard let globalUser = globalUser else { return }
+    func getStudentKmeansVectors(studentId: String, completionHandler: @escaping ([Vector]) -> Void) {
         var vectors = [Vector]()
-        let ref = Database.database().reference().child(STUDENT_CHILD).child(globalUser.id).child(KMEAN_VECTOR)
+        let ref = Database.database().reference().child(STUDENT_CHILD).child(studentId).child(KMEAN_VECTOR)
         ref.queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             
             if let data = snapshot.value as? [String: Any] {
@@ -142,13 +141,32 @@ class FirebaseManager {
                 }
             }
             else {
-                print("parse json error when load K Means Vector")
+                print("parse json error when load K Means Vector of \(studentId)")
             }
             completionHandler(vectors)
             
         }) { error in
             print(error.localizedDescription)
             completionHandler(vectors)
+        }
+    }
+    
+    func loadAllKMeansVector(session: Session?, completionHandler: @escaping ([Vector]) -> Void) {
+        guard let session = session else { return }
+        var allVectors = [Vector]()
+        let students = session.students
+        let dispatchGroup = DispatchGroup()
+        for student in students {
+            dispatchGroup.enter()
+            getStudentKmeansVectors(studentId: student.studentId) { vectors in
+                allVectors.append(contentsOf: vectors)
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            print("All Kmeans Vectors of clas: \(allVectors.count)")
+            completionHandler(allVectors)
         }
     }
     
