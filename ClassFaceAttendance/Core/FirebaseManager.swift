@@ -26,7 +26,7 @@ class FirebaseManager {
             Database.database().reference().child(FACE_REQUESTS).child(globalUser.id).child(ALL_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
-                    print("uploaded vector")
+//                    print("uploaded vector")
                 }
             })
         }
@@ -46,7 +46,7 @@ class FirebaseManager {
             Database.database().reference().child(FACE_REQUESTS).child(globalUser.id).child(KMEAN_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
-                    print("uploaded vector")
+//                    print("uploaded vector")
                 }
             })
         }
@@ -362,7 +362,7 @@ class FirebaseManager {
             return
         }
         let ref = Database.database().reference().child(ATTENDANCES).child(sessionId).child(studentId)
-        ref.observeSingleEvent(of: .value) { snapshot in
+        ref.observe(.value) { snapshot in
             if snapshot.exists() {
                 if let attendanceData = snapshot.value as? [String: Any],
                    let studentAttendance = StudentAttendance(dictionary: attendanceData, sessionId: sessionId)
@@ -600,7 +600,7 @@ class FirebaseManager {
         let ref = Database.database().reference()
 
         let sessionsRef = ref.child(SESSIONS).child(date).child(sessionId)
-        sessionsRef.observeSingleEvent(of: .value) { snapshot in
+        sessionsRef.observe(.value) { snapshot in
             if snapshot.exists() {
                 if let sessionsData = snapshot.value as? [String: Any] {
                     print("Session Data: \(sessionsData)")
