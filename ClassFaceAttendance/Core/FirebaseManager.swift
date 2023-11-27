@@ -709,7 +709,7 @@ class FirebaseManager {
                         url, error in
                         if let metaImageUrl = url?.absoluteString {
                             let dict: [String: Any] = ["photo": metaImageUrl]
-                            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "")
+                            Database.database().reference().child(globalUser?.role == .student ? STUDENT_CHILD : TEACHER_CHILD).child(name)
                                 .updateChildValues(dict, withCompletionBlock: {
                                     error, _ in
                                     if error == nil {
