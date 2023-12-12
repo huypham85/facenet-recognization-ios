@@ -296,13 +296,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		2D750A552AECF540000C19DE /* Teacher */ = {
+		2D750A552AECF540000C19DE /* TeacherInfor */ = {
 			isa = PBXGroup;
 			children = (
 				2D750A562AECF554000C19DE /* TeacherInforViewController.swift */,
 				2D750A572AECF554000C19DE /* TeacherInforViewController.xib */,
 			);
-			path = Teacher;
+			path = TeacherInfor;
 			sourceTree = "<group>";
 		};
 		2D87DA242ADAF497001C9A8D /* StudentList */ = {
@@ -518,7 +518,7 @@
 				692D29662AF35C2B003457F7 /* ChangePassword */,
 				692D29612AF25EC8003457F7 /* ForgotPassword */,
 				695720792AF0B2BA00CFDBFE /* RegisterFace */,
-				2D750A552AECF540000C19DE /* Teacher */,
+				2D750A552AECF540000C19DE /* TeacherInfor */,
 				699A52B12AEA650100216266 /* AllCourses */,
 				2D87DA312ADBB471001C9A8D /* StudentDetail */,
 				2D87DA242ADAF497001C9A8D /* StudentList */,
