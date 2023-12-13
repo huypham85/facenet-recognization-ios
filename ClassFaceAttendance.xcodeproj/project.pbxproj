@@ -66,8 +66,6 @@
 		69891E032AD4FC7300FD4161 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891E022AD4FC7300FD4161 /* MainTabBarController.swift */; };
 		69891E062AD4FCD200FD4161 /* CalendarHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891E042AD4FCD200FD4161 /* CalendarHomeViewController.swift */; };
 		69891E072AD4FCD200FD4161 /* CalendarHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69891E052AD4FCD200FD4161 /* CalendarHomeViewController.xib */; };
-		69891E0A2AD4FD5B00FD4161 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891E082AD4FD5B00FD4161 /* ProfileViewController.swift */; };
-		69891E0B2AD4FD5B00FD4161 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69891E092AD4FD5B00FD4161 /* ProfileViewController.xib */; };
 		69891E0E2AD4FD8300FD4161 /* RegisterFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891E0C2AD4FD8300FD4161 /* RegisterFaceViewController.swift */; };
 		69891E0F2AD4FD8300FD4161 /* RegisterFaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69891E0D2AD4FD8300FD4161 /* RegisterFaceViewController.xib */; };
 		69891E112AD54EA300FD4161 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69891E102AD54EA300FD4161 /* CalendarHelper.swift */; };
@@ -91,8 +89,6 @@
 		951EB35322B698F100A9533B /* tensorflow_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 951EB34E22B698F100A9533B /* tensorflow_utils.mm */; };
 		951EB35422B698F100A9533B /* tfWrap.mm in Sources */ = {isa = PBXBuildFile; fileRef = 951EB35022B698F100A9533B /* tfWrap.mm */; };
 		D15FD8152A725A3C7C430CDF /* Pods_ClassFaceAttendance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E777A6F63927AF6DF7B0DE32 /* Pods_ClassFaceAttendance.framework */; };
-		FB16D9A82521F0B3003C8AB5 /* KNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB16D9A72521F0B3003C8AB5 /* KNN.swift */; };
-		FB3B2E1C2529AE7B00117249 /* K-dTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3B2E1B2529AE7B00117249 /* K-dTree.swift */; };
 		FB3D0F97251DA5CA0059CCB6 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D0F96251DA5CA0059CCB6 /* Define.swift */; };
 		FB3D0F9A251DA8AD0059CCB6 /* NetworkChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D0F99251DA8AD0059CCB6 /* NetworkChecker.swift */; };
 		FB3D0FBE251DAC760059CCB6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3D0FBD251DAC760059CCB6 /* Date.swift */; };
@@ -102,17 +98,10 @@
 		FBA1B48A2519052D00A31DF7 /* Image+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4842519052D00A31DF7 /* Image+Resize.swift */; };
 		FBA1B48B2519052D00A31DF7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4852519052D00A31DF7 /* CustomButton.swift */; };
 		FBA1B48C2519052D00A31DF7 /* DismisKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4862519052D00A31DF7 /* DismisKeyboard.swift */; };
-		FBA1B48D2519052D00A31DF7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4872519052D00A31DF7 /* CustomTableViewCell.swift */; };
 		FBA1B48E2519052D00A31DF7 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4882519052D00A31DF7 /* UIDeviceExtension.swift */; };
 		FBA1B4C62519058B00A31DF7 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4B62519058B00A31DF7 /* PreviewView.swift */; };
 		FBA1B4C72519058B00A31DF7 /* FrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4B72519058B00A31DF7 /* FrameViewController.swift */; };
-		FBA1B4C82519058B00A31DF7 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4B92519058B00A31DF7 /* LogTableViewCell.swift */; };
-		FBA1B4C92519058B00A31DF7 /* ViewLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4BA2519058B00A31DF7 /* ViewLogViewController.swift */; };
 		FBA1B4CA2519058B00A31DF7 /* AddNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4BB2519058B00A31DF7 /* AddNameViewController.swift */; };
-		FBA1B4CC2519058B00A31DF7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4BE2519058B00A31DF7 /* HomeViewController.swift */; };
-		FBA1B4CD2519058B00A31DF7 /* ViewFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4BF2519058B00A31DF7 /* ViewFaceViewController.swift */; };
-		FBA1B4CE2519058B00A31DF7 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4C02519058B00A31DF7 /* UserData.swift */; };
-		FBA1B4D02519058B00A31DF7 /* PredictImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4C22519058B00A31DF7 /* PredictImageViewController.swift */; };
 		FBA1B4D12519058B00A31DF7 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4C42519058B00A31DF7 /* VideoView.swift */; };
 		FBA1B4D22519058B00A31DF7 /* RecordVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4C52519058B00A31DF7 /* RecordVideoViewController.swift */; };
 		FBA1B4DD251905A100A31DF7 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4D6251905A100A31DF7 /* Global.swift */; };
@@ -121,7 +110,6 @@
 		FBA1B4E2251905A100A31DF7 /* CreateUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4DB251905A100A31DF7 /* CreateUserData.swift */; };
 		FBA1B4E3251905A100A31DF7 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA1B4DC251905A100A31DF7 /* Helper.swift */; };
 		FBA1B4E8251905A800A31DF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA1B4E6251905A800A31DF7 /* Main.storyboard */; };
-		FBB893732525CE3800F11E32 /* kNN-2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB893722525CE3800F11E32 /* kNN-2.swift */; };
 		FBC5AC0B251AEE6D0016995C /* UIViewController+ShowDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5AC0A251AEE6D0016995C /* UIViewController+ShowDialog.swift */; };
 		FBDD06AC251DDFA0002AF9F9 /* KMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD06AB251DDFA0002AF9F9 /* KMean.swift */; };
 /* End PBXBuildFile section */
@@ -187,8 +175,6 @@
 		69891E022AD4FC7300FD4161 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		69891E042AD4FCD200FD4161 /* CalendarHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHomeViewController.swift; sourceTree = "<group>"; };
 		69891E052AD4FCD200FD4161 /* CalendarHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarHomeViewController.xib; sourceTree = "<group>"; };
-		69891E082AD4FD5B00FD4161 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		69891E092AD4FD5B00FD4161 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		69891E0C2AD4FD8300FD4161 /* RegisterFaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFaceViewController.swift; sourceTree = "<group>"; };
 		69891E0D2AD4FD8300FD4161 /* RegisterFaceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterFaceViewController.xib; sourceTree = "<group>"; };
 		69891E102AD54EA300FD4161 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
@@ -218,8 +204,6 @@
 		951EB35022B698F100A9533B /* tfWrap.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = tfWrap.mm; sourceTree = "<group>"; };
 		951EB35822B6994100A9533B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		E777A6F63927AF6DF7B0DE32 /* Pods_ClassFaceAttendance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClassFaceAttendance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB16D9A72521F0B3003C8AB5 /* KNN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNN.swift; sourceTree = "<group>"; };
-		FB3B2E1B2529AE7B00117249 /* K-dTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "K-dTree.swift"; sourceTree = "<group>"; };
 		FB3D0F96251DA5CA0059CCB6 /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		FB3D0F99251DA8AD0059CCB6 /* NetworkChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChecker.swift; sourceTree = "<group>"; };
 		FB3D0FBD251DAC760059CCB6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -229,17 +213,10 @@
 		FBA1B4842519052D00A31DF7 /* Image+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+Resize.swift"; sourceTree = "<group>"; };
 		FBA1B4852519052D00A31DF7 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FBA1B4862519052D00A31DF7 /* DismisKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismisKeyboard.swift; sourceTree = "<group>"; };
-		FBA1B4872519052D00A31DF7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		FBA1B4882519052D00A31DF7 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		FBA1B4B62519058B00A31DF7 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		FBA1B4B72519058B00A31DF7 /* FrameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameViewController.swift; sourceTree = "<group>"; };
-		FBA1B4B92519058B00A31DF7 /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
-		FBA1B4BA2519058B00A31DF7 /* ViewLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLogViewController.swift; sourceTree = "<group>"; };
 		FBA1B4BB2519058B00A31DF7 /* AddNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNameViewController.swift; sourceTree = "<group>"; };
-		FBA1B4BE2519058B00A31DF7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		FBA1B4BF2519058B00A31DF7 /* ViewFaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFaceViewController.swift; sourceTree = "<group>"; };
-		FBA1B4C02519058B00A31DF7 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		FBA1B4C22519058B00A31DF7 /* PredictImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictImageViewController.swift; sourceTree = "<group>"; };
 		FBA1B4C42519058B00A31DF7 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		FBA1B4C52519058B00A31DF7 /* RecordVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoViewController.swift; sourceTree = "<group>"; };
 		FBA1B4D6251905A100A31DF7 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -248,7 +225,6 @@
 		FBA1B4DB251905A100A31DF7 /* CreateUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserData.swift; sourceTree = "<group>"; };
 		FBA1B4DC251905A100A31DF7 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		FBA1B4E7251905A800A31DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FBB893722525CE3800F11E32 /* kNN-2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "kNN-2.swift"; sourceTree = "<group>"; };
 		FBC5AC0A251AEE6D0016995C /* UIViewController+ShowDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowDialog.swift"; sourceTree = "<group>"; };
 		FBDD06AB251DDFA0002AF9F9 /* KMean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMean.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -455,7 +431,7 @@
 			children = (
 				FBA1B4B42519058B00A31DF7 /* ViewController */,
 				FBA1B4832519052D00A31DF7 /* Utils */,
-				FBA1B4E5251905A800A31DF7 /* View */,
+				FBA1B4E5251905A800A31DF7 /* Storyboard */,
 				FBA1B4D5251905A100A31DF7 /* Core */,
 				951EB34922B698F100A9533B /* Tensorflow */,
 				951EB35822B6994100A9533B /* Bridging-Header.h */,
@@ -501,8 +477,8 @@
 		FBA1B4832519052D00A31DF7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				69891E102AD54EA300FD4161 /* CalendarHelper.swift */,
 				2D0644082AD07664004A3A65 /* Extensions */,
+				69891E102AD54EA300FD4161 /* CalendarHelper.swift */,
 				FBA1B4852519052D00A31DF7 /* CustomButton.swift */,
 				2D87DA182AD84A26001C9A8D /* Logger.swift */,
 				69F4E4A42AE11DA300E4C21D /* ProgressHelper.swift */,
@@ -525,19 +501,11 @@
 				69FF2CEE2AD6B3F6008735FD /* Session */,
 				69891E122AD5513800FD4161 /* CalendarHome */,
 				2D0644052AD07535004A3A65 /* Authentication */,
-				FBA1B4BE2519058B00A31DF7 /* HomeViewController.swift */,
-				FBA1B4BB2519058B00A31DF7 /* AddNameViewController.swift */,
-				FBA1B4C02519058B00A31DF7 /* UserData.swift */,
-				FBA1B4C22519058B00A31DF7 /* PredictImageViewController.swift */,
-				FBC5AC08251AED240016995C /* View Face */,
-				FBA1B4B82519058B00A31DF7 /* View Log */,
 				FBA1B4B52519058B00A31DF7 /* PredictOnFrame */,
-				FBA1B4C32519058B00A31DF7 /* RecordVideo */,
+				FBA1B4C32519058B00A31DF7 /* FaceRegistration */,
 				69891DFE2AD4F26100FD4161 /* MainViewController.swift */,
 				69891DFF2AD4F26100FD4161 /* MainViewController.xib */,
 				69891E022AD4FC7300FD4161 /* MainTabBarController.swift */,
-				69891E082AD4FD5B00FD4161 /* ProfileViewController.swift */,
-				69891E092AD4FD5B00FD4161 /* ProfileViewController.xib */,
 				2D87DA162AD849E0001C9A8D /* BaseViewController.swift */,
 				2D87DA292ADAFADA001C9A8D /* BaseNavigationController.swift */,
 			);
@@ -553,22 +521,14 @@
 			path = PredictOnFrame;
 			sourceTree = "<group>";
 		};
-		FBA1B4B82519058B00A31DF7 /* View Log */ = {
-			isa = PBXGroup;
-			children = (
-				FBA1B4B92519058B00A31DF7 /* LogTableViewCell.swift */,
-				FBA1B4BA2519058B00A31DF7 /* ViewLogViewController.swift */,
-			);
-			path = "View Log";
-			sourceTree = "<group>";
-		};
-		FBA1B4C32519058B00A31DF7 /* RecordVideo */ = {
+		FBA1B4C32519058B00A31DF7 /* FaceRegistration */ = {
 			isa = PBXGroup;
 			children = (
 				FBA1B4C42519058B00A31DF7 /* VideoView.swift */,
+				FBA1B4BB2519058B00A31DF7 /* AddNameViewController.swift */,
 				FBA1B4C52519058B00A31DF7 /* RecordVideoViewController.swift */,
 			);
-			path = RecordVideo;
+			path = FaceRegistration;
 			sourceTree = "<group>";
 		};
 		FBA1B4D5251905A100A31DF7 /* Core */ = {
@@ -590,31 +550,19 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		FBA1B4E5251905A800A31DF7 /* View */ = {
+		FBA1B4E5251905A800A31DF7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
 				FBA1B4E6251905A800A31DF7 /* Main.storyboard */,
 				951EB34022B6986200A9533B /* LaunchScreen.storyboard */,
 			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		FBC5AC08251AED240016995C /* View Face */ = {
-			isa = PBXGroup;
-			children = (
-				FBA1B4872519052D00A31DF7 /* CustomTableViewCell.swift */,
-				FBA1B4BF2519058B00A31DF7 /* ViewFaceViewController.swift */,
-			);
-			path = "View Face";
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		FBE4AFB1252EA5FE00BEF636 /* ML Algorithm */ = {
 			isa = PBXGroup;
 			children = (
-				FB3B2E1B2529AE7B00117249 /* K-dTree.swift */,
 				FBDD06AB251DDFA0002AF9F9 /* KMean.swift */,
-				FBB893722525CE3800F11E32 /* kNN-2.swift */,
-				FB16D9A72521F0B3003C8AB5 /* KNN.swift */,
 			);
 			path = "ML Algorithm";
 			sourceTree = "<group>";
@@ -704,7 +652,6 @@
 				2D87DA302ADB083D001C9A8D /* StudentListTableViewCell.xib in Resources */,
 				699A52B92AEA68E700216266 /* CourseTableViewCell.xib in Resources */,
 				69275F232AEBBDDB00423BF1 /* AllSessionsViewController.xib in Resources */,
-				69891E0B2AD4FD5B00FD4161 /* ProfileViewController.xib in Resources */,
 				2D87501E2AE1A448001A34D5 /* SessionAttendanceTableViewCell.xib in Resources */,
 				69891E072AD4FCD200FD4161 /* CalendarHomeViewController.xib in Resources */,
 				2D8750222AE3099C001A34D5 /* StudentInformationViewController.xib in Resources */,
@@ -788,23 +735,18 @@
 				FB3D0FBE251DAC760059CCB6 /* Date.swift in Sources */,
 				699A52B42AEA653C00216266 /* AllCoursesViewController.swift in Sources */,
 				2D0644142AD31BA7004A3A65 /* Teacher.swift in Sources */,
-				FBA1B4CD2519058B00A31DF7 /* ViewFaceViewController.swift in Sources */,
 				69FF2CF12AD6B416008735FD /* SessionDetailViewController.swift in Sources */,
 				69891E112AD54EA300FD4161 /* CalendarHelper.swift in Sources */,
 				FBA1B4DF251905A100A31DF7 /* Attendance.swift in Sources */,
 				FBA1B4C62519058B00A31DF7 /* PreviewView.swift in Sources */,
 				FBA1B48A2519052D00A31DF7 /* Image+Resize.swift in Sources */,
 				69891E062AD4FCD200FD4161 /* CalendarHomeViewController.swift in Sources */,
-				FBB893732525CE3800F11E32 /* kNN-2.swift in Sources */,
-				FBA1B4C82519058B00A31DF7 /* LogTableViewCell.swift in Sources */,
 				2D87DA272ADAF4B7001C9A8D /* StudentListViewController.swift in Sources */,
 				FBA1B4D12519058B00A31DF7 /* VideoView.swift in Sources */,
 				2D87501D2AE1A448001A34D5 /* SessionAttendanceTableViewCell.swift in Sources */,
-				FB3B2E1C2529AE7B00117249 /* K-dTree.swift in Sources */,
 				951EB35422B698F100A9533B /* tfWrap.mm in Sources */,
 				2D87DA2C2ADB05D8001C9A8D /* KeyboardManager.swift in Sources */,
 				69891E032AD4FC7300FD4161 /* MainTabBarController.swift in Sources */,
-				FBA1B4C92519058B00A31DF7 /* ViewLogViewController.swift in Sources */,
 				6988432F2AF39E9200EFE77A /* ReAuthenticateViewController.swift in Sources */,
 				2D8D2BB42AE53B95004EB37F /* DatePicker.swift in Sources */,
 				2D0644122AD3125B004A3A65 /* Session.swift in Sources */,
@@ -813,10 +755,8 @@
 				FBDD06AC251DDFA0002AF9F9 /* KMean.swift in Sources */,
 				FBA1B48C2519052D00A31DF7 /* DismisKeyboard.swift in Sources */,
 				2D87DA1B2AD84ABC001C9A8D /* NSObject+.swift in Sources */,
-				FBA1B4D02519058B00A31DF7 /* PredictImageViewController.swift in Sources */,
 				FBA1B4DD251905A100A31DF7 /* Global.swift in Sources */,
 				FBA1B4D22519058B00A31DF7 /* RecordVideoViewController.swift in Sources */,
-				FBA1B4CE2519058B00A31DF7 /* UserData.swift in Sources */,
 				2D06440A2AD0769C004A3A65 /* UIStoryboard+Extension.swift in Sources */,
 				699A52B82AEA68E700216266 /* CourseTableViewCell.swift in Sources */,
 				FBA1B48B2519052D00A31DF7 /* CustomButton.swift in Sources */,
@@ -829,13 +769,11 @@
 				69891E0E2AD4FD8300FD4161 /* RegisterFaceViewController.swift in Sources */,
 				2D87DA1F2AD85B61001C9A8D /* CustomNavigation.swift in Sources */,
 				2D06440E2AD2FBB7004A3A65 /* Student.swift in Sources */,
-				FBA1B4CC2519058B00A31DF7 /* HomeViewController.swift in Sources */,
 				2D8750212AE3099C001A34D5 /* StudentInformationViewController.swift in Sources */,
 				2D06440C2AD09B0D004A3A65 /* Application.swift in Sources */,
 				FB57AA76251CCA4E00B2CCF9 /* FirebaseManager.swift in Sources */,
 				692D29642AF25F3F003457F7 /* ForgotPasswordViewController.swift in Sources */,
 				2D90BFA82AD5B66C00031511 /* SessionTableViewCell.swift in Sources */,
-				69891E0A2AD4FD5B00FD4161 /* ProfileViewController.swift in Sources */,
 				6957207E2AF0FBA400CFDBFE /* ViewCurrentFaceViewController.swift in Sources */,
 				2D0644072AD0754C004A3A65 /* LoginViewController.swift in Sources */,
 				2D0644102AD310B0004A3A65 /* Course.swift in Sources */,
@@ -845,9 +783,7 @@
 				2D87DA1D2AD85475001C9A8D /* Collection+.swift in Sources */,
 				2D0644162AD3240C004A3A65 /* User.swift in Sources */,
 				FBA1B48E2519052D00A31DF7 /* UIDeviceExtension.swift in Sources */,
-				FBA1B48D2519052D00A31DF7 /* CustomTableViewCell.swift in Sources */,
 				FBA1B4E1251905A100A31DF7 /* ImageDataset.swift in Sources */,
-				FB16D9A82521F0B3003C8AB5 /* KNN.swift in Sources */,
 				2D90BFA52AD5AB2400031511 /* Date+Extension.swift in Sources */,
 				FBC5AC0B251AEE6D0016995C /* UIViewController+ShowDialog.swift in Sources */,
 				69F4E4A12ADFF6EC00E4C21D /* String+Extension.swift in Sources */,
