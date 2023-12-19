@@ -362,7 +362,7 @@ class FirebaseManager {
             return
         }
         let ref = Database.database().reference().child(ATTENDANCES).child(sessionId).child(studentId)
-        ref.observe(.value) { snapshot in
+        ref.observeSingleEvent(of: .value) { snapshot in
             if snapshot.exists() {
                 if let attendanceData = snapshot.value as? [String: Any],
                    let studentAttendance = StudentAttendance(dictionary: attendanceData, sessionId: sessionId)
@@ -600,7 +600,7 @@ class FirebaseManager {
         let ref = Database.database().reference()
 
         let sessionsRef = ref.child(SESSIONS).child(date).child(sessionId)
-        sessionsRef.observe(.value) { snapshot in
+        sessionsRef.observeSingleEvent(of: .value) { snapshot in
             if snapshot.exists() {
                 if let sessionsData = snapshot.value as? [String: Any] {
                     print("Session Data: \(sessionsData)")
@@ -691,7 +691,7 @@ class FirebaseManager {
     // MARK: Student and Teacher
     
     func updateProfilePicture(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("user").child(name).child("currentFace")
 
         let metadata = StorageMetadata()
 
