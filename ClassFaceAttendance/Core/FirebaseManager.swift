@@ -54,7 +54,7 @@ class FirebaseManager {
     }
     
     func uploadCurrentFace(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child(USERS_STORAGE).child(name).child(CURRENT_FACE)
 
         let metadata = StorageMetadata()
 
@@ -205,7 +205,8 @@ class FirebaseManager {
     // MARK: Attendances
 
     func uploadStudentAttendance(attendance: Attendance, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(attendance.name) - \(attendance.time.dropLast(10))")
+        
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child(ATTENDANCE_STORAGE).child(attendance.session?.id ?? "").child("\(attendance.name)-\(attendance.time.dropLast(10))")
         
         let metadata = StorageMetadata()
         
@@ -691,7 +692,7 @@ class FirebaseManager {
     // MARK: Student and Teacher
     
     func updateProfilePicture(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("user").child(name).child("currentFace")
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child(USERS_STORAGE).child(name).child(PROFILE)
 
         let metadata = StorageMetadata()
 

@@ -13,6 +13,12 @@ let COURSES = "Courses"
 let ATTENDANCES = "Attendance"
 let FACE_REQUESTS = "FaceRequests"
 
+// Storage child
+let USERS_STORAGE = "user"
+let CURRENT_FACE = "currentFace"
+let PROFILE = "profile"
+let ATTENDANCE_STORAGE = "attendances"
+
 // Node
 let ALL_VECTOR = "allVectors"
 let KMEAN_VECTOR = "kMeanVectors"
