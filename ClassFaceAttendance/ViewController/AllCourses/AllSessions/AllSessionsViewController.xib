@@ -81,10 +81,13 @@
                     </subviews>
                     <color key="backgroundColor" name="background"/>
                 </stackView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="q0E-5E-4zd">
-                    <rect key="frame" x="16" y="203" width="361" height="599"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="q0E-5E-4zd">
+                    <rect key="frame" x="16" y="203" width="361" height="100"/>
                     <color key="backgroundColor" name="background"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vLZ-70-nGK">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="C21-j5-Gbt"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vLZ-70-nGK">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -96,7 +99,6 @@
             <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="q0E-5E-4zd" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-16" id="ODE-x8-ltc"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="q0E-5E-4zd" secondAttribute="bottom" constant="16" id="QX0-fh-3eG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dXz-Uc-G5x" secondAttribute="trailing" id="WV7-R0-A75"/>
                 <constraint firstItem="q0E-5E-4zd" firstAttribute="top" secondItem="dXz-Uc-G5x" secondAttribute="bottom" constant="16" id="aQS-97-cud"/>
                 <constraint firstItem="dXz-Uc-G5x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fOe-g7-XTc"/>

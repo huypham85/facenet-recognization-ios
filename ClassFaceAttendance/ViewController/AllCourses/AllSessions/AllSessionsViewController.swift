@@ -178,8 +178,8 @@ extension AllSessionsViewController: UICollectionViewDelegate, UICollectionViewD
 extension AllSessionsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout,
                         sizeForItemAt _: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width / 3 - 8
-        let height = width
+        let width = 100
+        let height = 100
         return
             CGSize(width: width, height: height)
     }
