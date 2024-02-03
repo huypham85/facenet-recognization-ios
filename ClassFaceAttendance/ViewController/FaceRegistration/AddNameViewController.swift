@@ -37,7 +37,8 @@ class AddNameViewController: BaseViewController {
            let studentId = globalUser?.id,
            let currentFace = faceImageView.image
         {
-            getFrames.getAllFrames(videoURL, for: studentId, currentFace: currentFace)
+            let label = "\(studentId)_\(Date().millisecondsSince1970)"
+            getFrames.getAllFrames(videoURL, for: label, currentFace: currentFace)
         }
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }

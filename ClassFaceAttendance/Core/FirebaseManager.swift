@@ -26,7 +26,7 @@ class FirebaseManager {
             Database.database().reference().child(FACE_REQUESTS).child(globalUser.id).child(ALL_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
-                    print("uploaded vector")
+//                    print("uploaded vector")
                 }
             })
         }
@@ -46,7 +46,7 @@ class FirebaseManager {
             Database.database().reference().child(FACE_REQUESTS).child(globalUser.id).child(KMEAN_VECTOR).child(childString).updateChildValues(dict, withCompletionBlock: {
                 error, _ in
                 if error == nil {
-                    print("uploaded vector")
+//                    print("uploaded vector")
                 }
             })
         }
@@ -54,7 +54,7 @@ class FirebaseManager {
     }
     
     func uploadCurrentFace(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child(USERS_STORAGE).child(name).child(CURRENT_FACE)
 
         let metadata = StorageMetadata()
 
@@ -117,10 +117,9 @@ class FirebaseManager {
         }
     }
     
-    func loadAllKMeansVector(completionHandler: @escaping ([Vector]) -> Void) {
-        guard let globalUser = globalUser else { return }
+    func getStudentKmeansVectors(studentId: String, completionHandler: @escaping ([Vector]) -> Void) {
         var vectors = [Vector]()
-        let ref = Database.database().reference().child(STUDENT_CHILD).child(globalUser.id).child(KMEAN_VECTOR)
+        let ref = Database.database().reference().child(STUDENT_CHILD).child(studentId).child(KMEAN_VECTOR)
         ref.queryLimited(toLast: 1000).observeSingleEvent(of: .value, with: { snapshot in
             
             if let data = snapshot.value as? [String: Any] {
@@ -142,13 +141,32 @@ class FirebaseManager {
                 }
             }
             else {
-                print("parse json error when load K Means Vector")
+                print("parse json error when load K Means Vector of \(studentId)")
             }
             completionHandler(vectors)
             
         }) { error in
             print(error.localizedDescription)
             completionHandler(vectors)
+        }
+    }
+    
+    func loadAllKMeansVector(session: Session?, completionHandler: @escaping ([Vector]) -> Void) {
+        guard let session = session else { return }
+        var allVectors = [Vector]()
+        let students = session.students
+        let dispatchGroup = DispatchGroup()
+        for student in students {
+            dispatchGroup.enter()
+            getStudentKmeansVectors(studentId: student.studentId) { vectors in
+                allVectors.append(contentsOf: vectors)
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            print("All Kmeans Vectors of clas: \(allVectors.count)")
+            completionHandler(allVectors)
         }
     }
     
@@ -187,7 +205,8 @@ class FirebaseManager {
     // MARK: Attendances
 
     func uploadStudentAttendance(attendance: Attendance, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(attendance.name) - \(attendance.time.dropLast(10))")
+        
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child(ATTENDANCE_STORAGE).child(attendance.session?.id ?? "").child("\(attendance.name)-\(attendance.time.dropLast(10))")
         
         let metadata = StorageMetadata()
         
@@ -673,7 +692,7 @@ class FirebaseManager {
     // MARK: Student and Teacher
     
     func updateProfilePicture(name: String, image: UIImage, completionHandler: @escaping (Error?) -> Void) {
-        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child("\(name) - \(Date().toIsoString())")
+        let storageRef = Storage.storage().reference(forURL: STORAGE_URL).child(USERS_STORAGE).child(name).child(PROFILE)
 
         let metadata = StorageMetadata()
 
@@ -691,7 +710,7 @@ class FirebaseManager {
                         url, error in
                         if let metaImageUrl = url?.absoluteString {
                             let dict: [String: Any] = ["photo": metaImageUrl]
-                            Database.database().reference().child(STUDENT_CHILD).child(globalUser?.id ?? "")
+                            Database.database().reference().child(globalUser?.role == .student ? STUDENT_CHILD : TEACHER_CHILD).child(name)
                                 .updateChildValues(dict, withCompletionBlock: {
                                     error, _ in
                                     if error == nil {

@@ -16,9 +16,14 @@ class RegisterFaceViewController: BaseViewController {
     @IBOutlet weak var registerImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_reload"), style: .plain, target: self, action: #selector(refreshData))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_reload"), style: .plain, target: self, action: #selector(refreshData))
         title = TabBarItemTitle.faceRegister
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupView()
     }
     

@@ -37,6 +37,8 @@ class StudentDetailViewController: BaseViewController {
         firebaseManager.logOut()
         firebaseManager.hasLogInSession {
             if !$0 {
+                globalUser = nil
+                userFullName = nil
                 Application.shared.changeRootViewMainWindow(
                     viewController: LoginViewController.create(),
                     animated: false

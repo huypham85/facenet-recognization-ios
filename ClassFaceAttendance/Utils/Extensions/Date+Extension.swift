@@ -8,6 +8,11 @@
 import Foundation
 
 extension Date {
+    
+    var millisecondsSince1970:Int64 {
+        Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
     func toDateString() -> String {
         calendar.timeZone = timeZone ?? .current
         let dateComponents = calendar.dateComponents(in: timeZone ?? .current, from: self)

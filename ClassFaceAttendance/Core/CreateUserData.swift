@@ -60,7 +60,6 @@ class GetFrames {
         } while i < duration
         generator = nil
         queue.addBarrierBlock {
-            print("Complete")
             ProgressHelper.showLoading(text: "Generating...")
             vectorHelper.addVector(name: label) { result in
                 print("All vectors for \(label): \(result.count)")
