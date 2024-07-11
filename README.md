@@ -1,4 +1,4 @@
-# Class Attendance App README
+# Class Attendance App
 
 ## Project Overview
 
@@ -86,6 +86,16 @@ This project involves the development of a student attendance management system 
 
 - **React**: For building the web interface.
 - **Firebase**: For backend services.
+
+## Screenshots
+![Picture1](https://github.com/huypham85/facenet-recognization-ios/assets/64804929/18840059-399f-48bc-96ec-eaf9425f781e)
+![Picture2](https://github.com/huypham85/facenet-recognization-ios/assets/64804929/a4fbb52f-e152-4405-9ca4-3b193cef6d93)
+![Picture3](https://github.com/huypham85/facenet-recognization-ios/assets/64804929/f29d12a8-2629-4ef2-8d13-c978617b6453)
+![Picture4](https://github.com/huypham85/facenet-recognization-ios/assets/64804929/f1a496d7-70e0-4ad5-a5ca-c654a9400683)
+![Picture5](https://github.com/huypham85/facenet-recognization-ios/assets/64804929/aebe08db-4780-4220-bcb9-b717a23a9b1f)
+![Picture6](https://github.com/huypham85/facenet-recognization-ios/assets/64804929/f0dd74bf-cb2d-4fbe-b77f-baef1d5a35f6)
+![Picture7](https://github.com/huypham85/facenet-recognization-ios/assets/64804929/8c4c8265-195a-4b7b-9b97-82ce500a85ec)
+![Picture8](https://github.com/huypham85/facenet-recognization-ios/assets/64804929/f5cb77a8-b101-4587-90a9-81a29d81e90c)
 
 ## Contribution
 
